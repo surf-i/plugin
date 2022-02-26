@@ -1,0 +1,1 @@
+if (!window.location.href.match(/https:\/\/www.google.com*\/search\?/)) alert("Bienvenido a Surfi")
