@@ -18,18 +18,21 @@ let h = document.getElementById("search");
       return colour;
     };
 
+    function Keywords(text){
+      let words = text.split(' ')
+      let number = Math.floor(Math.random() * words.length);
+      return words[number];
+    }
     el.insertAdjacentHTML(
       "afterend",
       `
         <div style="display: inline-flex;">
-        <span style='margin-left:2px;height: 13px;width: 13px; background-color:` +
-        stringToColour(text) +
-        `; border-radius: 50%;'>
+        <span class="Dashboard-ball">
+          <p>${text[0]}</p>
         </span>
         </div>
-        <p style="margin:0; font-size: 14px">Category: ` +
-        text[0] +
-        ` - 5% level of trust -  Keywords: cafe, surf, mountain, technology</p>
+        <p class="Surfi-text">Category: ` + text[0] +
+        ` - ${Math.floor(Math.random()*100)}% level of trust -  Keywords: ${Keywords(text)},  ${Keywords(text)},  ${Keywords(text)},  ${Keywords(text)}</p>
     `
     );
   }
