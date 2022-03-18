@@ -1,10 +1,10 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Surfi",
   "description": "Add a custom Background google",
   "version": "1.0",
   "icons": { "16": "favicon.png", "48": "favicon.png", "128": "favicon.png" },
-  "browser_action": {
+  "action": {
     "default_title": "Surfi",
     "default_icon": "favicon.png"
   },
@@ -12,7 +12,11 @@
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
       "css": ["main.css"],
-      "js": ["main.js"]
+      "js": ["main.js", "onInstall.js"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "onInstall.js"
+}
 }
