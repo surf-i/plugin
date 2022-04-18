@@ -1,3 +1,4 @@
+
 let h = document.getElementById("search");
 
 // fetch();
@@ -52,7 +53,7 @@ let query = {
 
 
 [].forEach.call(
-  document.querySelectorAll("html div #search h3"),
+  browserDocument = document.querySelectorAll("html div #search h3"),
   function (el) {
     let text = el.textContent;
     let words = text.split(' ')

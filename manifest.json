@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Surfi",
-  "description": "Add a custom Background google",
-  "version": "1.0",
+  "description": "A plugin that shows you website reliability and formats google search.",
+  "version": "1.0.0.1",
   "icons": { "16": "favicon.png", "48": "favicon.png", "128": "favicon.png" },
   "browser_action": {
     "default_title": "Surfi",
@@ -12,7 +12,11 @@
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
       "css": ["main.css"],
-      "js": ["main.js"]
+      "js": ["main.js", "onInstall.js"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "onInstall.js"
+}
 }
