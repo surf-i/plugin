@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
-      "css": ["styles/main.css"],
+      "css": ["styles/main.css", "styles/root.css"],
       "js": ["scripts/main.js", "scripts/background.js"],
       "run_at": "document_end"
     }

@@ -1,46 +1,4 @@
-:root {
-    /* Color Theme Basic */
-    --color-A: #F29F05;
-    --color-B: #F28705;
-    --color-C: #F25C05;
-    --color-D: #D93D04;
-    --color-E: #F2F2F2;
-    /* Color Theme A */
-    --color-A1: #F9D507;
-    --color-A2: #DBA607;
-    --color-A3: #F29F05;
-    --color-A4: #DB7807;
-    --color-A5: #F96507;
-    /* Color Theme B */
-    --color-B1: #B36404;
-    --color-B2: #734002;
-    --color-B3: #FF8F05;
-    --color-B4: #D97904;
-    /* Color Theme  C*/
-    --color-C1: #F9A107;
-    --color-C2: #DB7407;
-    --color-C3: #DB3607;
-    --color-C5: #FF904D;
-    --raw-C3: 219, 54, 7;
-    --color-C4: #F91A07;
-    /* Color Theme D */
-    --color-D1: #992B03;
-    --color-D2: #591902;
-    --color-D3: #E64105;
-    --color-D4: #BF3604;
-    /* Color Theme E */
-    --color-E1: #B3B3B3;
-    --color-E2: #737373;
-    --color-E3: #FFFFFF;
-    --color-E4: #D9D9D9;
-
-    --Header-size: 57px;
-    --Footer-size: 45px;
-    --HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
-    --Page-padding: 0 20px var(--Navbar-size) 20px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-}
+@import url("root.css");
 
 html {
     background-color: var(--color-C5);
@@ -68,15 +26,17 @@ h2 {
     font-size: 10vw;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    color: var(--color-E);
+    color: var(--color-E3);
 }
 
 .logo {
     border-radius: 100rem;
-    background-color: var(--color-E);
+    background: var(--color-E);
+    background-size: 400% 400%;
     width: 100px;
     padding: 25px;
     margin: 0 50px 20px 50px;
+    animation: 3000ms gradient ease-in-out infinite;
 }
 
 .menu {
@@ -108,4 +68,18 @@ h2 {
 .container {
     text-align: center;
     margin-bottom: 25px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

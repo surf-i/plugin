@@ -11,45 +11,6 @@ let h = document.getElementById("search");
 //   "mode": "cors",
 //   "credentials": "omit"
 // });
-let query = {
-  "SOCIAL": {
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "ENTRETENIMIENTO":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "NOTICIAS":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "ACADEMICO":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "OPINION":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "COMERCIO":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "TECNOLOGIA":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "PRODUCTIVIDAD":{
-    "color": "#isidsndis",
-    "symbol": "",
-  },
-  "TURISMO":{
-    "color": "#isidsndis",
-    "symbol": "",
-  }, 
-
-};
 
 
 [].forEach.call(
@@ -73,10 +34,10 @@ let query = {
 
     function Keywords(words){
       let number = Math.floor(Math.random() * words.length);
-      if(words[number].length > 0)
+      if(words[number].length > 1)
         return words[number];
       else
-        return Keywords(text)
+        return Keywords(words)
     }
     el.insertAdjacentHTML(
       "afterend",
