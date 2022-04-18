@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="styles/popup.css">
     <meta charset="UTF-8">
@@ -7,16 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surfi</title>
 </head>
+
 <body>
-    <h2>Surfi</h2>
-    <img src="assets/logo/round_logo.png" class="logo" alt="Surfi logo">
+    <h2 class="title">Surfi</h2>
+    <img src="assets/logo/round_logo.png" class="logo" alt="Surfi Logo">
+
+    <div class="container">
+        <button class="sign_in_btn">Log In</button>
+        <button class="sign_in_btn">Create Account</button>
+    </div>
+
     <div class="menu">
-        <button class="menu_button">
-            <div class="home">🏠</div>
-        </button>
-        <button class="menu_button">
+        <a href="https://surfi.netlify.app" target="parent">
+            <button class="menu_button">
+                <img class="menu_icon" src="assets/home-icon.png" />
+            </button>
+        </a>
+        <!-- <button class="menu_button">
             <div class="back">👈</div>
-        </button>
+        </button> -->
     </div>
 </body>
+
 </html>
