@@ -1,21 +1,12 @@
 function UserInput(object) {
     return(
-      ` 
-        <div class="SurfiComponent menu">
-            <a href=${object.url} target="parent">
-                <button type="button" class="menu_button">                
-                    <span class="material-icons menu_icon">home</span>
-                </button>
-            </a>
-            <button type="button" class="menu_button">
-                <span class="material-icons menu_icon">account_circle</span>
-            </button>
-            <button type="button" class="menu_button">
-                <span class="material-icons menu_icon">settings</span>
-            </button>
-        </div>
-        `
+    ` 
+    <div class="UserInput_item " id=${object.id}>
+      <label htmlFor="">${object.title}</label>
+      <input type=${object.type} />
+    </div>
+    `
     )
 }
 
-export default {UserInput}
+export default UserInput

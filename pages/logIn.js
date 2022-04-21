@@ -1,3 +1,4 @@
+import UserInput from "../components/UserInput.js"
 
 function LogInTemplate(object) {
     return(
@@ -10,15 +11,8 @@ function LogInTemplate(object) {
                 class="SignInComponent_form"
                 onSubmit={handleSubmit}
                 >
-                <div class="UserInput_item" id="email">
-                    <label htmlFor="">Email</label>
-                    <input type="email" />
-                </div>
-                <div class="UserInput_item" id="email">
-                    <label htmlFor="">password</label>
-                    <input type="password" />
-                </div>
-                <!-- <UserInput id="2" title="Email" type="email" name={email} /> -->
+                ${UserInput({id:'email', title:'Email',type:"email"})}
+                ${UserInput({id:'password', title:'Password',type:"password"})}
                 <button
                     class="sign_in_btn"
                     id="LogInToStartButton"
