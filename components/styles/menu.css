@@ -1,0 +1,16 @@
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+.menu_button {
+    display: flex;
+    justify-content: center;
+}
+.menu_icon{
+    font-size: 3rem;
+    color: var(--color-E3);
+    opacity: 0.8;
+}
+.menu_button:active  .menu_icon{
+    opacity: 1;
+}

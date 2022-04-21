@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Surfi",
   "description": "A plugin that shows you website reliability and formats google search.",
-  "version": "1.0.0.1",
+  "version": "0.0.1",
   "icons": { "16": "assets/logo/favicon.png", "48": "assets/logo/favicon.png", "128": "assets/logo/favicon.png" },
   "browser_action": {
     "default_title": "Surfi",
@@ -11,8 +11,8 @@
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
-      "css": ["styles/main.css", "styles/root.css"],
-      "js": ["scripts/main.js", "scripts/background.js"],
+      "css": ["search/main.css", "styles/root.css"],
+      "js": ["search/main.js", "scripts/background.js"],
       "run_at": "document_end"
     }
   ],

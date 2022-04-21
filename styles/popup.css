@@ -1,12 +1,17 @@
 @import url("root.css");
 @import url("icons.css");
+/* from pages */
+@import url("../pages/styles/logIn.css");
+/* from specific global components that tends to be in almost all pages*/
+@import url("../components/styles/menu.css");
 
 html {
+    color: var(--color-E3);
     background-color: var(--color-C);
 }
-a {
+a{
     text-decoration: none;
-  }
+}
 button {
     text-decoration: none;
     outline: none;
@@ -14,24 +19,30 @@ button {
     border: none;
     cursor: pointer;
 }
-.menu_button {
-    display: flex;
-    justify-content: center;
-}
-.menu_icon{
-    font-size: 3rem;
-    color: var(--color-E3);
-    opacity: 0.8;
-}
-.menu_button:active  .menu_icon{
-    opacity: 1;
-}
+
 h2 {
     font-size: 10vw;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 2vw 1vw;
+    font-family: var(--font-family);
     text-align: center;
     color: var(--color-E3);
 }
+
+/* scrollbar style */
+::-webkit-scrollbar {
+    width: 0.1rem;
+    /* display: none; */
+  }
+  
+  ::-webkit-scrollbar-track {
+    border: 1px solid var(--color-B);
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 12rem;
+      background: var(--color-E3);
+  }
+  
+  /* scrollbar style */
 .logo {
     border-radius: 100rem;
     background: linear-gradient(-45deg, var(--color-A), var(--color-B),var(--color-C), var(--color-D));
@@ -42,10 +53,7 @@ h2 {
     animation: 3000ms gradient ease-in-out infinite;
 }
 
-.menu {
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .title {
     font-family: "Lato", sans-serif;
@@ -62,7 +70,7 @@ h2 {
     margin: 10px;
     min-width: 200px;
     font-size: 1.0rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-family)
 }
 .sign_in_btn:hover{
     color: var(--color-C4);
@@ -71,6 +79,10 @@ h2 {
     text-align: center;
     margin-bottom: 25px;
 }
+
+
+/* animations */
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -84,3 +96,5 @@ h2 {
         background-position: 0% 50%;
     }
 }
+
+/* animations */
