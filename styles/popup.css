@@ -8,6 +8,7 @@
 html {
     color: var(--color-E3);
     background-color: var(--color-C);
+    padding: 22.5vw 12.5vw;
 }
 a{
     text-decoration: none;
