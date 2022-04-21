@@ -3,7 +3,7 @@
 
 import { addElement, deleteElement } from '../scripts/core.js'
 import { StartTemplate } from './pages/start.js'
-import { LogInTemplate } from './pages/logIn.js'
+import { LogInTemplate } from './pages/login.js'
 
 const body = document.body
 const routes = {

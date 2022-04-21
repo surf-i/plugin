@@ -1,31 +1,32 @@
-.UserInput_item{
+.UserInput_item {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    margin-top: 1rem;
 }
-.UserInput_item label{
-    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+.UserInput_item label {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     text-align: left;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     /* display: inline-block; */
-    margin-bottom: 0.5rem;
     margin-left: 0.5rem;
 }
 
-.UserInput_item input{
+.UserInput_item input {
     /* -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     margin: 0;
     /* overflow: visible; */
     display: block;
-    width: 100%;
+    width: 55vw;
     /* height: calc(1.5em + 0.75rem + 2px); */
-    padding: 0.375rem 0.75rem;  
-    font-size: 2rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-B);
@@ -35,25 +36,27 @@
     /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
 }
 
-.SignInComponent_container{
+.SignInComponent_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.SignInComponent_form{
+
+.SignInComponent_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2vh;
+    margin-top: 0.5vw;
+    padding: 2vh 3vh 4vh 3vh;
     /* border: 2px solid var(--color-B); */
-    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
     background-color: var(--color-A);
     border-radius: 1rem;
-    margin: 2vh  15px 0 15px ;
 }
-.SignInComponent_User-logo{
+
+.SignInComponent_User-logo {
     /* width: 45px; */
     width: 15vh;
     object-fit: cover;
@@ -61,15 +64,18 @@
     margin: 0.5em;
     flex-shrink: 0;
 }
-.SignInComponent_SingUp{
+
+.SignInComponent_SingUp {
     margin: 15px 0 15px 0;
     transition: color ease 500ms;
-}
-.SignInComponent_SingUp:hover{
-    color: var(--color-B);
+    color: white
 }
 
-#SignInComponent_button{
+.SignInComponent_SingUp:hover {
+    color: var(--color-C1);
+}
+
+#SignInComponent_button {
     border-radius: 16rem;
     margin: 1rem 0 1rem 0;
     width: 60vw;
@@ -77,12 +83,13 @@
 }
 
 
-@media screen and (min-width: 768px){
-    #SignInComponent_button{
+@media screen and (min-width: 768px) {
+    #SignInComponent_button {
         width: 25vw;
         height: 10vh;
     }
-    .SignInComponent_User-logo{
+
+    .SignInComponent_User-logo {
         width: 10vw;
     }
 }

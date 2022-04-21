@@ -1,18 +1,20 @@
 @import url("root.css");
 @import url("icons.css");
 /* from pages */
-@import url("../pages/styles/logIn.css");
+@import url("../pages/styles/login.css");
 /* from specific global components that tends to be in almost all pages*/
 @import url("../components/styles/menu.css");
 
 html {
     color: var(--color-E3);
-    background-color: var(--color-C);
+    background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
     padding: 22.5vw 12.5vw;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 button {
     text-decoration: none;
     outline: none;
@@ -33,20 +35,21 @@ h2 {
 ::-webkit-scrollbar {
     width: 0.1rem;
     /* display: none; */
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     border: 1px solid var(--color-B);
-  }
-  ::-webkit-scrollbar-thumb {
-      border-radius: 12rem;
-      background: var(--color-E3);
-  }
-  
-  /* scrollbar style */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12rem;
+    background: var(--color-E3);
+}
+
+/* scrollbar style */
 .logo {
     border-radius: 100rem;
-    background: linear-gradient(-45deg, var(--color-A), var(--color-B),var(--color-C), var(--color-D));
+    background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
     background-size: 400% 400%;
     width: 100px;
     padding: 25px;
@@ -54,11 +57,12 @@ h2 {
     animation: 3000ms gradient ease-in-out infinite;
 }
 
-
-
 .title {
-    font-family: "Lato", sans-serif;
-    font-size: 2.5rem;
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  font-size: 2.75rem;
+  animation: animate 4s ease-in-out infinite;
+  margin-bottom: 5vw;
 }
 
 .sign_in_btn {
@@ -68,14 +72,16 @@ h2 {
     color: var(--color-C);
     border-radius: 12vw;
     padding: 12.25px;
-    margin: 10px;
+    margin: 12.5px;
     min-width: 200px;
     font-size: 1.0rem;
     font-family: var(--font-family)
 }
-.sign_in_btn:hover{
+
+.sign_in_btn:hover {
     color: var(--color-C4);
 }
+
 .container {
     text-align: center;
     margin-bottom: 25px;
