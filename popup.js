@@ -3,12 +3,14 @@
 
 import { addElement, deleteElement } from '../scripts/core.js'
 import { StartTemplate } from './pages/start.js'
-import { LogInTemplate } from './pages/login.js'
+import { LoginTemplate } from './pages/login.js'
+import { ReviewTemplate } from './pages/review.js'
 
 const body = document.body
 const routes = {
     "start": StartTemplate,
-    "login": LogInTemplate
+    "login": LoginTemplate,
+    "review": ReviewTemplate
 }
 
 var state = 'start'
@@ -26,7 +28,7 @@ function setPage(page) {
     }
 
     if (state === 'login') {
-        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('start') });
+        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('review') });
     }
 
 }

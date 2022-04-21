@@ -1,9 +1,9 @@
 import UserInput from "../components/UserInput.js"
 
-function LogInTemplate(object) {
+function LoginTemplate(object) {
     return (
         `
-        <div class="SurfiComponent">    
+        <div class="SurfiComponent main-container">    
             <h2 class="title">Login</h2>
             <!-- <img src="assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="Form">
@@ -27,4 +27,4 @@ function LogInTemplate(object) {
     )
 }
 
-export { LogInTemplate }
+export { LoginTemplate }
