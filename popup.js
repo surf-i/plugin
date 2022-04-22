@@ -12,26 +12,35 @@ const routes = {
 }
 
 var state = 'start'
+var url = 'http://ec2-54-81-183-223.compute-1.amazonaws.com/'
 // var page = document.getElementById()
 
 
-function setPage(page){
+function setPage(page, body){
     console.log(page)
-    deleteElement(document.body.children[0])
+    deleteElement(body.children[0])
     state = page
     addElement(null, routes[state], body)    
-
     if( state === 'start'){
-        var event =  document.getElementById("StartToLogInButton").addEventListener("click", function(){setPage('login')});
+        var event =  document.getElementById("StartToLogInButton").addEventListener("click", function(){setPage('login', body)});
+        fetch(url+'websites/?url=www.gooogle.com')
+            .then(response => response.json())
+            .then(data => console.log(data));
     }
     
     if( state === 'login'){
-        var eventLog =  document.getElementById("LogInToStartButton").addEventListener("click", function(){setPage('start')});
+        var eventLog =  document.getElementById("LogInToStartButton").addEventListener("click", function(){setPage('start', body)});
+        // fetch(url+'dj-rest-auth/login/', 
+        // {
+        //     method: 'POST'
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log(data));
     }
     
 }
 
-setPage('start')
+setPage('start', body)
 
 
 

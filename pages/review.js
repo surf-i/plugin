@@ -1,4 +1,3 @@
-import { addElement, deleteElement} from '../scripts/core.js'
 
 function StartTemplate(object) {
     return(
@@ -15,4 +14,4 @@ function StartTemplate(object) {
     )
 }
 
-addElement(null, StartTemplate, document.getElementById('popup'))
+export {StartTemplate}
