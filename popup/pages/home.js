@@ -2,7 +2,7 @@
 function StartTemplate(object) {
     return(
         `
-        <div class="SurfiComponent">    
+        <div class="SurfiComponent page-container">    
             <h2 class="title">Surfi</h2>
             <img src="assets/logo/round_logo.png" class="logo" alt="Surfi Logo">
             <div class="container">

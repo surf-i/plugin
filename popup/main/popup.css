@@ -1,10 +1,11 @@
-@import url("root.css");
-@import url("icons.css");
+@import url("../../styles/root.css");
+@import url("../../styles/icons.css");
 /* from pages */
 @import url("../pages/styles/login.css");
-@import url("../pages/styles/review.css");
+@import url("../pages/styles/start.css");
 /* from specific global components that tends to be in almost all pages*/
 @import url("../components/styles/menu.css");
+@import url("../components/styles/slider.css");
 
 html {
     color: var(--color-E3);
@@ -15,8 +16,14 @@ a {
     text-decoration: none;
 }
 
-.main-container {
-    padding: 22.5vw 12.5vw;
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px;
+    min-width: 260px;
+    padding: 22vw 12vw;
 }
 
 button {

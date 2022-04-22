@@ -20,8 +20,8 @@ function deleteElement(element){
 
 //Dev
 
-async function getHTML() {
-    let response = await fetch('data.txt');
+async function getHTML(url) {
+    let response = await fetch(url);
     if (!response.ok) {throw new Error(`HTTP error! status: ${response.status}`);}
     let text = await response.text(); // await ensures variable has fulfilled Promise
     return text

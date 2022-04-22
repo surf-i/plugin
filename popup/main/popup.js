@@ -2,9 +2,9 @@
 'use strict'
 
 import { addElement, deleteElement, getHTML } from '../../scripts/core.js'
-import { StartTemplate } from './src/start.js'
-import { LoginTemplate } from './src/login.js'
-import { ReviewTemplate } from './src/review.js'
+import { StartTemplate } from '../pages/start.js'
+import { LoginTemplate } from '../pages/login.js'
+import { ReviewTemplate } from '../pages/review.js'
 
 const body = document.body
 const routes = {
@@ -19,13 +19,13 @@ var state = 'start'
 
 function setPage(page) {
     console.log(page)
-    deleteElement(document.body.children[0])
+    deleteElement(body.children[0])
     state = page
     addElement(null, routes[state], body)
 
     if (state === 'start') {
         var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
-        getHTML
+        //getHTML();
     }
 
     if (state === 'login') {
