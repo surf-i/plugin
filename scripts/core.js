@@ -18,8 +18,17 @@ function deleteElement(element){
     element.remove()
 }
 
+//Dev
 
-export {addElement, deleteElement} 
+async function getHTML() {
+    let response = await fetch('data.txt');
+    if (!response.ok) {throw new Error(`HTTP error! status: ${response.status}`);}
+    let text = await response.text(); // await ensures variable has fulfilled Promise
+    return text
+}
+  
+
+export {addElement, deleteElement, getHTML}//export all functions
 
 
 
