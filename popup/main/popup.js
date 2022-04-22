@@ -1,10 +1,10 @@
 // sets a unified javascript to import pages
 'use strict'
 
-import { addElement, deleteElement } from '../scripts/core.js'
-import { StartTemplate } from './pages/start.js'
-import { LoginTemplate } from './pages/login.js'
-import { ReviewTemplate } from './pages/review.js'
+import { addElement, deleteElement, getHTML } from '../../scripts/core.js'
+import { StartTemplate } from './src/start.js'
+import { LoginTemplate } from './src/login.js'
+import { ReviewTemplate } from './src/review.js'
 
 const body = document.body
 const routes = {
@@ -25,6 +25,7 @@ function setPage(page) {
 
     if (state === 'start') {
         var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
+        getHTML
     }
 
     if (state === 'login') {

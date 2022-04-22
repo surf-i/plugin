@@ -1,4 +1,4 @@
-import UserInput from "../components/UserInput.js"
+import UserInput from "../../components/UserInput.js"
 
 function LoginTemplate(object) {
     return (
