@@ -28,7 +28,7 @@ async function getHTML(url) {
 }
   
 
-export {addElement, deleteElement, getHTML}//export all functions
+export {addElement, deleteElement}//export all functions
 
 
 

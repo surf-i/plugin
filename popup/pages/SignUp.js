@@ -1,30 +1,31 @@
 import UserInput from "../components/UserInput.js"
 
-function LoginTemplate(object) {
+function SignUpTemplate(object) {
     return (
         `
         <div class="SurfiComponent page-container">    
-            <h2 class="title">Login</h2>
+            <h2 class="title">SignUp</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
+                onsubmit="handleSubmit"
                 >
                 ${UserInput({ id: 'email', title: 'Email', type: "email" })}
+                ${UserInput({ id: 'username', title: 'Username', type: "text" })}
                 ${UserInput({ id: 'password', title: 'Password', type: "password" })}
-                <button
+                ${UserInput({ id: 'password', title: 'Password', type: "password" })}
+                <button 
                     class="sign_in_btn"
-                    id="LogInToStartButton"
+                    id="SignUpToStartButton"
                 >
-                    Sign In
+                    Sign Up
                 </button>
                 </form>
-                <button class="SignInComponent_SingUp" id="LogInToSignUpButton">Sign Up</button>
             </div>
         </div>
         `
     )
 }
 
-export { LoginTemplate }
+export { SignUpTemplate }

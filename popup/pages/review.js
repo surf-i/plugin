@@ -1,4 +1,3 @@
-import { getHTML} from '../../scripts/core.js'
 
 function ReviewTemplate(object) {
     return(
@@ -22,7 +21,7 @@ function ReviewTemplate(object) {
         </div>
         <button
             class="sign_in_btn"
-            id="LogInToStartButton"
+            id="ReviewToStartButton"
             >
             Sends
         </button>

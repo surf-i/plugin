@@ -23,7 +23,7 @@ a {
     align-items: center;
     min-height: 320px;
     min-width: 260px;
-    padding: 22vw 12vw;
+    padding: 8vh 12vw;
 }
 
 button {
@@ -71,9 +71,9 @@ h2 {
 .title {
   color: #fff;
   font-family: "Lato", sans-serif;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   animation: animate 4s ease-in-out infinite;
-  margin-bottom: 5vw;
+  margin-bottom: 2vh;
 }
 
 .sign_in_btn {

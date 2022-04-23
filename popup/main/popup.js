@@ -1,40 +1,53 @@
 // sets a unified javascript to import pages
 'use strict'
-
-import { addElement, deleteElement, getHTML } from '../../scripts/core.js'
+import Cookies from '../../lib/js.cookie.mjs'
+import { addElement, deleteElement } from '../../scripts/core.js'
 import { StartTemplate } from '../pages/start.js'
 import { LoginTemplate } from '../pages/login.js'
 import { ReviewTemplate } from '../pages/review.js'
+import { SignUpTemplate } from '../pages/signup.js'
 
 const body = document.body
 const routes = {
     "start": StartTemplate,
     "login": LoginTemplate,
-    "review": ReviewTemplate
+    "review": ReviewTemplate,
+    "signup": SignUpTemplate
 }
 
-var state = 'start'
+//sets the sate of the app
+if(Cookies.get('state') == undefined){
+    Cookies.set('state', 'review')
+}
+var state = Cookies.get('state')
+
+setPage(state)
+
 // var page = document.getElementById()
 
 
 function setPage(page) {
-    console.log(page)
     deleteElement(body.children[0])
-    state = page
+    Cookies.set('state',(state = page))
+    console.log(state)
     addElement(null, routes[state], body)
-
     if (state === 'start') {
         var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
-        //getHTML();
+        var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
+        //getHTML()
     }
-
+    if(state === 'signup'){
+        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('start') });
+    }
     if (state === 'login') {
         var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('review') });
+    }
+    if (state === 'review') {
+        var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('start') });
     }
 
 }
 
-setPage('start')
 
 
 
