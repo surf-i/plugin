@@ -3,10 +3,11 @@
 /* from pages */
 @import url("../pages/styles/login.css");
 @import url("../pages/styles/start.css");
+@import url("../pages/styles/PageInfo.css");
 /* from specific global components that tends to be in almost all pages*/
 @import url("../components/styles/menu.css");
 @import url("../components/styles/slider.css");
-
+/* https://www.behance.net/gallery/34266495/Iksan-Music-Party-concert-2016-by-greenplugged?tracking_source=search_projects%7Cblue%20night */
 html {
     color: var(--color-E3);
     background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
@@ -91,6 +92,14 @@ h2 {
 
 .sign_in_btn:hover {
     color: var(--color-C4);
+}
+
+#backButton{
+    font-weight: bold;
+    color: var(--color-E3);
+    position: absolute;
+    top: 12;
+    left: 12;
 }
 
 .container {

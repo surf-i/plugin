@@ -34,7 +34,7 @@ var token = Cookies.get('token')
 setPage(state)
 
 // var page = document.getElementById()
-
+var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
 
 function setPage(page) {
     deleteElement(body.children[0])

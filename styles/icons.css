@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Goldplay';
+    src: local('Goldplay Alt Bold'), local('Goldplay-Alt-Bold'),
+        url('../assets/font/GoldplayAlt-Bold.woff2') format('woff2'),
+        url('../assets/font/GoldplayAlt-Bold.woff') format('woff'),
+        url('../assets/font/GoldplayAlt-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;

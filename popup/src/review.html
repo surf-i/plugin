@@ -1,20 +1,50 @@
-<div class="SurfiComponent secondary-container">
-    <h2 class="title">Page Name</h2>
-    <div>
-        <span class="material-icons star_icon">star</span>
-        <span class="material-icons star_icon">star</span>
-        <span class="material-icons star_icon">star</span>
-        <span class="material-icons star_icon">star</span>
-        <span class="material-icons star_icon">star</span>
+<div>
+  <link rel="stylesheet" href="../main/popup.css">
+  <div class="searchCategory">
+    <p class="searchCategoryTitle">investigacion</p>
+  </div>
+  <div class="searchData">
+    <div class="veracity">
+      <p class="searchParagraph">45%</p>
     </div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <div class="calification">
+      <p class="searchParagraph">3.5</p>
     </div>
-    <img src="../../assets/mock/pagedata.png" class="mock">
+  </div>
+  <div class="AuthorandDate">
+    <p class="searchParagraph date">Fecha:12/12/22</p>
+    <p class="searchParagraph author">Author: Juan Carlitos</p>
+  </div>
+  <style>
+    body{
+      padding: 3rem;
+      background-color: black;
+    }
+    .searchCategory{
+      display: flex;
+      justify-content: center;
+      border-radius: 1rem;      
+      font-family: Helvetica, sans-serif;
+      background-color: green;
+    }
+    .searchCategoryTitle{
+      margin: 0;
+      padding: 5%;
+    }
+    .searchParagraph{
+      margin: 2%;
+      font-size: 1rem;
+    }
+    .searchData{
+      display: flex;
+      justify-content: space-around;
+    }
+    .veracity p{
+      color: var(--color-B);
+    }
+    .calification{
+      font-weight: bold;
+    }
+    
+    </style>
 </div>

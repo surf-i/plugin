@@ -18,7 +18,7 @@
   ],
   "action":{
     "default_icon":"assets/logo/favicon.png",
-    "default_popup": "popup/main/popup.html"
+    "default_popup": "popup/src/review.html"
   },
   "permissions":["scripting", "tabs", "activeTab", "storage"],
   "background": {
