@@ -2,24 +2,30 @@
 'use strict'
 import Cookies from '../../lib/js.cookie.mjs'
 import { addElement, deleteElement } from '../../scripts/core.js'
-import { StartTemplate } from '../pages/start.js'
-import { LoginTemplate } from '../pages/login.js'
-import { ReviewTemplate } from '../pages/review.js'
-import { SignUpTemplate } from '../pages/signup.js'
+import { StartTemplate } from '../pages/Start.js'
+import { LoginTemplate } from '../pages/LogIn.js'
+import { ReviewTemplate } from '../pages/Review.js'
+import { SignUpTemplate } from '../pages/SignUp.js'
+import { HomeTemplate } from '../pages/Home.js'
+import { AccountTemplate } from '../pages/Account.js'
+import { PageInfoTemplate } from '../pages/PageInfo.js'
 
 const body = document.body
-var url = 'http://44.195.183.116/'
+var url = 'https://44.195.183.116/'
 
 const routes = {
     "start": StartTemplate,
     "login": LoginTemplate,
     "review": ReviewTemplate,
-    "signup": SignUpTemplate
+    "signup": SignUpTemplate,
+    "home": HomeTemplate,
+    "account": AccountTemplate,
+    "pageinfo": PageInfoTemplate
 }
 
 //sets the sate of the app
 if(Cookies.get('state') == undefined){
-    Cookies.set('state', 'review')
+    Cookies.set('state', 'start')
 }
 var state = Cookies.get('state')
 
@@ -37,31 +43,31 @@ function setPage(page) {
     addElement(null, routes[state], body)
 
     
-    if (state === 'start') {
-        var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
-        var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
-        // fetch(url+'websites/?url=www.gooogle.com')
-        // .then(response => response.json())
-        // .then(data => console.log(data));
-        try{
-            logIn("surfitest@yopmail.com","","testpass123")
-        }catch{
-            //  
-        }
-        //getHTML()
-    }else{
-        var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
-    }
-    if(state === 'signup'){
-        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('start') });
-    }
-    if (state === 'login') {
-        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { consoleLog('surfitest@yopmail.com','testpass123') });
+    // if (state === 'start') {
+    //     var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
+    //     var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
+    //     // fetch(url+'websites/?url=www.gooogle.com')
+    //     // .then(response => response.json())
+    //     // .then(data => console.log(data));
+    //     try{
+    //         logIn("surfitest@yopmail.com","","testpass123")
+    //     }catch{
+    //         //  
+    //     }
+    //     //getHTML()
+    // }else{
+    //     var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
+    // }
+    // if(state === 'signup'){
+    //     var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('start') });
+    // }
+    // if (state === 'login') {
+    //     var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { consoleLog('surfitest@yopmail.com','testpass123') });
         
-    }
-    if (state === 'review') {
-        var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('start') });
-    }
+    // }
+    // if (state === 'review') {
+    //     var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('start') });
+    // }
 
 }
 
