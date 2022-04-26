@@ -8,6 +8,8 @@ import { ReviewTemplate } from '../pages/review.js'
 import { SignUpTemplate } from '../pages/signup.js'
 
 const body = document.body
+var url = 'http://44.195.183.116/'
+
 const routes = {
     "start": StartTemplate,
     "login": LoginTemplate,
@@ -21,6 +23,8 @@ if(Cookies.get('state') == undefined){
 }
 var state = Cookies.get('state')
 
+var token = Cookies.get('token')
+
 setPage(state)
 
 // var page = document.getElementById()
@@ -31,16 +35,29 @@ function setPage(page) {
     Cookies.set('state',(state = page))
     console.log(state)
     addElement(null, routes[state], body)
+
+    
     if (state === 'start') {
         var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
         var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
+        // fetch(url+'websites/?url=www.gooogle.com')
+        // .then(response => response.json())
+        // .then(data => console.log(data));
+        try{
+            logIn("surfitest@yopmail.com","","testpass123")
+        }catch{
+            //  
+        }
         //getHTML()
+    }else{
+        var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
     }
     if(state === 'signup'){
         var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('start') });
     }
     if (state === 'login') {
-        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('review') });
+        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { consoleLog('surfitest@yopmail.com','testpass123') });
+        
     }
     if (state === 'review') {
         var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('start') });
@@ -49,7 +66,27 @@ function setPage(page) {
 }
 
 
+function consoleLog(username, password){
+    
+}
 
+async function logIn(username,email, password) {
+    // Opciones por defecto estan marcadas con un *
+    const response = await fetch(url+'dj-rest-auth/login/', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password
+      }) // body data type must match "Content-Type" header
+    });
+    let res = await response.json() 
+    Cookies.set('token', res?.key) // parses JSON response into native JavaScript objects
+  }
 
 
 

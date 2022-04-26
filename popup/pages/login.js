@@ -3,7 +3,10 @@ import UserInput from "../components/UserInput.js"
 function LoginTemplate(object) {
     return (
         `
-        <div class="SurfiComponent page-container">    
+        <div class="SurfiComponent page-container"> 
+            <button id="backButton">
+                <span class="material-icons menu_icon">reply</span>
+            </button>   
             <h2 class="title">Login</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="Form">

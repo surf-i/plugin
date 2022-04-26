@@ -1,7 +1,11 @@
 
 function ReviewTemplate(object) {
     return(
-        `<div class="SurfiComponent page-container">
+        `
+        <div class="SurfiComponent page-container">
+        <button id="backButton">
+            <span class="material-icons">arrow_back_ios</span>
+        </button>
         <h2 class="title">Page Name</h2>
         <div sytle="display: flex; flex-direction: column">
             <span class="material-icons star_icon">star</span>
