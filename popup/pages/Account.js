@@ -6,25 +6,22 @@ function AccountTemplate(object) {
         `
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
-                <span class="material-icons menu_icon">reply</span>
+                <span class="material-icons">arrow_back_ios</span>
             </button>   
-            <h2 class="title">Login</h2>
-            <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
+            <h2 class="title">Account</h2>
+            <span class="material-icons accountLogo">account_circle</span>
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
                 onSubmit={handleSubmit}
                 >
-                ${UserInput({ id: 'email', title: 'Email', type: "email" })}
-                ${UserInput({ id: 'password', title: 'Password', type: "password" })}
                 <button
                     class="sign_in_btn"
                     id="LogInToStartButton"
                 >
-                    Sign In
+                    Juan Carlitos easterEgg
                 </button>
                 </form>
-                <button class="SignInComponent_SingUp" id="LogInToSignUpButton">Sign Up</button>
             </div>
             ${Menu()}
         </div>

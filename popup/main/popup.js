@@ -9,6 +9,7 @@ import { SignUpTemplate } from '../pages/SignUp.js'
 import { HomeTemplate } from '../pages/Home.js'
 import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
+import { SettingsTemplate } from '../pages/Settings.js'
 
 const body = document.body
 var url = 'https://44.195.183.116/'
@@ -20,12 +21,13 @@ const routes = {
     "signup": SignUpTemplate,
     "home": HomeTemplate,
     "account": AccountTemplate,
-    "pageinfo": PageInfoTemplate
+    "pageinfo": PageInfoTemplate,
+    "settings": SettingsTemplate
 }
 
 //sets the sate of the app
 if(Cookies.get('state') == undefined){
-    Cookies.set('state', 'start')
+  Cookies.set('state', 'start')
 }
 var state = Cookies.get('state')
 
@@ -34,7 +36,7 @@ var token = Cookies.get('token')
 setPage(state)
 
 // var page = document.getElementById()
-var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
+var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('start') });
 
 function setPage(page) {
     deleteElement(body.children[0])
@@ -43,31 +45,41 @@ function setPage(page) {
     addElement(null, routes[state], body)
 
     
-    // if (state === 'start') {
-    //     var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
-    //     var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
-    //     // fetch(url+'websites/?url=www.gooogle.com')
-    //     // .then(response => response.json())
-    //     // .then(data => console.log(data));
-    //     try{
-    //         logIn("surfitest@yopmail.com","","testpass123")
-    //     }catch{
-    //         //  
-    //     }
-    //     //getHTML()
-    // }else{
-    //     var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
-    // }
-    // if(state === 'signup'){
-    //     var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('start') });
-    // }
-    // if (state === 'login') {
-    //     var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { consoleLog('surfitest@yopmail.com','testpass123') });
-        
-    // }
-    // if (state === 'review') {
-    //     var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('start') });
-    // }
+    if (state === 'start') {
+        var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
+        var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
+        // fetch(url+'websites/?url=www.gooogle.com')
+        // .then(response => response.json())
+        // .then(data => console.log(data));
+        try{
+            logIn("surfitest@yopmail.com","","testpass123")
+        }catch{
+            //  
+        }
+        //getHTML()
+    }else{
+        var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
+    }
+    if(state === 'signup'){
+        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('login') });
+    }
+    if (state === 'login') {
+        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('home') });   
+    }
+    if (state === 'review') {
+      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('pageinfo') });
+    }
+    if (state === 'home'){
+      var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
+      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo') });
+      
+    }
+    if(state === 'account' || state === 'home' || state === 'settings'){
+      var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
+      var menuAccountButton = document.getElementById("menuAccountButton").addEventListener("click", function () { setPage('account') });
+      var menuSetttingsButton = document.getElementById("menuSetttingsButton").addEventListener("click", function () { setPage('settings') });
+      
+    }
 
 }
 

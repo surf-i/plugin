@@ -5,7 +5,7 @@ function LoginTemplate(object) {
         `
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
-                <span class="material-icons menu_icon">reply</span>
+                <span class="material-icons">arrow_back_ios</span>
             </button>   
             <h2 class="title">Login</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->

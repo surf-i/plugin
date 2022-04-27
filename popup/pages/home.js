@@ -1,4 +1,3 @@
-import UserInput from "../components/UserInput.js"
 import Menu from "../components/Menu.js"
 
 function HomeTemplate(object) {
@@ -6,7 +5,7 @@ function HomeTemplate(object) {
         `
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
-                <span class="material-icons menu_icon">reply</span>
+                <span class="material-icons">arrow_back_ios</span>
             </button>   
             <h2 class="title">Home</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
@@ -15,16 +14,19 @@ function HomeTemplate(object) {
                 class="SignInComponent_form"
                 onSubmit={handleSubmit}
                 >
-                ${UserInput({ id: 'email', title: 'Email', type: "email" })}
-                ${UserInput({ id: 'password', title: 'Password', type: "password" })}
                 <button
                     class="sign_in_btn"
-                    id="HomeToStartButton"
+                    id="HomeToReviewButton"
                 >
-                    Sign In
+                Review
                 </button>
-                </form>
-                <button class="SignInComponent_SingUp" id="HomeToSignUpButton">Sign Up</button>
+                <button
+                    class="sign_in_btn"
+                    id="HomeToPageInfoButton"
+                    >
+                    Page Information
+                </button>
+                </form> 
             </div>
             ${Menu()}
         </div>

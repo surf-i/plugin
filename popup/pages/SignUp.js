@@ -22,7 +22,7 @@ function SignUpTemplate(object) {
                     class="sign_in_btn"
                     id="SignUpToStartButton"
                 >
-                    Sign Up
+                    SignIn
                 </button>
                 </form>
             </div>

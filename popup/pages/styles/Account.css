@@ -1,0 +1,9 @@
+.accountLogo {
+    font-size: 6rem;
+    border-radius: 100rem;
+    background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
+    background-size: 400% 400%;
+    padding: 1rem;
+    margin: 0 50px 20px 50px;
+    animation: 3000ms gradient ease-in-out infinite;
+}

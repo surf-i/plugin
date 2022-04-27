@@ -4,10 +4,6 @@
   "description": "A plugin that shows you website reliability and formats google search.",
   "version": "0.0.1",
   "icons": { "16": "assets/logo/favicon.png", "48": "assets/logo/favicon.png", "128": "assets/logo/favicon.png" },
-  "browser_action": {
-    "default_title": "Surfi",
-    "default_icon": "assets/logo/favicon.png"
-  },
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
@@ -17,8 +13,9 @@
     }
   ],
   "action":{
+    "default_title": "Surfi",
     "default_icon":"assets/logo/favicon.png",
-    "default_popup": "popup/src/review.html"
+    "default_popup": "popup/main/popup.html"
   },
   "permissions":["scripting", "tabs", "activeTab", "storage"],
   "background": {
