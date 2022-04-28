@@ -5,8 +5,8 @@ function SettingsTemplate(object) {
     return (
         `
         <div class="SurfiComponent page-container"> 
-            <button id="backButton">
-                <span class="material-icons">arrow_back_ios</span>
+            <button id="logOutButton">
+                <span class="material-icons">logout</span>
             </button>   
             <h2 class="title">Settings</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->

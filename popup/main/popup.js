@@ -28,9 +28,9 @@ const routes = {
 //sets the sate of the app
 if(Cookies.get('state') == undefined){
   Cookies.set('state', 'start')
+  Cookies.set('before', 'start')
 }
-var state = Cookies.get('state')
-
+var [state, before] = [Cookies.get('state'), Cookies.set('before')]
 var token = Cookies.get('token')
 
 setPage(state)
@@ -40,6 +40,7 @@ var backButton = document.getElementById("backButton")?.addEventListener("click"
 
 function setPage(page) {
     deleteElement(body.children[0])
+    Cookies.set('before',(before = before ==  state? before: state))
     Cookies.set('state',(state = page))
     console.log(state)
     addElement(null, routes[state], body)
@@ -51,28 +52,23 @@ function setPage(page) {
         // fetch(url+'websites/?url=www.gooogle.com')
         // .then(response => response.json())
         // .then(data => console.log(data));
-        try{
-            logIn("surfitest@yopmail.com","","testpass123")
-        }catch{
-            //  
-        }
-        //getHTML()
-    }else{
-        var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
     }
     if(state === 'signup'){
         var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('login') });
     }
     if (state === 'login') {
-        var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('home') });   
+      var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('home') });   
+        try{
+            logIn("surfitest@yopmail.com","","testpass123")
+        }catch{
+            //  
+        }
+    }
+    if(state === 'login' || state === 'signup' || state === 'review' || state == 'pageinfo' ){
+      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
     }
     if (state === 'review') {
       var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('pageinfo') });
-    }
-    if (state === 'home'){
-      var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
-      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo') });
-      
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
       var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -80,6 +76,15 @@ function setPage(page) {
       var menuSetttingsButton = document.getElementById("menuSetttingsButton").addEventListener("click", function () { setPage('settings') });
       
     }
+    if (state === 'home'){
+      var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
+      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo') });
+      
+    }
+    if(state === 'settings'){
+      var LogOut = document.getElementById("logOutButton").addEventListener("click", function () { setPage('start') });
+    }
+
 
 }
 

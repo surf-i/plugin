@@ -5,7 +5,9 @@
 @import url("../pages/styles/start.css");
 @import url("../pages/styles/PageInfo.css");
 @import url("../pages/styles/Account.css");
+@import url("../pages/styles/Settings.css");
 /* from specific global components that tends to be in almost all pages*/
+@import url("../components/styles/SettingsInput.css");
 @import url("../components/styles/menu.css");
 @import url("../components/styles/slider.css");
 @import url("../components/styles/SettingsInput.css");
@@ -24,9 +26,9 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 320px;
-    min-width: 260px;
-    padding: 8vh 12vw;
+    height: 450px;
+    width: 320px;
+    padding: 1vh 3vw;
 }
 
 button {

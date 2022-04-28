@@ -39,33 +39,35 @@
 //     );
 //   }
 // );
-let surfiSearch = () =>{
+let surfiSearch = (element) =>{
   return `
   <div class="surfiSearch">
-  <div class="searchCategory">
-  <p class="searchCategoryTitle">investigacion</p>
+  <div class="searchCategory ${element.category}">
+  <p class="searchCategoryTitle">${element.category}</p>
   </div>
   <div class="searchDataContainer">
   <div class="veracity">
-  <p class="searchData">45%</p>
+  <p class="searchData">${Math.floor(Math.random()*100)}%</p>
   </div>
   <div class="calification">
-  <p class="searchData">⭐3.5</p>
+  <p class="searchData">⭐${(Math.floor(Math.random()*50))/10}</p>
   </div>
   </div>
   <div class="AuthorandDate">
-  <p class="searchParagraph date">Fecha:12/12/22</p>
+  <p class="searchParagraph date">Fecha:${Math.floor(Math.random()*30)}/${Math.floor(Math.random()*12)}/22</p>
   <p class="searchParagraph author">Author: Juan Carlitos</p>
   </div>
   </div>
   `
 }
+let categories = ['Social','Entretenimiento','Noticias','Opinion','Comercio','Academico', 'Tecnologia', 'Productividad'];
 [].forEach.call(
   browserDocument = document.querySelectorAll("html div #search .g"),
   function (element) {
+    let category = categories[Math.floor(Math.random()*categories.length)]
     let text = element.textContent;
     console.log(text)
-    element.insertAdjacentHTML("afterbegin",surfiSearch());
+    element.insertAdjacentHTML("afterbegin",surfiSearch({category: category}));
   }
 );
 
