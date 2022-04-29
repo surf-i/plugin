@@ -1,4 +1,5 @@
 import UserInput from "../components/UserInput.js"
+var url = 'http://44.195.183.116/'
 
 function LoginTemplate(object) {
     return (
@@ -12,13 +13,13 @@ function LoginTemplate(object) {
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
                 >
-                ${UserInput({ id: 'email', title: 'Email', type: "email" })}
-                ${UserInput({ id: 'password', title: 'Password', type: "password" })}
+                ${UserInput({ id: 'userInputEmail', idInput: "username",title: 'Username or Email', type: "text", name:"username" })}
+                ${UserInput({ id: 'userInputPassword', idInput: "password", title: 'Password', type: "password", name:"password" })}
                 <button
                     class="sign_in_btn"
                     id="LogInToStartButton"
+                    type="submit"
                 >
                     Sign In
                 </button>
@@ -30,4 +31,35 @@ function LoginTemplate(object) {
     )
 }
 
-export { LoginTemplate }
+async function loginFunction(e) {
+    e.preventDefault()
+    let [usernamePost, emailPost] = verifyEmail(username)
+    const response = await fetch(url+'dj-rest-auth/login/', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+          username: usernamePost,
+          email: emailPost,
+          password: password.value
+      }) // body data type must match "Content-Type" header
+    });
+    let res = await response.json() 
+    return res?.key
+}
+function verifyEmail(username){
+    let [usernamePost, emailPost] = ["", ""]
+    if (username.value.includes("@") && username.value.includes(".")) 
+    {
+        emailPost = username.value
+    }
+    else
+    {
+        usernamePost = username.value
+    }
+    return [usernamePost, emailPost]
+    
+}
+export { LoginTemplate , loginFunction }

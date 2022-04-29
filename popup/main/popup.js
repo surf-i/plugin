@@ -3,7 +3,7 @@
 import Cookies from '../../lib/js.cookie.mjs'
 import { addElement, deleteElement } from '../../scripts/core.js'
 import { StartTemplate } from '../pages/Start.js'
-import { LoginTemplate } from '../pages/LogIn.js'
+import { LoginTemplate, loginFunction } from '../pages/LogIn.js'
 import { ReviewTemplate } from '../pages/Review.js'
 import { SignUpTemplate } from '../pages/SignUp.js'
 import { HomeTemplate } from '../pages/Home.js'
@@ -11,8 +11,9 @@ import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
 import { SettingsTemplate } from '../pages/Settings.js'
 
+
 const body = document.body
-var url = 'https://44.195.183.116/'
+var url = 'http://44.195.183.116/'
 
 const routes = {
     "start": StartTemplate,
@@ -57,12 +58,14 @@ function setPage(page) {
         var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('login') });
     }
     if (state === 'login') {
-      var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function () { setPage('home') });   
+      var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
+        /*
         try{
             logIn("surfitest@yopmail.com","","testpass123")
         }catch{
             //  
         }
+        */
     }
     if(state === 'login' || state === 'signup' || state === 'review' || state == 'pageinfo' ){
       var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
@@ -88,28 +91,17 @@ function setPage(page) {
 
 }
 
-
-function consoleLog(username, password){
-    
+async function logIn(event){
+  let logInToken = await loginFunction(event)
+  if(logInToken != null){
+    Cookies.set('token', logInToken)
+    setPage('home')
+  }else{
+    console.log("error logIn")
+  }
 }
 
-async function logIn(username,email, password) {
-    // Opciones por defecto estan marcadas con un *
-    const response = await fetch(url+'dj-rest-auth/login/', {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password
-      }) // body data type must match "Content-Type" header
-    });
-    let res = await response.json() 
-    Cookies.set('token', res?.key) // parses JSON response into native JavaScript objects
-  }
+
 
 
 
