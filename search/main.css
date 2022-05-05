@@ -24,6 +24,7 @@
     font-size: 14px;
 }
 
+
 .Dashboard-ball p{
     font-size: 0.8rem;
     font-weight: bold;
@@ -33,6 +34,10 @@
 }
 /* Search Style */
 
+/* #center_col{
+    margin-left: calc(var(--center-abs-margin)*0.5);
+} */
+
 .g{
     display:flex; 
     flex-flow: row wrap;
@@ -41,10 +46,10 @@
     /* flex-wrap: wrap; */
 }
 .g > div:nth-of-type(2){
-    max-width: 82%;
+    max-width: 81%;
 }
 .surfiSearch{
-    max-width: 16%;
+    max-width: 18%;
     display: flex;
     font-family: Helvetica, sans-serif;
     flex-direction: column;
@@ -56,29 +61,26 @@
     justify-content: center;
     border-radius: 1rem;  
 }
+.Herramienta{
+    background-color: #8B9BA6;
+}
 .Social{
-    background-color: rgb(18, 203, 203);
+    background-color: #F8961E;
 }
 .Entretenimiento{
-    background-color: rgb(135, 126, 0);
+    background-color: #D14143;
 }
-.Noticias{
-    background-color: rgb(255, 0, 38);
+.Periodismo{
+    background-color: #9162BD;
 }
-.Opinion{
-    background-color: rgb(156, 18, 66);
+.Investigacion{
+    background-color: #43AA8B;
+}
+.Organizacion{
+    background-color: #274F73;
 }
 .Comercio{
-    background-color: rgb(7, 138, 0);
-}
-.Academico{
-    background-color: rgb(0, 110, 255);
-}
-.Tecnologia{
-    background-color: rgb(251, 177, 49);
-}
-.Productividad{
-    background-color: rgb(172, 44, 184);
+    background-color: #FA5089;
 }
 
 .searchCategoryTitle{

@@ -17,6 +17,10 @@ html {
     background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
 }
 
+body{
+    /* background-color: whitesmoke; */
+}
+
 a {
     text-decoration: none;
 }
@@ -40,11 +44,17 @@ button {
 }
 
 h2 {
-    font-size: 10vw;
     margin: 2vw 1vw;
     font-family: var(--font-family);
     text-align: center;
-    color: var(--color-E3);
+    color: var(--color-E5);
+}
+h3 {
+    font-size: 1.5rem;
+    margin:0vw 1vw;
+    font-family: var(--font-family);
+    text-align: center;
+    color: var(--color-E5);
 }
 
 /* scrollbar style */
@@ -74,7 +84,7 @@ h2 {
 }
 
 .title {
-  color: #fff;
+  /* color:  var(--color-B); */
   font-family: "Lato", sans-serif;
   font-size: 2.5rem;
   animation: animate 4s ease-in-out infinite;

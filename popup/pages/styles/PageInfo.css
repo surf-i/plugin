@@ -8,7 +8,7 @@
 }
 .category{
     justify-content: center;
-    background-color: var(--color-D4);
+    background-color: wheat;
     font-size: 3rem;
     color: var(--color-C);
     border-radius: 12vw;
@@ -65,4 +65,11 @@
 }
 @keyframes p {
   from{--p:0}
+}
+
+.summary_title{
+  text-align: left;
+}
+.summary_text{
+  text-align: center;
 }

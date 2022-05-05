@@ -47,27 +47,31 @@ let surfiSearch = (element) =>{
   </div>
   <div class="searchDataContainer">
   <div class="veracity">
-  <p class="searchData">${Math.floor(Math.random()*100)}%</p>
+  <p class="searchData">${Math.floor(Math.random()*30)+70}%</p>
   </div>
   <div class="calification">
-  <p class="searchData">⭐${(Math.floor(Math.random()*50))/10}</p>
+  <p class="searchData">⭐${(Math.floor(Math.random()*20)+30)/10}</p>
   </div>
   </div>
   <div class="AuthorandDate">
   <p class="searchParagraph date">Fecha:${Math.floor(Math.random()*30)}/${Math.floor(Math.random()*12)}/22</p>
-  <p class="searchParagraph author">Author: Juan Carlitos</p>
+  <p class="searchParagraph author">Author: N/A</p>
   </div>
   </div>
   `
 }
-let categories = ['Social','Entretenimiento','Noticias','Opinion','Comercio','Academico', 'Tecnologia', 'Productividad'];
+// let categories = ['Herramienta','Social','Entretenimiento','Periodismo','Investigacion','Empresas','Tienda'];
+// let Pariscat = ['Investigacion','Periodismo','Entretenimiento','Tienda','Herramienta','Social','Empresas'];
+let Pariscat = ['Investigacion','Organizacion','Comercio','Periodismo','Entretenimiento','Organizacion','Social'];
+let counter = 0;
 [].forEach.call(
   browserDocument = document.querySelectorAll("html div #search .g"),
   function (element) {
-    let category = categories[Math.floor(Math.random()*categories.length)]
+    let category = Pariscat[counter%Pariscat.length]
     let text = element.textContent;
     console.log(text)
     element.insertAdjacentHTML("afterbegin",surfiSearch({category: category}));
+    counter++
   }
 );
 
