@@ -34,4 +34,10 @@ function HomeTemplate(object) {
     )
 }
 
+function mount(){
+    
+}
+
+
+
 export { HomeTemplate }
