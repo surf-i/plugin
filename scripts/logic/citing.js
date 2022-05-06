@@ -33,3 +33,24 @@ function citeAPAUnknown(pageName, websiteName, year, month, day, url)
     var cite = `${pageName} ${websiteName}. (${year}, ${month} ${day}). ${url}`
     return cite
 }
+
+function citeIEEE(authorName, authorLastname, websiteName, pageName, currentYear, currentMonth, currentDay, url)
+{
+    var formattedName = authorName[0]
+    var cite = `${formattedName}. ${authorLastname}, "${pageName}" ${websiteName}. ${url} (accessed ${currentMonth}. ${currentDay}, ${currentYear}).`
+    return cite
+}
+
+function citeIEEEOrganization(organizationName, websiteName, pageName, currentYear, currentMonth, currentDay, url)
+{
+    var pageName = pageName.italics()
+    var cite = `${organizationName}, "${pageName}." ${websiteName}. ${url} (accessed ${currentMonth}. ${currentDay}, ${currentYear}).`
+    return cite
+}
+
+function citeIEEEUnknown(pageName, websiteName, currentYear, currentMonth, currentDay, url)
+{
+    var pageName = pageName.italics()
+    var cite = `"${pageName}." Accessed on: ${currentMonth}, ${currentDay}, ${currentYear}. [Online] Available: ${url}`
+    return cite
+}
