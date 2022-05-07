@@ -5,7 +5,7 @@ import { addElement, deleteElement } from '../../scripts/core.mjs'
 import { StartTemplate } from '../pages/Start.js'
 import { LoginTemplate, loginFunction } from '../pages/LogIn.js'
 import { ReviewTemplate } from '../pages/Review.js'
-import { SignUpTemplate } from '../pages/SignUp.js'
+import { SignUpTemplate, signUpFunction } from '../pages/SignUp.js'
 import { HomeTemplate } from '../pages/Home.js'
 import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
@@ -55,11 +55,12 @@ function setPage(page) {
         // .then(data => console.log(data));
     }
     if(state === 'signup'){
-        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { setPage('login') });
+        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { signUp()});
     }
     if (state === 'login') {
       var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
-        /*
+      var eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });   
+      /*
         try{
             logIn("surfitest@yopmail.com","","testpass123")
         }catch{
@@ -97,12 +98,21 @@ async function logIn(event){
     Cookies.set('token', logInToken)
     setPage('home')
   }else{
-    console.log("error logIn")
+    console.error("error logIn")
   }
 }
 
 
-
+async function signUp(event){
+  console.log("si sirvo pero soy fastidioso")
+  let logInToken = await signUpFunction(event)
+  if(logInToken != null){
+    Cookies.set('token', logInToken)
+    setPage('home')
+  }else{
+    console.error("error signUp")
+  }
+}
 
 
 

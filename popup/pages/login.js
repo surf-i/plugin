@@ -14,8 +14,8 @@ function LoginTemplate(object) {
                 <form
                 class="SignInComponent_form"
                 >
-                ${UserInput({ id: 'userInputEmail', idInput: "username",title: 'Username or Email', type: "text", name:"username" })}
-                ${UserInput({ id: 'userInputPassword', idInput: "password", title: 'Password', type: "password", name:"password" })}
+                ${UserInput({ id: 'userInputEmail', idInput: 'username',title: 'Username or Email', type: "text", name:"username" })}
+                ${UserInput({ id: 'userInputPassword', idInput: 'password', title: 'Password', type: "password", name:"password" })}
                 <button
                     class="sign_in_btn"
                     id="LogInToStartButton"
