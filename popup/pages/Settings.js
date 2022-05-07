@@ -1,6 +1,7 @@
 import SettingsInput from "../components/SettingsInput.js"
 import Menu from "../components/Menu.js"
 
+let configs = ["Modo Ste Men","Modo Pro","Modo iPhone 13","Modo La lider","Modo MotoMoto","Modo PizzaHaus"]
 function SettingsTemplate(object) {
     return (
         `
@@ -12,12 +13,7 @@ function SettingsTemplate(object) {
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="Form">
                 <form class="SignInComponent_form">
-                ${SettingsInput({title: "Modo Ste Men"})}
-                ${SettingsInput({title: "Modo Pro"})}
-                ${SettingsInput({title: "Modo iPhone 13"})}
-                ${SettingsInput({title: "Modo La lider"})}
-                ${SettingsInput({title: "Modo MotoMoto"})}
-                ${SettingsInput({title: "Modo PizzaHaus"})}
+                ${configs.map(e => SettingsInput({title: e})).join('')}
                 </form>
             </div>
             ${Menu()}
@@ -25,5 +21,7 @@ function SettingsTemplate(object) {
         `
     )
 }
+
+
 
 export { SettingsTemplate }

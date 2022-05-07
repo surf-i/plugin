@@ -1,7 +1,7 @@
 // sets a unified javascript to import pages
 'use strict'
 import Cookies from '../../lib/js.cookie.mjs'
-import { addElement, deleteElement } from '../../scripts/core.js'
+import { addElement, deleteElement } from '../../scripts/core.mjs'
 import { StartTemplate } from '../pages/Start.js'
 import { LoginTemplate, loginFunction } from '../pages/LogIn.js'
 import { ReviewTemplate } from '../pages/Review.js'

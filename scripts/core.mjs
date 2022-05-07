@@ -14,7 +14,17 @@ function addElement(object, template, place){
     place.insertBefore(element, place.firstChild)
 }
 
+
+function eventHandler(object){
+    return true
+}
+
+function killEvents(arr){
+
+}
+
 function deleteElement(element){
+    killEvents(null)
     element.remove()
 }
 

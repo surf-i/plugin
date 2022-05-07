@@ -31,6 +31,12 @@ function LoginTemplate(object) {
     )
 }
 
+let LoginEvents = [
+    {
+
+    }
+]
+
 async function loginFunction(e) {
     e.preventDefault()
     let [usernamePost, emailPost] = verifyEmail(username)
