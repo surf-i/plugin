@@ -113,12 +113,7 @@ async function logIn(event){
   }
 }
 
-async function juanito(){
-  console.log("jeje")
-}
-
 async function signUp(event){
-  console.log("si sirvo pero soy fastidioso")
   let logInToken = await signUpFunction(event)
   if(logInToken != null){
     Cookies.set('token', logInToken)
@@ -128,22 +123,4 @@ async function signUp(event){
   }
 }
 
-
-
-
-// function include(filePath) {
-//     const scriptTag = document.createElement("script");
-//     scriptTag.type = 'module'
-//     scriptTag.src = filePath;
-//     document.body.appendChild(scriptTag);
-// }
-
-// function includePages(...urls) {
-//     urls.forEach(e => include(e))
-// }
-
-//for production
-// includePages('./pages/start.js')
-
-//this part can be usefull for page to page testing
-// include('./pages/start.js')
+// TODO: Rendering, eventos, claseSurfi

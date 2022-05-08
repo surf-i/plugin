@@ -64,7 +64,6 @@ function validateEmail(email){
   } 
 function validateForm(email, username, password, password2){
     let a = email.value.length > 0 && username.value.length > 5 && password.value.length > 8 && verifyPassword(password, password2) && validateEmail(email)
-    console.log('Hello from validateForm', a)
     document.getElementById('SignUpToHomeButton').disabled = !a;
 }
 

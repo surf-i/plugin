@@ -1,7 +1,7 @@
 
 function ReviewTemplate(object) {
     return(
-        `
+        /*html*/`
         <div class="SurfiComponent page-container">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>

@@ -10,7 +10,7 @@ function LoginTemplate(object) {
             </button>   
             <h2 class="title">Login</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
-            <div class="SignInComponent_container" id="Form">
+            <div class="SignInComponent_container" id="LogInForm">
                 <form
                 class="SignInComponent_form"
                 >
