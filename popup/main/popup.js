@@ -55,7 +55,7 @@ function setPage(page) {
         // .then(data => console.log(data));
     }
     if(state === 'signup'){
-        var SignUpButton = document.getElementById("SignUpToStartButton").addEventListener("click", function () { signUp()});
+      var SignUpButton = document.getElementById("SignUpToHomeButton").addEventListener("click", function () { signUp()});
     }
     if (state === 'login') {
       var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
@@ -102,6 +102,9 @@ async function logIn(event){
   }
 }
 
+async function juanito(){
+  console.log("jeje")
+}
 
 async function signUp(event){
   console.log("si sirvo pero soy fastidioso")

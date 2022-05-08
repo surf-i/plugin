@@ -10,23 +10,24 @@ function SignUpTemplate(object) {
             </button>
             <h2 class="title">SignUp</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
-            <div class="SignInComponent_container" id="Form">
+            <div class="SignInComponent_container" id="SignUpForm">
                 <form
                 class="SignInComponent_form"
-                onsubmit="handleSubmit"
                 >
                 ${UserInput({ id: 'emailComp', idInput: 'email', title: 'Email', type: "email", name:'email' })}
                 ${UserInput({ id: 'usernameComp', idInput: 'username', title: 'Username', type: "text", name:'username' })}
                 ${UserInput({ id: 'passwordComp', idInput: 'password', title: 'Password', type: "password", name:'password' })}
                 ${UserInput({ id: 'passwordVerifComp', idInput: 'passwordVerif', title: 'Password verification', type: "password", name:'passwordVerif' })}
+                
+                </form>
                 <button 
                     
                     class="sign_in_btn"
-                    id="SignUpToStartButton"
+                    id="SignUpToHomeButton"
+                    type="submit"
                 >
-                    SignUp
+                    Sign Up
                 </button>
-                </form>
             </div>
         </div>
         `
@@ -44,11 +45,11 @@ async function signUpFunction(e) {
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
-            username: username,
-            email: email,
-            password1: password.value,
-            password2: passwordVerif.value
-        }) // body data type must match "Content-Type" header
+                username: username.value,
+                email: email.value,
+                password1: password.value,
+                password2: passwordVerif.value
+            }) // body data type must match "Content-Type" header
         });
         let res = await response.json() 
         return res?.key  
@@ -60,7 +61,7 @@ function verifyPassword(){
 }
 function validateEmail(){      
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(email); 
+    return emailPattern.test(email.value); 
   } 
 function validateForm(){
     return (verifyPassword() && validateEmail() && email.value.length>0 && username.value.length>5 && password.value.length>8)
