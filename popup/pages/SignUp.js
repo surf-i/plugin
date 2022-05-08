@@ -14,14 +14,13 @@ function SignUpTemplate(object) {
                 <form
                 class="SignInComponent_form"
                 >
-                ${UserInput({ id: 'emailComp', idInput: 'email', title: 'Email', type: "email", name:'email' })}
-                ${UserInput({ id: 'usernameComp', idInput: 'username', title: 'Username', type: "text", name:'username' })}
-                ${UserInput({ id: 'passwordComp', idInput: 'password', title: 'Password', type: "password", name:'password' })}
-                ${UserInput({ id: 'passwordVerifComp', idInput: 'passwordVerif', title: 'Password verification', type: "password", name:'passwordVerif' })}
-                
+                ${UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}
+                ${UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
+                ${UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
+                ${UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
                 </form>
                 <button 
-                    
+                    disabled
                     class="sign_in_btn"
                     id="SignUpToHomeButton"
                     type="submit"
@@ -56,15 +55,17 @@ async function signUpFunction(e) {
 }
 
 
-function verifyPassword(){
+function verifyPassword(password, passwordVerif){
     return (password.value === passwordVerif.value) 
 }
-function validateEmail(){      
+function validateEmail(email){      
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email.value); 
   } 
-function validateForm(){
-    return (verifyPassword() && validateEmail() && email.value.length>0 && username.value.length>5 && password.value.length>8)
+function validateForm(email, username, password, password2){
+    let a = email.value.length > 0 && username.value.length > 5 && password.value.length > 8 && verifyPassword(password, password2) && validateEmail(email)
+    console.log('Hello from validateForm', a)
+    document.getElementById('SignUpToHomeButton').disabled = !a;
 }
 
-export { SignUpTemplate, signUpFunction} 
+export { SignUpTemplate, signUpFunction, validateForm} 
