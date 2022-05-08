@@ -6,11 +6,13 @@
 @import url("../pages/styles/PageInfo.css");
 @import url("../pages/styles/Account.css");
 @import url("../pages/styles/Settings.css");
+@import url("../pages/styles/review.css");
 /* from specific global components that tends to be in almost all pages*/
 @import url("../components/styles/SettingsInput.css");
 @import url("../components/styles/menu.css");
 @import url("../components/styles/slider.css");
 @import url("../components/styles/SettingsInput.css");
+@import url("../components/styles/rating.css");
 /* https://www.behance.net/gallery/34266495/Iksan-Music-Party-concert-2016-by-greenplugged?tracking_source=search_projects%7Cblue%20night */
 html {
     color: var(--color-E3);

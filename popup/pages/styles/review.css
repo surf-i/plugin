@@ -1,7 +1,3 @@
-.mock {
-    width: 320px;
-}
-
-.secondary-container {
-    padding: 15vw 0;
+.slidecontainer label{
+    font-size: 2rem;
 }
