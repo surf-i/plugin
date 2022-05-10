@@ -1,7 +1,8 @@
+import { Component } from "../../scripts/core.mjs"
 
-function ReviewTemplate(object) {
-    return(
-        /*html*/`
+class Review {
+    setTemplate(props){
+        Component.html`
         <div class="SurfiComponent page-container">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
@@ -31,7 +32,7 @@ function ReviewTemplate(object) {
         </button>
     </div>
     `
-    )
+    }
 }
 
-export { ReviewTemplate }
+export { Review}

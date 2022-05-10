@@ -1,9 +1,10 @@
 import UserInput from "../components/UserInput.js"
 import Menu from "../components/Menu.js"
+import { Component } from "../../scripts/core.mjs"
 
-function AccountTemplate(object) {
-    return (
-        `
+class Account extends Component{
+    setTemplate(props) {
+        Component.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -26,7 +27,7 @@ function AccountTemplate(object) {
             ${Menu()}
         </div>
         `
-    )
+    }
 }
 
-export { AccountTemplate }
+export { Account }

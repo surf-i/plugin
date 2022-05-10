@@ -1,7 +1,8 @@
+import { Component } from "../../scripts/core.mjs";
 
-function PageInfoTemplate(object) {
-    return(
-        /*html*/`
+class PageInfo extends Component{
+    setTemplate(props){
+        Component.html`
         <div class="SurfiComponent page-container">
         <link rel="stylesheet" href="../main/popup.css">
         <button id="backButton">
@@ -35,7 +36,7 @@ function PageInfoTemplate(object) {
         <button class="SignInComponent_SingUp" id="LogInToSignUpButton">Ver Reseñas</button>
     </div>
     `
-    )
+    }
 }
 
-export { PageInfoTemplate }
+export { PageInfo }

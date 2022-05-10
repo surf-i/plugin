@@ -1,6 +1,8 @@
+import { Component } from "../../scripts/core.mjs"
+
 function Menu(object) {
     return(
-      ` 
+      Component.html` 
         <div class="SurfiComponent menu">
             <button type="button" class="menu_button" id="menuHomeButton">                
                 <span class="material-icons menu_icon">home</span>

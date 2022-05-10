@@ -1,0 +1,29 @@
+.Loading {
+  text-align: center;
+}
+.Loading-main {
+  top: 0;
+  background-color: var(--color-C3);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  position: absolute;
+  z-index: 1002;
+}
+.Loading-logo{
+  width: 300px;
+  animation: 6000ms logoRotation infinite ease-in-out;
+}
+@keyframes logoRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

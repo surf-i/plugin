@@ -1,8 +1,9 @@
+import { Component } from "../../scripts/core.mjs"
 import Menu from "../components/Menu.js"
 
-function HomeTemplate(object) {
-    return (
-        `
+class Home {
+    setTemplate = (props) => {
+        Component.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -12,32 +13,27 @@ function HomeTemplate(object) {
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
                 >
                 <button
-                    class="sign_in_btn"
-                    id="HomeToReviewButton"
+                class="sign_in_btn"
+                id="HomeToReviewButton"
                 >
                 Review
-                </button>
-                <button
+                    </button>
+                    <button
                     class="sign_in_btn"
                     id="HomeToPageInfoButton"
                     >
                     Page Information
                 </button>
-                </form> 
-            </div>
-            ${Menu()}
+            </form> 
         </div>
-        `
-    )
+        ${Menu()}
+        </div>
+         `
+    }
 }
 
-function mount(){
-    
-}
 
 
-
-export { HomeTemplate }
+export { Home }

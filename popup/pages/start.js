@@ -1,7 +1,8 @@
+import { Component } from "../../scripts/core.mjs";
 
-function StartTemplate(object) {
-    return (
-        `
+class Start extends Component {
+    initialize(){
+        this.html`
         <div class="SurfiComponent page-container">    
             <h2 class="title">Surfi</h2>
             <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo">
@@ -11,7 +12,11 @@ function StartTemplate(object) {
             </div>
         </div>
         `
-    )
+    }
+    render(){
+
+    }
+
 }
 
-export {StartTemplate}
+export {Start}

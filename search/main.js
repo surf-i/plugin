@@ -40,23 +40,23 @@
 //   }
 // );
 let surfiSearch = (element) =>{
-  return `
+  return /*html*/`
   <div class="surfiSearch">
-  <div class="searchCategory ${element.category}">
-  <p class="searchCategoryTitle">${element.category}</p>
-  </div>
-  <div class="searchDataContainer">
-  <div class="veracity">
-  <p class="searchData">${Math.floor(Math.random()*30)+70}%</p>
-  </div>
-  <div class="calification">
-  <p class="searchData">⭐${(Math.floor(Math.random()*20)+30)/10}</p>
-  </div>
-  </div>
-  <div class="AuthorandDate">
-  <p class="searchParagraph date">Fecha:${Math.floor(Math.random()*30)}/${Math.floor(Math.random()*12)}/22</p>
-  <p class="searchParagraph author">Author: N/A</p>
-  </div>
+    <div class="searchCategory ${element.category}">
+      <p class="searchCategoryTitle">${element.category}</p>
+    </div>
+    <div class="searchDataContainer">
+    <div class="veracity">
+    <p class="searchData">${Math.floor(Math.random()*30)+70}%</p>
+    </div>
+    <div class="calification">
+    <p class="searchData">⭐${(Math.floor(Math.random()*20)+30)/10}</p>
+    </div>
+    </div>
+    <div class="AuthorandDate">
+    <p class="searchParagraph date">Fecha:${Math.floor(Math.random()*30)}/${Math.floor(Math.random()*12)}/22</p>
+    <p class="searchParagraph author">Author: N/A</p>
+    </div>
   </div>
   `
 }

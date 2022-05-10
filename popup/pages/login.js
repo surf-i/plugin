@@ -1,9 +1,10 @@
+import { Component } from "../../scripts/core.mjs"
 import UserInput from "../components/UserInput.js"
 var url = 'http://44.195.183.116/'
 
-function LoginTemplate(object) {
-    return (
-        /*html*/`
+class LogIn extends Component{
+    setTemplate = (props) => {
+        this.template = Component.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -28,14 +29,10 @@ function LoginTemplate(object) {
             </div>
         </div>
         `
-    )
-}
-
-let LoginEvents = [
-    {
-
     }
-]
+    // eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
+    // eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });   
+}
 
 async function loginFunction(e) {
     e.preventDefault()
@@ -68,4 +65,4 @@ function verifyEmail(username){
     return [usernamePost, emailPost]
     
 }
-export { LoginTemplate , loginFunction }
+export { LogIn , loginFunction }

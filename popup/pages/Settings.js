@@ -1,10 +1,11 @@
 import SettingsInput from "../components/SettingsInput.js"
 import Menu from "../components/Menu.js"
+import { Component } from "../../scripts/core.mjs"
 
 let configs = ["Modo Ste Men","Modo Pro","Modo iPhone 13","Modo La lider","Modo MotoMoto","Modo PizzaHaus"]
-function SettingsTemplate(object) {
-    return (
-        `
+class Settings extends Component{
+    setTemplate(props){
+        Component.html`
         <div class="SurfiComponent page-container"> 
             <button id="logOutButton">
                 <span class="material-icons">logout</span>
@@ -19,9 +20,9 @@ function SettingsTemplate(object) {
             ${Menu()}
         </div>
         `
-    )
+    }
 }
 
 
 
-export { SettingsTemplate }
+export { Settings }
