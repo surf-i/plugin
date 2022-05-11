@@ -1,9 +1,11 @@
+import { Component, Surfen } from "../../scripts/core.mjs";
 import UserInput from "../components/UserInput.js"
+import { Start } from "./start.js";
 var url = 'http://44.195.183.116/'
 
-function SignUpTemplate(object) {
-    return (
-        /*html*/`
+class SignUp extends Component{
+    initialize(){
+        this.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -14,13 +16,13 @@ function SignUpTemplate(object) {
                 <form
                 class="SignInComponent_form"
                 >
-                ${UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}
-                ${UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
-                ${UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
-                ${UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
+                ${new UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}
+                ${new UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
+                ${new UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
+                ${new UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
                 </form>
-                <button 
-                    disabled
+                <button
+                    disabled 
                     class="sign_in_btn"
                     id="SignUpToHomeButton"
                     type="submit"
@@ -30,7 +32,11 @@ function SignUpTemplate(object) {
             </div>
         </div>
         `
-    )
+    }
+    render(){
+        this.addEvent('backButton','click', Surfen.navegate, [this, new Start()])
+
+    }
 }
 
 // disabled=${!validateForm()}
@@ -67,4 +73,4 @@ function validateForm(email, username, password, password2){
     document.getElementById('SignUpToHomeButton').disabled = !a;
 }
 
-export { SignUpTemplate, signUpFunction, validateForm} 
+export { SignUp, signUpFunction, validateForm} 
