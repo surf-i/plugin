@@ -27,13 +27,6 @@ function PageInfoTemplate(object) {
             <h3 class="summary_title">Resumen</h3>
             <p class="summary_text"></p>
         </div>
-        <button
-            class="sign_in_btn"
-            id="ReviewToStartButton"
-            >
-            Review
-        </button>
-        <button class="SignInComponent_SingUp" id="LogInToSignUpButton">Ver Reseñas</button>
     </div>
     `
     )
@@ -48,7 +41,7 @@ async function loadPageInfo() {
 
     chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" }, function (response) {
         let p = response;
-        p = (p == undefined) ? "No summary available" : p;
+        p = (p.includes(undefined)) ? "No summary available" : p;
         p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p + ".");
         console.log(p)
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
