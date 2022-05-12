@@ -21,7 +21,7 @@ function PageInfoTemplate(object) {
         <div class="pie-container">
             <div class="pie animate" style="--p:${randomValue};--c: var(--color-E3);">${randomValue}%</div>
             <div class="category">
-                <p>Social</p>
+                <p>Not rated</p>
             </div>
         </div>
         <div class="summary">
