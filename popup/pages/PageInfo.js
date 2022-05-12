@@ -39,16 +39,20 @@ function PageInfoTemplate(object) {
     )
 }
 
-chrome.runtime.sendMessage({ msg: "getCurrentTab" }, function (response) {
-    let tabTitle = response.title;
-    tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
-    document.getElementById("website-title").innerHTML = tabTitle;
-});
+async function loadPageInfo() {
+    chrome.runtime.sendMessage({ msg: "getCurrentTab" }, function (response) {
+        let tabTitle = response.title;
+        tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
+        document.getElementById("website-title").innerHTML = tabTitle;
+    });
 
-chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" }, function (response) {
-    let p = response;
-    p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p + ".");
-    document.getElementsByClassName("summary_text")[0].innerHTML = p;
-});
+    chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" }, function (response) {
+        let p = response;
+        p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p + ".");
+        document.getElementsByClassName("summary_text")[0].innerHTML = p;
+    });
+}
 
-export { PageInfoTemplate }
+await loadPageInfo();
+
+export { PageInfoTemplate, loadPageInfo };

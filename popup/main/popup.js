@@ -10,6 +10,7 @@ import { HomeTemplate } from '../pages/Home.js'
 import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
 import { SettingsTemplate } from '../pages/Settings.js'
+import { loadPageInfo } from '../pages/PageInfo.js'
 
 
 const body = document.body
@@ -83,7 +84,7 @@ function setPage(page) {
     var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
   }
   if (state === 'review') {
-    var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('pageinfo') });
+    var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('pageinfo'); loadPageInfo() });
   }
   if (state === 'account' || state === 'home' || state === 'settings') {
     var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -93,7 +94,7 @@ function setPage(page) {
   }
   if (state === 'home') {
     var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
-    var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo') });
+    var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo'); loadPageInfo() });
 
   }
   if (state === 'settings') {
