@@ -4,6 +4,7 @@
   "description": "A plugin that shows you website reliability and formats google search.",
   "version": "0.0.2",
   "icons": { "16": "assets/logo/favicon.png", "48": "assets/logo/favicon.png", "128": "assets/logo/favicon.png" },
+  "permissions": [ "tabs", "activeTab" ],
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
