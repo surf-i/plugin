@@ -24,7 +24,7 @@ async function getWebsiteFirstParagraph(sendResponse) {
     let queryOptions = { active: true, currentWindow: true };
     let [tab] = await chrome.tabs.query(queryOptions);
     let url = tab.url;
-    let HTML = await getHTML(url)
+    let HTML = await getHTML(url).catch(() => { return "No summary available" });
     let firstParagraph = getFromBetween.get(HTML, "<p>", "</p>")[0] + "<br/><br/>" + getFromBetween.get(HTML, "<p>", "</p>")[1];
     sendResponse(firstParagraph);
 }
