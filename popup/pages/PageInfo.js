@@ -48,7 +48,9 @@ async function loadPageInfo() {
 
     chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" }, function (response) {
         let p = response;
+        p = (p == undefined) ? "No summary available" : p;
         p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p + ".");
+        console.log(p)
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
     });
 }
