@@ -1,3 +1,6 @@
+const maxTitleLength = 50;
+const maxSummaryLength = 300;
+
 function PageInfoTemplate(object) {
     return (
         /*html*/`
@@ -22,7 +25,7 @@ function PageInfoTemplate(object) {
         </div>
         <div class="summary">
             <h3 class="summary_title">Resumen</h3>
-            <p class="summary_text">París es la capital de Francia, con una población de 2 273 305 habitantes. Se encuentra en europa. Es uno de lo núcleos económicos de la región. </p>
+            <p class="summary_text"></p>
         </div>
         <button
             class="sign_in_btn"
@@ -38,9 +41,14 @@ function PageInfoTemplate(object) {
 
 chrome.runtime.sendMessage({ msg: "getCurrentTab" }, function (response) {
     let tabTitle = response.title;
-    let maxLength = 50;
-    tabTitle = ((tabTitle.length > maxLength) ? tabTitle.substring(0, maxLength) + "..." : tabTitle);
+    tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
     document.getElementById("website-title").innerHTML = tabTitle;
+});
+
+chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" }, function (response) {
+    let p = response;
+    p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p + ".");
+    document.getElementsByClassName("summary_text")[0].innerHTML = p;
 });
 
 export { PageInfoTemplate }
