@@ -1,14 +1,12 @@
-
 function PageInfoTemplate(object) {
-    return(
+    return (
         /*html*/`
         <div class="SurfiComponent page-container">
         <link rel="stylesheet" href="../main/popup.css">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <h2 class="title">Paris</h2>
-        <h3>Wikipedia</h3>
+        <p id="website-title"></p>
         <div sytle="display: flex; flex-direction: column">
             <span class="material-icons star_icon">star</span>
             <span class="material-icons star_icon">star</span>
@@ -37,5 +35,12 @@ function PageInfoTemplate(object) {
     `
     )
 }
+
+chrome.runtime.sendMessage({ msg: "getCurrentTab" }, function (response) {
+    let tabTitle = response.title;
+    let maxLength = 50;
+    tabTitle = ((tabTitle.length > maxLength) ? tabTitle.substring(0, maxLength) + "..." : tabTitle);
+    document.getElementById("website-title").innerHTML = tabTitle;
+});
 
 export { PageInfoTemplate }
