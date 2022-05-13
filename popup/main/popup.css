@@ -13,10 +13,15 @@
 @import url("../components/styles/slider.css");
 @import url("../components/styles/SettingsInput.css");
 @import url("../components/styles/rating.css");
+
 /* https://www.behance.net/gallery/34266495/Iksan-Music-Party-concert-2016-by-greenplugged?tracking_source=search_projects%7Cblue%20night */
 html {
     color: var(--color-E3);
-    background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
+    background: linear-gradient(-45deg,
+            var(--color-A),
+            var(--color-B),
+            var(--color-C),
+            var(--color-D));
 }
 
 a {
@@ -47,9 +52,10 @@ h2 {
     text-align: center;
     color: var(--color-E5);
 }
+
 h3 {
     font-size: 1.5rem;
-    margin:0vw 1vw;
+    margin: 0vw 1vw;
     font-family: var(--font-family);
     text-align: center;
     color: var(--color-E5);
@@ -73,7 +79,11 @@ h3 {
 /* scrollbar style */
 .logo {
     border-radius: 100rem;
-    background: linear-gradient(-45deg, var(--color-A), var(--color-B), var(--color-C), var(--color-D));
+    background: linear-gradient(-45deg,
+            var(--color-A),
+            var(--color-B),
+            var(--color-C),
+            var(--color-D));
     background-size: 400% 400%;
     width: 100px;
     padding: 25px;
@@ -82,11 +92,20 @@ h3 {
 }
 
 .title {
-  /* color:  var(--color-B); */
-  font-family: "Lato", sans-serif;
-  font-size: 2.5rem;
-  animation: animate 4s ease-in-out infinite;
-  margin-bottom: 2vh;
+    /* color:  var(--color-B); */
+    font-family: "Lato", sans-serif;
+    font-size: 2.5rem;
+    animation: animate 4s ease-in-out infinite;
+    margin-bottom: 2vh;
+}
+
+#website-title {
+    /* color:  var(--color-B); */
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    animation: animate 4s ease-in-out infinite;
+    margin-bottom: 2vh;
 }
 
 .sign_in_btn {
@@ -98,22 +117,23 @@ h3 {
     padding: 12.25px;
     margin: 12.5px;
     min-width: 200px;
-    font-size: 1.0rem;
-    font-family: var(--font-family)
+    font-size: 1rem;
+    font-family: var(--font-family);
 }
 
 .sign_in_btn:hover {
     color: var(--color-C4);
 }
 
-#backButton{
+#backButton {
     font-weight: bold;
     color: var(--color-E3);
     position: absolute;
     top: 12;
     left: 12;
 }
-#backButton >span{
+
+#backButton>span {
     font-size: 2rem;
 }
 
@@ -121,7 +141,6 @@ h3 {
     text-align: center;
     margin-bottom: 25px;
 }
-
 
 /* animations */
 

@@ -16,17 +16,17 @@ function HomeTemplate(object) {
                 >
                 <button
                     class="sign_in_btn"
-                    id="HomeToReviewButton"
-                >
-                Review
-                </button>
-                <button
-                    class="sign_in_btn"
                     id="HomeToPageInfoButton"
                     >
                     Page Information
                 </button>
-                </form> 
+                <button
+                    class="sign_in_btn"
+                    id="HomeToReviewButton"
+                    >
+                    Review
+                </button>
+                </form>
             </div>
             ${Menu()}
         </div>
@@ -34,8 +34,8 @@ function HomeTemplate(object) {
     )
 }
 
-function mount(){
-    
+function mount() {
+
 }
 
 

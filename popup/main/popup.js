@@ -10,24 +10,25 @@ import { HomeTemplate } from '../pages/Home.js'
 import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
 import { SettingsTemplate } from '../pages/Settings.js'
+import { loadPageInfo } from '../pages/PageInfo.js'
 
 
 const body = document.body
 var url = 'http://44.195.183.116/'
 
 const routes = {
-    "start": StartTemplate,
-    "login": LoginTemplate,
-    "review": ReviewTemplate,
-    "signup": SignUpTemplate,
-    "home": HomeTemplate,
-    "account": AccountTemplate,
-    "pageinfo": PageInfoTemplate,
-    "settings": SettingsTemplate
+  "start": StartTemplate,
+  "login": LoginTemplate,
+  "review": ReviewTemplate,
+  "signup": SignUpTemplate,
+  "home": HomeTemplate,
+  "account": AccountTemplate,
+  "pageinfo": PageInfoTemplate,
+  "settings": SettingsTemplate
 }
 
 //sets the sate of the app
-if(Cookies.get('state') == undefined){
+if (Cookies.get('state') == undefined) {
   Cookies.set('state', 'start')
   Cookies.set('before', 'start')
 }
@@ -117,22 +118,22 @@ function setPage(page) {
 
 }
 
-async function logIn(event){
+async function logIn(event) {
   let logInToken = await loginFunction(event)
-  if(logInToken != null){
+  if (logInToken != null) {
     Cookies.set('token', logInToken)
     setPage('home')
-  }else{
+  } else {
     console.error("error logIn")
   }
 }
 
-async function signUp(event){
+async function signUp(event) {
   let logInToken = await signUpFunction(event)
-  if(logInToken != null){
+  if (logInToken != null) {
     Cookies.set('token', logInToken)
     setPage('home')
-  }else{
+  } else {
     console.error("error signUp")
   }
 }
