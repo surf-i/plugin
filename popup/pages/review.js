@@ -5,30 +5,29 @@ var url = 'https://44.195.183.116/'
 function ReviewTemplate(object) {
     return(
         /*html*/`
-        <div class="SurfiComponent page-container">
+        <div class="SurfiComponent page-container" id="Review">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
         <h2 class="title">My review</h2>
-        <form>
+        <form id="Review_form">
             ${Rating()}
             <span id="RateValue" name="stars" style="display: none;">0</span>  
-            <div class="slidecontainer">
+            <div class="Review_slidecontainer">
                 <label for="myRange" title="text">Trust level</label>
                 <input type="range" min="1" max="100" class="slider" id="myRange">
             </div>
-
-            <div class="custom-select" style="width:200px;">
-                <select name="optionMenu" id="optionMenu">
-                    <option value="0">Select category:</option>
-                    <option value="INVESTIGACION">Investigación</option>
-                    <option value="PERIODISMO">Periodismo</option>
-                    <option value="ENTRETENIMIENTO">Entretenimiento</option>
-                    <option value="COMERCIO">Comercio</option>
-                    <option value="HERRRAMIENTA">Herramienta</option>
-                    <option value="SOCIAL">Social</option>
-                    <option value="ORGANIZACION">Organización</option>
-                    <option value="ACADEMICO">Académico</option>
+            <div class="SurfiDropdown_container">
+                <select name="optionMenu" class="SurfiDropdown" id="optionMenu">
+                    <option value="none" selected disabled hidden>Select category:</option>
+                    <option class="Investigacion" value="INVESTIGACION">Investigación</option>
+                    <option class="Periodismo" value="PERIODISMO">Periodismo</option>
+                    <option class="Entretenimiento" value="ENTRETENIMIENTO">Entretenimiento</option>
+                    <option class="Comercio" value="COMERCIO">Comercio</option>
+                    <option class="Herramienta" value="HERRAMIENTA">Herramienta</option>
+                    <option class="Social" value="SOCIAL">Social</option>
+                    <option class="Organizacion" value="ORGANIZACION">Organización</option>
+                    <option class="Academico" value="ACADEMICO">Académico</option>
                 </select>
             </div>
             
@@ -88,6 +87,7 @@ async function reviewFunction(e) {
 function validateCategory(category){
     let a = (category.selectedIndex==="0")
     document.getElementById('ReviewToStartButton').disabled = a
+    document.getElementById('optionMenu').className = 'SurfiDropdown '+category.value
 }
 
 function updatetrustLevel(){

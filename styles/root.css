@@ -41,3 +41,25 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     --font-family: 'Goldplay', Helvetica, sans-serif;
 }
+
+.Herramienta{
+    background-color: #8B9BA6  !important;
+}
+.Social{
+    background-color: #F8961E !important;
+}
+.Entretenimiento{
+    background-color: #D14143 !important;
+}
+.Periodismo{
+    background-color: #9162BD !important;
+}
+.Investigacion{
+    background-color: #43AA8B !important;
+}
+.Organizacion{
+    background-color: #274F73 !important;
+}
+.Comercio{
+    background-color: #FA5089 !important;
+}

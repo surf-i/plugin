@@ -61,27 +61,7 @@
     justify-content: center;
     border-radius: 1rem;  
 }
-.Herramienta{
-    background-color: #8B9BA6;
-}
-.Social{
-    background-color: #F8961E;
-}
-.Entretenimiento{
-    background-color: #D14143;
-}
-.Periodismo{
-    background-color: #9162BD;
-}
-.Investigacion{
-    background-color: #43AA8B;
-}
-.Organizacion{
-    background-color: #274F73;
-}
-.Comercio{
-    background-color: #FA5089;
-}
+
 
 .searchCategoryTitle{
     color: var(--color-E3);

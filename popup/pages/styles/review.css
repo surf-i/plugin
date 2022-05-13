@@ -1,3 +1,35 @@
-.slidecontainer label{
-    font-size: 2rem;
+
+
+#Review_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70%;
+    align-items: center;
+    font-family: var(--font-family);
+}
+.Review_slidecontainer{
+    margin: 1.5rem;
+}
+.Review_slidecontainer label{
+    font-size: 1.5rem;
+}
+.SurfiDropdown{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-family);
+    background-color: var(--color-D2);
+    color: var(--color-E3);
+    border-radius: 1rem;
+    font-size: 1rem;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+.SurfiDropdown  option{
+    background-color: var(--color-B);
+    color: var(--color-E3);
 }
