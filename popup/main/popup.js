@@ -4,7 +4,7 @@ import Cookies from '../../lib/js.cookie.mjs'
 import { addElement, deleteElement } from '../../scripts/core.mjs'
 import { StartTemplate } from '../pages/Start.js'
 import { LoginTemplate, loginFunction } from '../pages/LogIn.js'
-import { ReviewTemplate } from '../pages/Review.js'
+import { ReviewTemplate, reviewFunction, validateCategory, updateRating } from '../pages/Review.js'
 import { SignUpTemplate, signUpFunction, validateForm } from '../pages/SignUp.js'
 import { HomeTemplate } from '../pages/Home.js'
 import { AccountTemplate } from '../pages/Account.js'
@@ -83,7 +83,21 @@ function setPage(page) {
       var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
     }
     if (state === 'review') {
-      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function () { setPage('pageinfo') });
+      let category = document.getElementById('optionMenu')
+      let star1 = document.getElementById('star1')
+      let star2 = document.getElementById('star2')
+      let star3 = document.getElementById('star3')
+      let star4 = document.getElementById('star4')
+      let star5 = document.getElementById('star5')
+
+      let categoryEvent = category.addEventListener('change', function (){validateCategory(category)})
+      let star1Event = star1.addEventListener('change', function (){updateRating(star1)})
+      let star2Event = star2.addEventListener('change', function (){updateRating(star2)})
+      let star3Event = star3.addEventListener('change', function (){updateRating(star3)})
+      let star4Event = star4.addEventListener('change', function (){updateRating(star4)})
+      let star5Event = star5.addEventListener('change', function (){updateRating(star5)})
+
+      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
       var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -122,5 +136,19 @@ async function signUp(event){
     console.error("error signUp")
   }
 }
+
+async function review(event){
+  let logInToken = Cookies.get('token')
+
+  if(logInToken != null){
+    reviewFunction(event)
+    setPage('pageinfo')
+  }else{
+    console.error("error need login")
+    setPage('login')
+  }
+}
+
+
 
 // TODO: Rendering, eventos, claseSurfi

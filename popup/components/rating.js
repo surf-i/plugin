@@ -1,6 +1,6 @@
 function Rating(object) {
     return(
-      ` 
+        /*html*/` 
         <div class="SurfiComponent rating">
             <div class="rate">
                 <input type="radio" id="star5" name="rate" value="5" />

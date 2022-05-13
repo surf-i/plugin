@@ -1,5 +1,5 @@
 import UserInput from "../components/UserInput.js"
-var url = 'http://44.195.183.116/'
+var url = 'https://44.195.183.116/'
 
 function LoginTemplate(object) {
     return (
