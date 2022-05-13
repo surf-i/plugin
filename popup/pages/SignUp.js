@@ -1,7 +1,7 @@
 import { Component, Surfen } from "../../scripts/core.mjs";
 import UserInput from "../components/UserInput.js"
 import { Start } from "./start.js";
-var url = 'http://44.195.183.116/'
+var url = 'https://44.195.183.116/'
 
 class SignUp extends Component{
     initialize(){
@@ -19,22 +19,21 @@ class SignUp extends Component{
                 ${new UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}
                 ${new UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
                 ${new UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
-                ${new UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
-                </form>
+                ${new UserInput({ id: 'passwordVerifComp',title: 'Retype your Password', type: "password", name:'passwordVerif' })}   
                 <button
                     disabled 
                     class="sign_in_btn"
                     id="SignUpToHomeButton"
                     type="submit"
-                >
-                    Sign Up
+                >Sign Up
                 </button>
+                </form>
             </div>
         </div>
         `
     }
     render(){
-        this.addEvent('backButton','click', Surfen.navegate, [this, new Start()])
+        this.addEvent('backButton','click', Surfen.navigate, [this, new Start()])
 
     }
 }

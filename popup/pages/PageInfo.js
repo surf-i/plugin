@@ -1,8 +1,8 @@
 import { Component } from "../../scripts/core.mjs";
 
 class PageInfo extends Component{
-    setTemplate(props){
-        Component.html`
+    initialize(props){
+        this.html`
         <div class="SurfiComponent page-container">
         <link rel="stylesheet" href="../main/popup.css">
         <button id="backButton">

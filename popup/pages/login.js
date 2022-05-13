@@ -1,6 +1,7 @@
 import Cookies from "../../lib/js.cookie.mjs"
 import { Component, Surfen } from "../../scripts/core.mjs"
 import UserInput from "../components/UserInput.js"
+import { Home } from "./Home.js"
 import { Start } from "./start.js"
 var url = 'https://44.195.183.116/'
 
@@ -31,8 +32,8 @@ class LogIn extends Component{
         `
     }
     render(){
-        this.addEvent('backButton','click', Surfen.navegate, [this, new Start()])
-        this.addEvent('LogInToStartButton', 'click', logIn)
+        this.addEvent('backButton','click', Surfen.navigate, [this, new Start()])
+        this.addEvent('LogInToStartButton', 'click', logIn, [this])
     }
     // eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
     // eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });   
@@ -41,12 +42,16 @@ function validateEmail(email){
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email.value); 
 } 
-async function logIn(){
+async function logIn(component){
     let logInToken = await loginFunction()
     if(logInToken != null){
       Cookies.set('token', logInToken)
+      console.log(component, 'Hello')
+      console.log(new Home(), 'Hello')
+      Surfen.navigate(component,(new Home()))
     }else{
       console.error("error logIn")
+
     }
 }
 async function loginFunction() {
@@ -78,4 +83,4 @@ function verifyEmail(username){
     }
     return [usernamePost, emailPost]
 }
-export { LogIn}
+export {LogIn}

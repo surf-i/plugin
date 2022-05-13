@@ -1,8 +1,8 @@
 import { Component } from "../../scripts/core.mjs"
 
-class Review {
-    setTemplate(props){
-        Component.html`
+class Review  {
+    initialize(props){
+        this.html`
         <div class="SurfiComponent page-container">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>

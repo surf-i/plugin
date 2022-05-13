@@ -11,11 +11,14 @@ export {Component, Surfen}//export all functions
 
 // SURFI 2.0
 const Surfen ={
-    addComponent(component, element){
+    /**
+     * @param {Component}  component - A Component param.
+     * @param {HTMLElement} element - An HTMLElement in which Component will be inserted
+     */
+    addComponent(component , element){
         if(!(component instanceof Component) || element == null){
             let message =  element == null ? '[addComponent] Element is null ' :'[addComponent] first argument is not a Type Component'
-            console.error(message) 
-            return false
+            throw new Error(message)
         }
         if(component.state == Component.State.Declared || component.state == Component.State.Updated){
             component.initialize()
@@ -23,41 +26,44 @@ const Surfen ={
         element.insertAdjacentHTML("afterbegin",component.template);
         component.mount(element);
     },
+    /**
+     * @param {Component}  component - A Component param.
+    */
     deleteComponent(component){
         if(!(component instanceof Component)){
             let message =  '[deleteComponent] element is not a Type Component'
-            console.error(message) 
-            return false
+            throw new Error(message) 
         }
         if(component.state === Component.State.Initialized){
             let message = `[deleteComponent: ${component.constructor.name}] component is not Initialized`
-            console.error(message) 
-            return false
+            throw new Error(message) 
         }
         component.unmount()
         component = null
         return true
     },
-    updateComponent(component, element){
-        if(!(component instanceof Component) || element == null){
-            let message =  element == null ? '[addComponent] Element is null ' :'[addComponent] first argument is not a Type Component'
-            console.error(message) 
-            return false
+    /**
+     * @param {Component}  component - A Component param.
+    */
+    updateComponent(component){
+        if(!(component instanceof Component)){
+            let message =  '[updateComponent] first argument is not a Type Component'
+            throw new Error(message) 
         }
         if(component.state === Component.State.Initialized){
-            let message = `[addComponent: ${component.constructor.name}] component is not Initialized`
-            console.error(message) 
-            return false
+            let message = `[updateComponent: ${component.constructor.name}] component is not Initialized`
+            throw new Error(message) 
         }
-        element.insertAdjacentHTML("afterbegin",component.template);
         component.unmount();
+        component.initialize();
+        component.parent.insertAdjacentHTML("afterbegin",component.template);
+        component.mount(component.parent);
     },
-    navegate(oldComponent, newComponent){
+    navigate(oldComponent, newComponent){
         let parent = oldComponent.parent 
         if(!(oldComponent instanceof Component) || !(newComponent instanceof Component)){
-            let message = '[navegate] component argument is not a Type Component'
-            console.error(message) 
-            return false
+            let message = '[navigate] component argument is not a Type Component'
+            throw new Error(message) 
         }
         oldComponent.unmount()
         oldComponent = null
@@ -77,10 +83,15 @@ class Component{
     //About State
     static get State()  {
         return{
+            // Declaration is when class is created usually is called in constructor
             Declared: 'Declared',
+            // Initialization is when class creates a html template whit html() method
             Initialized: 'Initialized',
+            // Mounting is when a class creates elementens in dom from the html template
             Mounted: 'Mounted',
+            // Updating happens when a component has change some dinamic feature from DOM
             Updated: 'Updated',
+            // Unmounted happens when a component has end his life-cycle
             Unmounted: 'Unmounted'  
         }
     }
@@ -93,23 +104,26 @@ class Component{
     }
     constructor(props){
         this.props = props
-        this.dynamics = new Map()
+        this.dynamic = new Map()
         this.components = new Map()
         this.#state = Component.State.Declared 
     }
     initialize(){
         //sets the template of the component this make a component diferent than other
-        console.error(`[Component: ${this.constructor.name}] Component can\'t initialize an abstract class set template through html method`)
+        throw new Error(`[Component: ${this.constructor.name}] Component can\'t initialize an abstract class set template through html method`)
     }
     mount(element){
         this.parent = element.id
         this.id = element.children[0].id ? element.children[0].id : Component.genId()
         element.children[0].id = this.id
-        this.state = Component.State.Mounted;
         this.render();
+        this.state = Component.State.Mounted;
+        this.components.forEach(e =>{
+            e.render()
+        })
     }
     update(){
-        console.error(`[Component: ${this.constructor.name}] Component can\'t update an abstract class`)
+        throw new Error(`[Component: ${this.constructor.name}] Component can\'t update an abstract class`)
     }
     unmount(){
         this.remove()
@@ -124,7 +138,7 @@ class Component{
             this.#state = state 
         }
         else{
-            console.error(`[Component: ${this.constructor.name}] argument is not a valid state`)
+            throw new Error(`[Component: ${this.constructor.name}] argument is not a valid state`)
         }
     }
     get id(){
@@ -137,7 +151,7 @@ class Component{
         if(this.#state === Component.State.Mounted){
             return document.getElementById(this.id)
         }else{
-            console.error(`[Component: ${this.constructor.name}] Element is not Mounted`)
+            throw new Error(`[Component: ${this.constructor.name}] Element is not Mounted`)
             return null
         }
     }
@@ -145,7 +159,7 @@ class Component{
         if(this.#state === Component.State.Initialized){
             return this.#template
         }else{
-            console.error(`[Component: ${this.constructor.name}] Element is not Initialized`)
+            throw new Error(`[Component: ${this.constructor.name}] Element is not Initialized`)
             return ''
         }
     }
@@ -153,7 +167,7 @@ class Component{
         if(this.#state === Component.State.Mounted){
             return document.getElementById(this.#parent_id)
         }else{
-            console.error(`[Component: ${this.constructor.name}] Parent doesn\'t exist`)
+            throw new Error(`[Component: ${this.constructor.name}] Parent doesn\'t exist`)
         }      
     }
     set parent(parent_id){
@@ -161,7 +175,7 @@ class Component{
         if(a != null){
             this.#parent_id = parent_id
         }else{
-            console.error(`[Component: ${this.constructor.name}] Parent doesn\'t exist`)
+            throw new Error(`[Component: ${this.constructor.name}] Parent doesn\'t exist`)
         }
     }
 
@@ -195,20 +209,19 @@ class Component{
     //Event management
     removeEvent(e){
         e.remove()
-        this.dynamics.delete(e.id)
+        this.dynamic.delete(e.id)
     }
     addEvent(event_id,type, event_function, params, extra){
-        let event = new Event(event_id, type, event_function, params, extra)
-        this.dynamics.set(event_id, event)
+        let event = new SurfEvent(event_id, type, event_function, params, extra)
+        this.dynamic.set(event_id, event)
     }
     #removeEvents(){
-        this.dynamics.forEach(e => {
+        this.dynamic.forEach(e => {
             this.removeEvent(e)
         })
     }
 }
-
-class Event{
+class SurfEvent{
     #id
     #event_function
     #parent_id
@@ -231,7 +244,7 @@ class Event{
         return this.#id
     }
     get eventFunction(){
-        if (this.#event_function == null) console.error('Surfi Event failure', 'element:', this.element, 'type:', this.type)
+        if (this.#event_function == null) throw new Error('Surfi Event failure', 'element:', this.element, 'type:', this.type)
         return this.#event_function
     }
     remove(){

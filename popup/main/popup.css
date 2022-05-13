@@ -1,8 +1,9 @@
 @import url("../../styles/root.css");
 @import url("../../styles/icons.css");
 /* from pages */
-@import url("../pages/styles/login.css");
-@import url("../pages/styles/start.css");
+@import url("../pages/styles/Login.css");
+@import url("../pages/styles/SignUp.css");
+@import url("../pages/styles/Start.css");
 @import url("../pages/styles/PageInfo.css");
 @import url("../pages/styles/Account.css");
 @import url("../pages/styles/Settings.css");

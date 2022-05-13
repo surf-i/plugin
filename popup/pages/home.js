@@ -1,9 +1,9 @@
 import { Component } from "../../scripts/core.mjs"
 import Menu from "../components/Menu.js"
 
-class Home {
-    setTemplate = (props) => {
-        Component.html`
+class Home extends Component{
+    initialize = (props) => {
+        this.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -28,7 +28,7 @@ class Home {
                 </button>
             </form> 
         </div>
-        ${Menu()}
+        ${new Menu()}
         </div>
          `
     }

@@ -4,8 +4,8 @@ import { Component } from "../../scripts/core.mjs"
 
 let configs = ["Modo Ste Men","Modo Pro","Modo iPhone 13","Modo La lider","Modo MotoMoto","Modo PizzaHaus"]
 class Settings extends Component{
-    setTemplate(props){
-        Component.html`
+    initialize(props){
+        this.html`
         <div class="SurfiComponent page-container"> 
             <button id="logOutButton">
                 <span class="material-icons">logout</span>

@@ -16,8 +16,8 @@ class Start extends Component {
         `
     }
     render(){
-        this.addEvent('StartToLogInButton','click', Surfen.navegate, [this, new LogIn()])
-        this.addEvent('LogInToSignUpButton','click', Surfen.navegate, [this, new SignUp()])
+        this.addEvent('StartToLogInButton','click', Surfen.navigate, [this, new LogIn()])
+        this.addEvent('LogInToSignUpButton','click', Surfen.navigate, [this, new SignUp()])
     }
 }
 

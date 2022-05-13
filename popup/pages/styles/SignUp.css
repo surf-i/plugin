@@ -1,0 +1,4 @@
+#SignUpToHomeButton:disabled:hover{
+    opacity: 0.5;
+    transition: ease-in-out 400ms;
+}

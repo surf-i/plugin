@@ -1,10 +1,9 @@
-import UserInput from "../components/UserInput.js"
 import Menu from "../components/Menu.js"
 import { Component } from "../../scripts/core.mjs"
 
 class Account extends Component{
-    setTemplate(props) {
-        Component.html`
+    initialize(props) {
+        this.html`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -14,17 +13,16 @@ class Account extends Component{
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
                 >
                 <button
                     class="sign_in_btn"
                     id="LogInToStartButton"
                 >
-                    Juan Carlitos easterEgg
+                   Account Name
                 </button>
                 </form>
             </div>
-            ${Menu()}
+            ${new Menu()}
         </div>
         `
     }
