@@ -2,6 +2,7 @@
     margin: 0 0;
     float: left;
     padding: 0 0.7rem;
+    user-select: none;
 }
 .rating >.rate:not(:checked) > input {
     position:absolute;
@@ -18,6 +19,7 @@
 }
 .rating >.rate:not(:checked) > label:before {
     content: '★ ';
+    transition: ease-in 150ms color;
 }
 .rating >.rate > input:checked ~ label {
     color: var(--color-A1);  
