@@ -18,7 +18,6 @@ function SignUpTemplate(object) {
                 ${UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
                 ${UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
                 ${UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
-                </form>
                 <button 
                     disabled
                     class="sign_in_btn"
@@ -27,6 +26,7 @@ function SignUpTemplate(object) {
                 >
                     Sign Up
                 </button>
+                </form>
             </div>
         </div>
         `

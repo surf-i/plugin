@@ -62,10 +62,10 @@ function setPage(page) {
       let password2 = document.getElementById('passwordVerif')
       
       //eventos feos
-      let emailEvent = email.addEventListener('change', function (){validateForm(email, username,password,password2)})
-      let usernameEvent = username.addEventListener('change', function (){validateForm(email, username,password,password2)})
-      let passwordEvent = password.addEventListener('change', function (){validateForm(email, username,password,password2)})
-      let password2Event = password2.addEventListener('change', function (){validateForm(email, username,password,password2)})
+      let emailEvent = email.addEventListener('input', function (){validateForm(email, username,password,password2)})
+      let usernameEvent = username.addEventListener('input', function (){validateForm(email, username,password,password2)})
+      let passwordEvent = password.addEventListener('input', function (){validateForm(email, username,password,password2)})
+      let password2Event = password2.addEventListener('input', function (){validateForm(email, username,password,password2)})
   
       var SignUpButton = document.getElementById("SignUpToHomeButton").addEventListener("click", function () { signUp()});
     }
@@ -92,11 +92,11 @@ function setPage(page) {
       let star5 = document.getElementById('star5')
 
       let categoryEvent = category.addEventListener('change', function (){validateCategory(category)})
-      let star1Event = star1.addEventListener('change', function (){updateRating(star1)})
-      let star2Event = star2.addEventListener('change', function (){updateRating(star2)})
-      let star3Event = star3.addEventListener('change', function (){updateRating(star3)})
-      let star4Event = star4.addEventListener('change', function (){updateRating(star4)})
-      let star5Event = star5.addEventListener('change', function (){updateRating(star5)})
+      let star1Event = star1.addEventListener('click', function (){updateRating(star1)})
+      let star2Event = star2.addEventListener('click', function (){updateRating(star2)})
+      let star3Event = star3.addEventListener('click', function (){updateRating(star3)})
+      let star4Event = star4.addEventListener('click', function (){updateRating(star4)})
+      let star5Event = star5.addEventListener('click', function (){updateRating(star5)})
 
       var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
     }

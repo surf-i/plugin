@@ -96,7 +96,16 @@ function updatetrustLevel(){
 }
 
 function updateRating(star){
-    document.getElementById('RateValue').textContent = star.value
+    let starElement = document.getElementById('RateValue')
+
+    console.log(starElement.textContent,star.value, starElement.textContent == star.value)
+    if(starElement.textContent == star.value){
+        starElement.textContent = '0'
+    }
+    else{
+        starElement.textContent = star.value
+    }
+
 }
 
 export { ReviewTemplate, reviewFunction, validateCategory, updateRating }

@@ -45,7 +45,10 @@ button {
     border: none;
     cursor: pointer;
 }
-
+button:disabled:hover{
+    transition: opacity ease-in-out 500ms;
+    opacity: 0.5;
+}
 h2 {
     margin: 2vw 1vw;
     font-family: var(--font-family);
