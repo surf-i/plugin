@@ -14,17 +14,17 @@
     white-space:nowrap;
     cursor:pointer;
     font-size:2.5rem;
-    color:rgb(255, 255, 255);
+    color:var(--color-E3    );
 }
 .rating >.rate:not(:checked) > label:before {
     content: '★ ';
 }
 .rating >.rate > input:checked ~ label {
-    color: var(--color-C4);    
+    color: var(--color-A1);  
 }
 .rating >.rate:not(:checked) > label:hover,
 .rating >.rate:not(:checked) > label:hover ~ label {
-    color: var(--color-C4);  
+    color: var(--color-A1);  
 }
 .rating >.rate > input:checked + label:hover,
 .rating >.rate > input:checked + label:hover ~ label,

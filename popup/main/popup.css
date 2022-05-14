@@ -76,7 +76,7 @@ h3 {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 12rem;
-    background: var(--color-E3);
+    /* background: var(--color-E3); */
 }
 
 /* scrollbar style */
