@@ -1,11 +1,11 @@
 let surfiSearch = (element) =>{
   return /*html*/`
   <div class="surfiSearch">
-    <div class="searchCategory ${element.category}">
-      <p class="searchCategoryTitle">${element.category}</p>
+    <div class="searchCategory ${element.category.replace(/ /, c => '_')}">
+      <p class="searchCategoryTitle">${element.category.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))}</p>
     </div>
     <div class="searchDataContainer">
-    <div class="veracity">
+      <div class="veracity">
     <p class="searchData">${element.veracity}%</p>
     </div>
     <div class="calification">
@@ -38,6 +38,7 @@ let webSearchs = document.querySelectorAll("html div #search .g");
 for(element of webSearchs)
 {
     let link = element.querySelector('a')
+    console.log(link)
     let linkVar = document.createElement('a')
     linkVar.href = link.href
     linksElements.set("https://"+linkVar.hostname,element);
@@ -80,16 +81,16 @@ async function changePage()
   var surfiReq = await getMultipleWebsites(linksElements.keys());
   for(let link of linksElements.keys())
   { 
-  //console.log("probando surfiReq"+surfiReq.get(link).category);
-  let element = linksElements.get(link);
-  if (surfiReq.has(link))
-  {
-    element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
-  }
-  else
-  {
-    element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('No calificado','NA','NA','NA','NA')));
-  }
+    //console.log("probando surfiReq"+surfiReq.get(link).category);
+    let element = linksElements.get(link);
+    if (surfiReq.has(link))
+    {
+      element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+    }
+    else
+    {
+      element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('No calificado','NA','NA','NA','NA')));
+    }
   }
 }
 
