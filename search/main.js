@@ -1,4 +1,4 @@
-import {getFormattedUrl } from "../../scripts/core.mjs";
+window.blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
 let surfiSearch = (element) =>{
   return /*html*/`
   <div class="surfiSearch">
@@ -75,17 +75,36 @@ class surfiAddon
     
   }
 }
+function isBlacklisted(url) 
+{
+  return window.blacklist.includes(url)
+}
 
+function getFormattedUrl(url)
+{
+    let documento = document.createElement('a')
+    documento.href = url
+    let host =  "https://"+documento.hostname
+    if (isBlacklisted(host))
+    {
+        return decodeURI(host)
+    }
+    else
+    {
+        return decodeURI(url)
+    }
+}
+console.log("1");
 var linksElements = new Map();
+console.log("2");
 let webSearchs = document.querySelectorAll("html div #search .g");
+console.log(webSearchs);
 for(element of webSearchs)
 {
     let link = element.querySelector('a')
-    link = getFormatedUrl(link.href)
-    console.log(link)
-    let linkVar = document.createElement('a')
-    linkVar.href = link.href
-    linksElements.set("https://"+linkVar.hostname,element);
+    let url = getFormattedUrl(link.href)
+    console.log("Link: "+url)
+    linksElements.set(link,element);
 };
 
 
@@ -100,9 +119,7 @@ async function getMultipleWebsites(links){
        if (contador)
        {
          contador = false;
-         var tmp = document.createElement('a')
-         tmp.href = link
-         string+="?url=https://"+tmp.hostname;
+         string+="?url="+link;
        }
         else
         {
