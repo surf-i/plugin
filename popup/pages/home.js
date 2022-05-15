@@ -22,9 +22,9 @@ function HomeTemplate(object) {
                 </button>
                 <button
                     class="sign_in_btn"
-                    id="HomeToReviewButton"
+                    id="HomeToCitateButton"
                     >
-                    Review
+                    Create Citation
                 </button>
                 </form>
             </div>
