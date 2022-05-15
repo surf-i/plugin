@@ -38,7 +38,7 @@ async function getHTML(url) {
 }
   
 
-export {addElement, deleteElement}//export all functions
+export {addElement, deleteElement, StringHTML}//export all functions
 
 
 
