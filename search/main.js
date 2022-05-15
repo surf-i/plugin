@@ -80,6 +80,7 @@ let webSearchs = document.querySelectorAll("html div #search .g");
 for(element of webSearchs)
 {
     let link = element.querySelector('a')
+    link = getFormatedUrl(link.href)
     console.log(link)
     let linkVar = document.createElement('a')
     linkVar.href = link.href
