@@ -77,7 +77,7 @@ async function getWebsiteData() {
     //Devuelve un Json con la información de la pagina.
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
     let currentUrl = tab.url
-    let formattedUrl = decodeURI(getFormattedUrl(currentUrl))
+    let formattedUrl = getFormattedUrl(currentUrl)
     console.log(formattedUrl)
     const response = await fetch(backendUrl+`websites/?url=${formattedUrl}`, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -93,7 +93,7 @@ async function getWebsiteData() {
 async function postWebsiteData(tabTitle, summaryFormattedText) {
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
     let currentUrl = tab.url
-    let formattedUrl = decodeURI(getFormattedUrl(currentUrl))
+    let formattedUrl = getFormattedUrl(currentUrl)
     console.log(formattedUrl)
     const response = await fetch(backendUrl+'websites/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.

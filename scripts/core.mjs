@@ -49,11 +49,11 @@ function getFormattedUrl(url)
     let host =  "https://"+documento.hostname
     if (isBlacklisted(host))
     {
-        return host
+        return decodeURI(host)
     }
     else
     {
-        return url
+        return decodeURI(url)
     }
 }
 
