@@ -34,7 +34,7 @@ if (Cookies.get('state') == undefined) {
 }
 var [state, before] = [Cookies.get('state'), Cookies.set('before')]
 var token = Cookies.get('token')
-
+let latestUrl;
 setPage(state)
 
 // var page = document.getElementById()
@@ -98,12 +98,12 @@ function setPage(page) {
 
       let categoryEvent = category.addEventListener('change', function (){validateCategory(category)})
       let star1Event = star1.addEventListener('click', function (){updateRating(star1)})
-      let star2Event = star2.addEventListener('click', function (){updateRating(star2)})
+      let star2Event = star2.addEventListener('click', function (){updateRatingreview(star2)})
       let star3Event = star3.addEventListener('click', function (){updateRating(star3)})
       let star4Event = star4.addEventListener('click', function (){updateRating(star4)})
       let star5Event = star5.addEventListener('click', function (){updateRating(star5)})
 
-      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
+      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event, latestUrl) });
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
       var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -112,7 +112,7 @@ function setPage(page) {
       
     }
     if (state === 'home'){
-      var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
+      var eventHomeReview = document.getElementById("HomeToCitateButton").addEventListener("click", function () { setPage('home') });
       var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo')});
       
     }
@@ -120,14 +120,16 @@ function setPage(page) {
       var LogOut = document.getElementById("logOutButton").addEventListener("click", function () { setPage('start') });
     }
     if(state == 'pageinfo'){
+      var eventPageinfoReview = document.getElementById("PageinfoToReview").addEventListener("click", function () { setPage('review') });
       loadInfo()
     }
 
 
 }
 
+
 async function loadInfo(){
-  await loadPageInfo()
+  latestUrl = await loadPageInfo()
 }
 
 async function logIn(event) {
@@ -152,11 +154,11 @@ async function signUp(event) {
   }
 }
 
-async function review(event) {
+async function review(event, url) {
   let logInToken = Cookies.get('token')
 
   if (logInToken != null) {
-    reviewFunction(event)
+    reviewFunction(event, url)
     setPage('pageinfo')
   } else {
     console.error("error need login")

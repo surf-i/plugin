@@ -27,6 +27,13 @@ function PageInfoTemplate(object) {
             <h3 class="summary_title">Summary</h3>
             <p class="summary_text"></p>
         </div>
+        <button
+                class="sign_in_btn"
+                id="PageinfoToReview"
+                type = "submit"
+                >
+                Create Review
+        </button>
     </div>
     `
     )
@@ -68,8 +75,10 @@ async function loadPageInfo() {
         {
             let starNumber = Math.round(pageInfo.calificacionPromedio);
             document.getElementById(`Star${starNumber}`).className = "selected"
-        }  
+        } 
+        return pageInfo.url
    }
+    
 }
 
 

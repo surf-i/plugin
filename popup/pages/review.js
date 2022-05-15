@@ -25,7 +25,7 @@ function ReviewTemplate(object) {
                     <option class="Periodismo" value="NEWS">News</option>
                     <option class="Entretenimiento" value="ENTERTAINMENT">Entertainment</option>
                     <option class="Comercio" value="SHOPPING">Shopping</option>
-                    <option class="Herramienta" value="PRODUCTIVITY TOOLS">Productivity Tools</option>
+                    <option class="Herramienta" value="PRODUCTIVITY">Productivity</option>
                     <option class="Social" value="SOCIAL">Social</option>
                     <option class="Organizacion" value="BUSINESS_ORG">Business/Org</option>
                     <option class="Academico" value="ACADEMIC">Academic</option>
@@ -45,7 +45,7 @@ function ReviewTemplate(object) {
     )
 }
 
-async function reviewFunction(e) {
+async function reviewFunction(e, latestUrl) {
     e.preventDefault()
 
     let trustLevel = updatetrustLevel()
@@ -58,9 +58,8 @@ async function reviewFunction(e) {
     var yyyy = today.getFullYear()
     today = yyyy+'-'+mm+'-'+dd
 
-    let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
-    let u = tab.url
-    u = getFormattedUrl(u)
+    //let[tab] = await chrome.tabs.query({active:true, currentWindow: true})  
+    //let u = tab.url
     const response = await fetch(url+'users/reviews/add/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -69,7 +68,7 @@ async function reviewFunction(e) {
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
-                url: u,
+                url: latestUrl,
                 review: {
                     comentario: null,
                     calificacion: parseInt(stars),
