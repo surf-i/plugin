@@ -1,6 +1,7 @@
 import Cookies from "../../lib/js.cookie.mjs";
+import { getFormattedUrl } from "../../scripts/core.mjs";
 import Rating from "../components/rating.js";
-var url = 'https://44.195.183.116/'
+var url = 'http://44.195.183.116/'
 
 function ReviewTemplate(object) {
     return(
@@ -59,6 +60,7 @@ async function reviewFunction(e) {
 
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
     let u = tab.url
+    u = getFormattedUrl(u)
     const response = await fetch(url+'users/reviews/add/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
