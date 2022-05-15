@@ -1,0 +1,31 @@
+.pageInfoRating >.rate {
+    margin: 0 0;
+    float: left;
+    padding: 0 0.7rem;
+    user-select: none;
+}
+
+.pageInfoRating >.rate > div {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:2.5rem;
+    color:var(--color-E3);
+    opacity: 0.3;
+}
+.pageInfoRating >.rate > div:before {
+    content: '★ ';
+    transition: ease-in 150ms color;
+}
+
+.pageInfoRating >.rate .selected,
+.pageInfoRating >.rate .selected  ~ div,
+.pageInfoRating >.rate .selected,
+.pageInfoRating >.rate .selected ~ div {
+    opacity: 1;
+}
+
+
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */

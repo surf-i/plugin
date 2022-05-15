@@ -1,5 +1,6 @@
 import Cookies from "../../lib/js.cookie.mjs";
 import {StringHTML} from "../../scripts/core.mjs";
+import Rating from "../components/pageInfoRating.js";
 
 const maxTitleLength = 50;
 const maxSummaryLength = 300;
@@ -15,13 +16,7 @@ function PageInfoTemplate(object) {
             <span class="material-icons">arrow_back_ios</span>
         </button>
         <p id="website-title"></p>
-        <div sytle="display: flex; flex-direction: column">
-            <span class="material-icons star_icon">star</span>
-            <span class="material-icons star_icon">star</span>
-            <span class="material-icons star_icon">star</span>
-            <span class="material-icons star_icon">star</span>
-            <span class="material-icons star_icon">star</span>
-        </div>
+        ${Rating()}
         <div class="pie-container" id="trustLevelPie">
             <div id="rawPie" class="pie animate" style="--p:${randomValue};--c: var(--color-E3);">${randomValue}%</div>
             <div class="category">
@@ -69,7 +64,11 @@ async function loadPageInfo() {
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
         document.getElementById("trustLevelPie").replaceChild(StringHTML(`<div id="rawPie" class="pie animate" style="--p:${randomValue};--c: var(--color-E3);">${randomValue}%</div>`), document.getElementById("trustLevelPie").children[0]);
         document.getElementsByClassName("category")[0].innerHTML = `<p>${pageInfo.categoria}</p>`;
-        console.log(randomValue)
+        if (pageInfo.gradoVeracidadPromedio != 0)
+        {
+            let starNumber = Math.round(pageInfo.calificacionPromedio);
+            document.getElementById(`Star${starNumber}`).className = "selected"
+        }  
    }
 }
 
