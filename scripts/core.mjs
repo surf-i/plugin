@@ -1,5 +1,3 @@
-// this is a ligth vanilla javascript framwork based on components paradigm
-
 //Parse from String to HTML
 function StringHTML(string) {
     const div = document.createElement('div');
@@ -38,8 +36,7 @@ async function getHTML(url) {
 }
   
 function isBlacklisted(url) {
-    const blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", "chrome://newtab/", "chrome://settings", "chrome://extensions", "chrome://flags"]
-    return blacklist.includes(url)
+    return window.blacklist.includes(url)
 }
 
 function getFormattedUrl(url)
