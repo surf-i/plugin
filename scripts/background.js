@@ -1,4 +1,3 @@
-let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
 chrome.runtime.onInstalled?.addListener(function (details) {
     if (details.reason === "install") {
         chrome.tabs.create({
@@ -7,11 +6,13 @@ chrome.runtime.onInstalled?.addListener(function (details) {
     }
 });
 
+let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
+chrome.storage.local.set({"blacklist":blacklist})
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.msg == "getCurrentTab") getCurrentTab(sendResponse);
         if (request.msg == "getWebsiteFirstParagraph") getWebsiteFirstParagraph(sendResponse);
-        if (request.msg == "getBlacklist") sendResponse(blacklist);
         return true;
     }
 );
