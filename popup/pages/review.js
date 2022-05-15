@@ -25,7 +25,7 @@ function ReviewTemplate(object) {
                     <option class="Periodismo" value="NEWS">News</option>
                     <option class="Entretenimiento" value="ENTERTAINMENT">Entertainment</option>
                     <option class="Comercio" value="SHOPPING">Shopping</option>
-                    <option class="Herramienta" value="PRODUCTIVITY_TOOLS">Productivity Tools</option>
+                    <option class="Herramienta" value="PRODUCTIVITY TOOLS">Productivity Tools</option>
                     <option class="Social" value="SOCIAL">Social</option>
                     <option class="Organizacion" value="BUSINESS_ORG">Business/Org</option>
                     <option class="Academico" value="ACADEMIC">Academic</option>
