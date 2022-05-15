@@ -60,7 +60,7 @@ async function loadPageInfo() {
         tabTitle = pageInfo.nombre;
         document.getElementById("website-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
-        let rating = Math.round(pageInfo.gradoVeracidadPromedio);
+        let rating = pageInfo.gradoVeracidadPromedio;
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
         document.getElementById("trustLevelPie").replaceChild(StringHTML(`<div id="rawPie" class="pie animate" style="--p:${rating};--c: var(--color-E3);">${rating}%</div>`), document.getElementById("trustLevelPie").children[0]);
         document.getElementsByClassName("category")[0].innerHTML = `<p>${pageInfo.categoria}</p>`;
