@@ -2,6 +2,7 @@
     margin: 0 0;
     float: left;
     padding: 0 0.7rem;
+    user-select: none;
 }
 .rating >.rate:not(:checked) > input {
     position:absolute;
@@ -14,17 +15,18 @@
     white-space:nowrap;
     cursor:pointer;
     font-size:2.5rem;
-    color:rgb(255, 255, 255);
+    color:var(--color-E3    );
 }
 .rating >.rate:not(:checked) > label:before {
     content: '★ ';
+    transition: ease-in 150ms color;
 }
 .rating >.rate > input:checked ~ label {
-    color: var(--color-C4);    
+    color: var(--color-A1);  
 }
 .rating >.rate:not(:checked) > label:hover,
 .rating >.rate:not(:checked) > label:hover ~ label {
-    color: var(--color-C4);  
+    color: var(--color-A1);  
 }
 .rating >.rate > input:checked + label:hover,
 .rating >.rate > input:checked + label:hover ~ label,

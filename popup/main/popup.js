@@ -113,7 +113,7 @@ function setPage(page) {
     }
     if (state === 'home'){
       var eventHomeReview = document.getElementById("HomeToReviewButton").addEventListener("click", function () { setPage('review') });
-      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo') });
+      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo'); loadPageInfo() });
       
     }
     if(state === 'settings'){
@@ -145,12 +145,14 @@ async function signUp(event) {
   }
 }
 
-async function review(event){
+async function review(event) {
   let logInToken = Cookies.get('token')
-  if(logInToken != null){
+
+  if (logInToken != null) {
     reviewFunction(event)
     setPage('pageinfo')
-  }else{
+    loadPageInfo()
+  } else {
     console.error("error need login")
     setPage('login')
   }

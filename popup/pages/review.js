@@ -30,7 +30,6 @@ function ReviewTemplate(object) {
                     <option class="Academico" value="ACADEMICO">Académico</option>
                 </select>
             </div>
-            
             <button
                 disabled
                 class="sign_in_btn"
@@ -100,6 +99,7 @@ function updateRating(star){
 
     console.log(starElement.textContent,star.value, starElement.textContent == star.value)
     if(starElement.textContent == star.value){
+        star.checked = false
         starElement.textContent = '0'
     }
     else{
