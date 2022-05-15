@@ -35,19 +35,17 @@ async function getHTML(url) {
     return text
 }
   
- function isBlacklisted(url) {
-    let blacklist = chrome.storage.local.get(['blacklist'], function(result) {
-        return result.blacklist.includes(url)
-      });
-    return blacklist
+async function isBlacklisted(url) {
+    let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
+    return blacklist.includes(url)
 }
 
-function getFormattedUrl(url)
+async function getFormattedUrl(url)
 {
     let documento = document.createElement('a')
     documento.href = url
     let host =  "https://"+documento.hostname
-    if (isBlacklisted(host))
+    if (await isBlacklisted(host))
     {
         return decodeURI(host)
     }
