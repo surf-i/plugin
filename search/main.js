@@ -1,4 +1,3 @@
-window.blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
 let surfiSearch = (element) =>{
   return /*html*/`
   <div class="surfiSearch">
@@ -29,7 +28,12 @@ class surfiAddon
     //Category
     if (category == "NOT RATED")
     {
+      console.log("aca")
       this.category = 'Not rated';
+    }
+    else if(category == "RESEARCH")
+    {
+      this.category = 'Research';
     }
     else
     {
@@ -75,42 +79,45 @@ class surfiAddon
     
   }
 }
-function isBlacklisted(url) 
-{
-  return window.blacklist.includes(url)
+async function isBlacklisted(url) {
+  let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
+  return blacklist.includes(url)
 }
 
-function getFormattedUrl(url)
+async function getFormattedUrl(url)
 {
-    let documento = document.createElement('a')
-    documento.href = url
-    let host =  "https://"+documento.hostname
-    if (isBlacklisted(host))
-    {
-        return decodeURI(host)
-    }
-    else
-    {
-        return decodeURI(url)
-    }
+  let documento = document.createElement('a')
+  documento.href = url
+  let host =  "https://"+documento.hostname
+  if (await isBlacklisted(host))
+  {
+      return decodeURI(host)
+  }
+  else
+  {
+      return decodeURI(url)
+  }
 }
-console.log("1");
+
 var linksElements = new Map();
-console.log("2");
-let webSearchs = document.querySelectorAll("html div #search .g");
-console.log(webSearchs);
-for(element of webSearchs)
+async function main()
 {
-    let link = element.querySelector('a')
-    let url = getFormattedUrl(link.href)
-    console.log("Link: "+url)
-    linksElements.set(link,element);
-};
-
-
+  console.log("1");
+  console.log("2");
+  let webSearchs = document.querySelectorAll("html div #search .g");
+  console.log(webSearchs);
+  for(element of webSearchs)
+  {
+      let link = element.querySelector('a')
+      let url = await getFormattedUrl(link)
+      console.log("Link: "+url)
+      linksElements.set(link,element);
+  };
+}
+main()
 //Send requests with the array of links
+var surfiRequest = new Map();
 async function getMultipleWebsites(links){
-     let surfiRequest = new Map();
      let url = "https://44.195.183.116"
      let string =""
      let contador = true;
@@ -128,10 +135,15 @@ async function getMultipleWebsites(links){
      }
      const response = await fetch(url+'/websites/multiple/'+string);
      let res = await response.json()
+     if (res ==null)
+     {
+       return surfiRequest;
+     }
      for (let element of res)
      {
-      console.log("URL: "+element.url+"  Categoria "+element.category)
+      console.log("URL: "+element.url+"  Categoria "+element.categoria)
       surfiRequest.set(element.url,new surfiAddon(element.categoria,Math.round(element.calificacionPromedio*10)/10,element.autor,element.fecha,Math.round(element.gradoVeracidadPromedio)));
+      console.log("Surfi Requestcategoria: "+surfiRequest.get(element.url).category);
      }
      return surfiRequest;
 } 
@@ -141,12 +153,29 @@ async function getMultipleWebsites(links){
 async function changePage()
 {
   var surfiReq = await getMultipleWebsites(linksElements.keys());
+  let aux =[]
+  for (key of surfiReq.keys())
+  {
+    aux.push(key);
+    console.log("LLLLLL>"+key)
+  } 
   for(let link of linksElements.keys())
   { 
     //console.log("probando surfiReq"+surfiReq.get(link).category);
+    console.log("Link2: "+link);
     let element = linksElements.get(link);
-    if (surfiReq.has(link))
+    // try
+    // {
+    //   console.log("Link3: "+surfiReq.get(link).category);
+    //   element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+    // }
+    // catch(err)
+    // {
+    //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+    // }
+    if (aux.includes(link))
     {
+      console.log("Link3: "+surfiReq.get(link).category);
       element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
     }
     else
@@ -160,3 +189,4 @@ changePage()
 
 
 // Busquedas compuestas
+
