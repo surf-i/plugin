@@ -1,3 +1,4 @@
+import {getFormattedUrl } from "../../scripts/core.mjs";
 let surfiSearch = (element) =>{
   return /*html*/`
   <div class="surfiSearch">
