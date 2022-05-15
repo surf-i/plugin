@@ -12,7 +12,7 @@ function LoginTemplate(object) {
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="alert" id="alertaCredenciales">
                     <span class="closebtn">&times;</span>  
-                    <strong>We Are Sorry</strong> but your log in credentials are incorrect :(
+                    <strong>Login Failed</strong> Please check your credentials and try again!
                 </div>
             <div class="SignInComponent_container" id="LogInForm">
                 <form

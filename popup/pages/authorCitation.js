@@ -1,4 +1,8 @@
 import UserInput from "../components/UserInput.js"
+import citeAPA from "../../scripts/citeAPA.js"
+import citeIEEE from "../../scripts/citeIEEE.js"
+import citeChicago from "../../scripts/citeChicago.js"
+
 
 function citateAuthor(object) {
     return (
@@ -31,4 +35,18 @@ function citateAuthor(object) {
     </div>
     `
     )
+}
+
+function citeAuthor(e)
+{
+    e.preventDefault()
+    let date = dateOfPublication.value.split('-')
+    let year = date[2]
+    let month = date[1]
+    let day = date[0]
+    let apaCitation = citeAPA(authorName, authorLastName, websiteName, webpageName, year, month, day)
+    let ieeecitation = citeIEEE(authorName, authorLastName, websiteName, webpageName, year, month, day)
+    //Get current year
+    let chicagoCitation = citeChicago(authorName, authorLastName, websiteName, webpageName, year, month, day)
+    //Redirect to citation result page
 }
