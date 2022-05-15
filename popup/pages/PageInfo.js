@@ -1,11 +1,11 @@
 import Cookies from "../../lib/js.cookie.mjs";
-import {StringHTML} from "../../scripts/core.mjs";
+import {StringHTML, getFormattedUrl } from "../../scripts/core.mjs";
 import Rating from "../components/pageInfoRating.js";
 
 const maxTitleLength = 50;
-const maxSummaryLength = 300;
-let randomValue = getRandomValue();
+const maxSummaryLength = 247;
 var backendUrl = 'http://44.195.183.116/';
+
 
 function PageInfoTemplate(object) {
     return (
@@ -18,7 +18,7 @@ function PageInfoTemplate(object) {
         <p id="website-title"></p>
         ${Rating()}
         <div class="pie-container" id="trustLevelPie">
-            <div id="rawPie" class="pie animate" style="--p:${randomValue};--c: var(--color-E3);">${randomValue}%</div>
+            <div id="rawPie" class="pie animate" style="--p:0;--c: var(--color-E3);">0%</div>
             <div class="category">
                 <p>Not rated</p>
             </div>
@@ -77,9 +77,8 @@ async function getWebsiteData() {
     //Devuelve un Json con la información de la pagina.
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
     let currentUrl = tab.url
-    var documento = document.createElement('a')
-    documento.href = currentUrl
-    let formattedUrl = "https://"+documento.hostname
+    let formattedUrl = decodeURI(getFormattedUrl(currentUrl))
+    console.log(formattedUrl)
     const response = await fetch(backendUrl+`websites/?url=${formattedUrl}`, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -94,9 +93,7 @@ async function getWebsiteData() {
 async function postWebsiteData(tabTitle, summaryFormattedText) {
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
     let currentUrl = tab.url
-    var documento = document.createElement('a')
-    documento.href = currentUrl
-    let formattedUrl = "https://"+documento.hostname
+    let formattedUrl = decodeURI(getFormattedUrl(currentUrl))
     console.log(formattedUrl)
     const response = await fetch(backendUrl+'websites/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -111,6 +108,7 @@ async function postWebsiteData(tabTitle, summaryFormattedText) {
                 resumen: summaryFormattedText
             }) // body data type must match "Content-Type" header
         });
+        let res = await response.json()
         return res
 }
 

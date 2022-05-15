@@ -37,8 +37,28 @@ async function getHTML(url) {
     return text
 }
   
+function isBlacklisted(url) {
+    const blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
+    return blacklist.includes(url)
+}
 
-export {addElement, deleteElement, StringHTML}//export all functions
+function getFormattedUrl(url)
+{
+    let documento = document.createElement('a')
+    documento.href = url
+    let host =  "https://"+documento.hostname
+    if (isBlacklisted(host))
+    {
+        return host
+    }
+    else
+    {
+        return url
+    }
+}
+
+
+export {addElement, deleteElement, StringHTML, isBlacklisted, getFormattedUrl}//export all functions
 
 
 
