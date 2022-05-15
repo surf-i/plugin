@@ -1,5 +1,5 @@
 import UserInput from "../components/UserInput.js"
-var url = 'https://44.195.183.116/'
+var url = 'http://44.195.183.116/'
 
 function SignUpTemplate(object) {
     return (
@@ -11,13 +11,23 @@ function SignUpTemplate(object) {
             <h2 class="title">SignUp</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="SignUpForm">
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
                 <form
                 class="SignInComponent_form"
                 >
+                ${UserInput({ id: 'firstNameComp',title: 'First Name', type: "text", name:'firstname' })}
+                ${UserInput({ id: 'lastNameComp',title: 'Last Name', type: "text", name:'lastname' })}
                 ${UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}
                 ${UserInput({ id: 'usernameComp',title: 'Username', type: "text", name:'username' })}
                 ${UserInput({ id: 'passwordComp',title: 'Password', type: "password", name:'password' })}
-                ${UserInput({ id: 'passwordVerifComp',title: 'Password verification', type: "password", name:'passwordVerif' })}   
+                ${UserInput({ id: 'passwordVerifComp',title: 'Confirm Your Password', type: "password", name:'passwordVerif' })}   
                 <button 
                     disabled
                     class="sign_in_btn"
@@ -36,7 +46,7 @@ function SignUpTemplate(object) {
 // disabled=${!validateForm()}
 
 async function signUpFunction(e) {
-    // e.preventDefault()
+    e.preventDefault()
     const response = await fetch(url+'dj-rest-auth/registration/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -47,11 +57,13 @@ async function signUpFunction(e) {
                 username: username.value,
                 email: email.value,
                 password1: password.value,
-                password2: passwordVerif.value
+                password2: passwordVerif.value,
+                first_name: firstname.value,
+                last_name: lastname.value
             }) // body data type must match "Content-Type" header
         });
         let res = await response.json() 
-        return res?.key  
+        return res?.key
 }
 
 
@@ -62,8 +74,16 @@ function validateEmail(email){
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email.value); 
   } 
-function validateForm(email, username, password, password2){
-    let a = email.value.length > 0 && username.value.length > 5 && password.value.length > 8 && verifyPassword(password, password2) && validateEmail(email)
+function validateForm(email, username, password, password2, firstname, lastname){
+    let a = (email.value.length > 0 && 
+            username.value.length > 5 && 
+            password.value.length > 8 && 
+            verifyPassword(password, password2) && 
+            validateEmail(email) &&
+            firstname.value.length >0 &&
+            lastname.value.length >0
+            )
+
     document.getElementById('SignUpToHomeButton').disabled = !a;
 }
 

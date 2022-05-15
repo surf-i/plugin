@@ -3,7 +3,7 @@
 import Cookies from '../../lib/js.cookie.mjs'
 import { addElement, deleteElement } from '../../scripts/core.mjs'
 import { StartTemplate } from '../pages/Start.js'
-import { LoginTemplate, loginFunction } from '../pages/LogIn.js'
+import { LoginTemplate, loginFunction, closeMessage, errorMessage } from '../pages/LogIn.js'
 import { ReviewTemplate, reviewFunction, validateCategory, updateRating } from '../pages/Review.js'
 import { SignUpTemplate, signUpFunction, validateForm } from '../pages/SignUp.js'
 import { HomeTemplate } from '../pages/Home.js'
@@ -60,18 +60,23 @@ function setPage(page) {
       let username = document.getElementById('username')
       let password = document.getElementById('password')
       let password2 = document.getElementById('passwordVerif')
+      let firstname = document.getElementById('firstname')
+      let lastname = document.getElementById('lastname')
       
       //eventos feos
-      let emailEvent = email.addEventListener('input', function (){validateForm(email, username,password,password2)})
-      let usernameEvent = username.addEventListener('input', function (){validateForm(email, username,password,password2)})
-      let passwordEvent = password.addEventListener('input', function (){validateForm(email, username,password,password2)})
-      let password2Event = password2.addEventListener('input', function (){validateForm(email, username,password,password2)})
-  
-      var SignUpButton = document.getElementById("SignUpToHomeButton").addEventListener("click", function () { signUp()});
+      let emailEvent = email.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+      let usernameEvent = username.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+      let passwordEvent = password.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+      let password2Event = password2.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+      let firstNameEvent = firstname.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+      let lastNameEvent = lastname.addEventListener('input', function (){validateForm(email, username,password,password2,firstname,lastname)})
+
+      var SignUpButton = document.getElementById("SignUpToHomeButton").addEventListener("click", function (event) { signUp(event)});
     }
     if (state === 'login') {
       var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
-      var eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });   
+      var eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });  
+      var eventClose = document.getElementsByClassName("closebtn")[0].addEventListener("click",function(){closeMessage()});
       /*
         try{
             logIn("surfitest@yopmail.com","","testpass123")
@@ -119,11 +124,13 @@ function setPage(page) {
 }
 
 async function logIn(event) {
-  let logInToken = await loginFunction(event)
+  let res = await loginFunction(event)
+  let logInToken = res?.key
   if (logInToken != null) {
     Cookies.set('token', logInToken)
     setPage('home')
   } else {
+    errorMessage()
     console.error("error logIn")
   }
 }
@@ -140,7 +147,6 @@ async function signUp(event) {
 
 async function review(event){
   let logInToken = Cookies.get('token')
-
   if(logInToken != null){
     reviewFunction(event)
     setPage('pageinfo')
