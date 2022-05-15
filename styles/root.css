@@ -43,7 +43,7 @@
 }
 
 .Herramienta{
-    background-color: #8B9BA6  !important;
+    background-color: #ffff00  !important;
 }
 .Social{
     background-color: #F8961E !important;
@@ -63,6 +63,6 @@
 .Comercio{
     background-color: #FA5089 !important;
 }
-.No_calificado{
-    background-color: #210a11 !important;
+.Not_rated{
+    background-color: #7f7f7f !important;
 }

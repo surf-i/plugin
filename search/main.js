@@ -13,7 +13,7 @@ let surfiSearch = (element) =>{
     </div>
     </div>
     <div class="AuthorandDate">
-    <p class="searchParagraph date">Fecha:${element.date}/22</p>
+    <p class="searchParagraph date">Fecha:${element.date}</p>
     <p class="searchParagraph author">Author: ${element.author}</p>
     </div>
   </div>
@@ -25,11 +25,53 @@ class surfiAddon
 {
   constructor(category,rating,author,date,veracity)
   {
-    this.category = category;
-    this.rating = rating;
-    this.author = author;
-    this.date = date;
-    this.veracity = veracity;
+    //Category
+    if (category == "NOT RATED")
+    {
+      this.category = 'Not rated';
+    }
+    else
+    {
+      this.category = category;
+    }
+    //Rating
+    if (rating != null)
+    {
+      this.rating = rating
+    }
+    else
+    {
+      this.rating = 'NA';
+    }
+    //Author
+    if (author != null)
+    {
+      this.author = author;
+    }
+    else
+    {
+      this.author = 'NA';
+    
+    }
+    //Date
+    if (date != null)
+    {
+      this.date = date.replace("-","/");
+    }
+    else
+    {
+      this.date = "NA";
+    }
+    //Veracity
+    if (veracity != null)
+    {
+      this.veracity = veracity;
+    }
+    else
+    {
+      this.veracity = "NA";
+    } 
+    
   }
 }
 
@@ -69,6 +111,7 @@ async function getMultipleWebsites(links){
      let res = await response.json()
      for (let element of res)
      {
+      console.log("URL: "+element.url+"  Categoria "+element.category)
       surfiRequest.set(element.url,new surfiAddon(element.categoria,Math.round(element.calificacionPromedio*10)/10,element.autor,element.fecha,Math.round(element.gradoVeracidadPromedio)));
      }
      return surfiRequest;
@@ -89,7 +132,7 @@ async function changePage()
     }
     else
     {
-      element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('No calificado','NA','NA','NA','NA')));
+      element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
     }
   }
 }
