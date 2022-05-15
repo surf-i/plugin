@@ -60,9 +60,9 @@ async function loadPageInfo() {
         tabTitle = pageInfo.nombre;
         document.getElementById("website-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
-        randomValue = pageInfo.gradoVeracidadPromedio;
+        let rating = pageInfo.gradoVeracidadPromedio;
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
-        document.getElementById("trustLevelPie").replaceChild(StringHTML(`<div id="rawPie" class="pie animate" style="--p:${randomValue};--c: var(--color-E3);">${randomValue}%</div>`), document.getElementById("trustLevelPie").children[0]);
+        document.getElementById("trustLevelPie").replaceChild(StringHTML(`<div id="rawPie" class="pie animate" style="--p:${rating};--c: var(--color-E3);">${rating}%</div>`), document.getElementById("trustLevelPie").children[0]);
         document.getElementsByClassName("category")[0].innerHTML = `<p>${pageInfo.categoria}</p>`;
         if (pageInfo.gradoVeracidadPromedio != 0)
         {
@@ -108,12 +108,6 @@ async function postWebsiteData(tabTitle, summaryFormattedText) {
         });
         let res = await response.json()
         return res
-}
-
-function getRandomValue() {
-    let min = 70;
-    let max = 100;
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export { PageInfoTemplate, loadPageInfo };
