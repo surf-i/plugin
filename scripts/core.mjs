@@ -45,6 +45,10 @@ function isBlacklisted(url) {
 function getFormattedUrl(url)
 {
     let documento = document.createElement('a')
+    if (url.charAt(url.length - 1)=='/')
+    {
+        url = url.substring(0,url.length-1)
+    }
     documento.href = url
     let host =  "https://"+documento.hostname
     if (isBlacklisted(host))

@@ -28,7 +28,6 @@ class surfiAddon
     //Category
     if (category == "NOT RATED")
     {
-      console.log("aca")
       this.category = 'Not rated';
     }
     else if (category == "BUSINESS/ORG")
@@ -135,29 +134,16 @@ async function main(){
   };
   try
   {
-    console.log(linksElements)
     var surfiReq = await getMultipleWebsites(linksElements.keys());
-    console.log(surfiReq)
     let aux =[]
     for (key of surfiReq.keys())
     {
       aux.push(key);
-      console.log("LLLLLL>"+key)
     } 
     for(let link of linksElements.keys())
     { 
-      //console.log("probando surfiReq"+surfiReq.get(link).category);
       console.log("Link2: "+link);
       let element = linksElements.get(link);
-      // try
-      // {
-      //   console.log("Link3: "+surfiReq.get(link).category);
-      //   element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
-      // }
-      // catch(err)
-      // {
-      //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
-      // }
       if (aux.includes(link))
       {
         console.log("Link3: "+surfiReq.get(link).category);
@@ -195,7 +181,6 @@ async function getMultipleWebsites(links){
      }
      const response = await fetch(url+'/websites/multiple/'+string);
      let res = await response.json()
-     console.log(res)
      if (res ==null)
      {
        return surfiRequest;
@@ -204,53 +189,6 @@ async function getMultipleWebsites(links){
      {
       console.log("URL: "+element.url+"  Categoria "+element.categoria)
       surfiRequest.set(element.url,new surfiAddon(element.categoria,Math.round(element.calificacionPromedio*10)/10,element.autor,element.fecha,Math.round(element.gradoVeracidadPromedio)));
-      console.log("Surfi Requestcategoria: "+surfiRequest.get(element.url).category);
      }
      return surfiRequest;
-} 
-
-
-
-async function changePage()
-{
-  console.log(linksElements)
-  var surfiReq = await getMultipleWebsites(linksElements.keys());
-  console.log(surfiReq)
-  let aux =[]
-  for (key of surfiReq.keys())
-  {
-    aux.push(key);
-    console.log("LLLLLL>"+key)
-  } 
-  for(let link of linksElements.keys())
-  { 
-    //console.log("probando surfiReq"+surfiReq.get(link).category);
-    console.log("Link2: "+link);
-    let element = linksElements.get(link);
-    // try
-    // {
-    //   console.log("Link3: "+surfiReq.get(link).category);
-    //   element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
-    // }
-    // catch(err)
-    // {
-    //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
-    // }
-    if (aux.includes(link))
-    {
-      console.log("PORFIN")
-      console.log("Link3: "+surfiReq.get(link).category);
-      element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
-    }
-    else
-    {
-      element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
-    }
-  }
 }
-
-
-
-
-// Busquedas compuestas
-
