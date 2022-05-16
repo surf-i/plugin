@@ -25,69 +25,11 @@ class surfiAddon
 {
   constructor(category,rating,author,date,veracity)
   {
-    //Category
-    if (category == "NOT RATED")
-    {
-      this.category = 'Not rated';
-    }
-    else if (category == "BUSINESS/ORG")
-    {
-      this.category = 'Business'
-    }
-    else if(category == "RESEARCH")
-    {
-      this.category = 'Research';
-    }
-    else if(category == "NEWS")
-    {
-      this.category = 'News';
-    }
-    else if(category ="SOCIAL")
-    {
-      this.category = 'Social';
-    }
-    else
-    {
-      this.category = category;
-    }
-    //Rating
-    if (rating != null)
-    {
-      this.rating = rating
-    }
-    else
-    {
-      this.rating = 'NA';
-    }
-    //Author
-    if (author != null)
-    {
-      this.author = author;
-    }
-    else
-    {
-      this.author = 'NA';
-    
-    }
-    //Date
-    if (date != null)
-    {
-      this.date = date.replace("-","/");
-    }
-    else
-    {
-      this.date = "NA";
-    }
-    //Veracity
-    if (veracity != null)
-    {
-      this.veracity = veracity;
-    }
-    else
-    {
-      this.veracity = "NA";
-    } 
-    
+    this.category = category.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
+    this.rating = rating != null? rating: 'NA'
+    this.author = author != null? author: 'NA'
+    this.date = date.replace("-","/")
+    this.veracity = veracity != null? veracity: 'NA' 
   }
 }
 
