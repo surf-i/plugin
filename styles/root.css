@@ -41,25 +41,25 @@
     --font-family: 'Goldplay', Helvetica, sans-serif;
 }
 
-.Herramienta{
-    background-color: #ffff00  !important;
+.Productivity{
+    background-color: #1d9f03  !important;
 }
 .Social{
     background-color: #F8961E !important;
 }
-.Entretenimiento{
+.Entertainment{
     background-color: #D14143 !important;
 }
-.Periodismo{
+.News{
     background-color: #9162BD !important;
 }
 .Research{
     background-color: #43AA8B !important;
 }
-.Organizacion{
+.Business{
     background-color: #274F73 !important;
 }
-.Comercio{
+.SHOPPING{
     background-color: #FA5089 !important;
 }
 .Not_rated{

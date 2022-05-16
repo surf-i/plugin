@@ -9,7 +9,7 @@ function HomeTemplate(object) {
             </button>   
             <h2 class="title">Home</h2>
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
-            <div class="SignInComponent_container" id="Form">
+            <div class="homeComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
                 onSubmit={handleSubmit}

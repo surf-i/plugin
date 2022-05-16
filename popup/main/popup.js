@@ -47,7 +47,7 @@ let latestUrl;
 setPage(state)
 
 // var page = document.getElementById()
-var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('start') });
+var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('home') });
 
 function setPage(page) {
     deleteElement(body.children[0])
@@ -94,7 +94,7 @@ function setPage(page) {
         }
         */
     }
-    if(state === 'login' || state === 'signup' || state === 'review' || state == 'pageinfo' ){
+    if(state === 'login' || state === 'signup'){
       var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
     }
     if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite' ) {
@@ -105,6 +105,10 @@ function setPage(page) {
       var backButton = document.getElementById("citateButton").addEventListener("click", function (event) { citationAuth(event) });
 
     }
+    if (state === 'review' || state === 'pageinfo') {
+      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
+    }
+
     if (state === 'review') {
       let category = document.getElementById('optionMenu')
       let star1 = document.getElementById('star1')

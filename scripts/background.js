@@ -6,7 +6,7 @@ chrome.runtime.onInstalled?.addListener(function (details) {
     }
 });
 
-let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
+let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", "https://outlook.live.com", "https://mail.google.com", "chrome://newtab/", "https://www.amazon.com", "https://www.youtube.com"];
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
@@ -57,7 +57,7 @@ var getFromBetween = {
         var removal = sub1 + this.getFromBetween(sub1, sub2) + sub2;
         this.string = this.string.replace(removal, "");
     },
-    getAllResults: function (sub1, sub2) {
+    getAllResults: function (sub1, sub2,veces) {
         // first check to see if we do have both substrings
         if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) return;
 
@@ -69,15 +69,15 @@ var getFromBetween = {
         this.removeFromBetween(sub1, sub2);
 
         // if there's more substrings
-        if (this.string.indexOf(sub1) > -1 && this.string.indexOf(sub2) > -1) {
-            this.getAllResults(sub1, sub2);
+        if (this.string.indexOf(sub1) > -1 && veces<=3 &&this.string.indexOf(sub2) > -1) {
+            this.getAllResults(sub1, sub2,veces+1);
         }
         else return;
     },
     get: function (string, sub1, sub2) {
         this.results = [];
         this.string = string;
-        this.getAllResults(sub1, sub2);
+        this.getAllResults(sub1, sub2,0);
         return this.results;
     }
 };
