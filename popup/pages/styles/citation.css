@@ -1,6 +1,13 @@
-
-
-.citation{
+.citation {
     display: flex;
     justify-content: space-between;
+}
+
+#APAButton,
+#chicagoButton,
+#IEEEButton {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABM0lEQVRoge2YMU4DMRBF3yBahKCHNmU4BSIX4TaIewASNQU1LS0tS4sQ5gCfIhTOxgrYWnkCzKtWY1v+37P2yIYgCNaQdCTpRlJSPwZJi1qtVhIPPAKHUyxGJYOZHdcM2CnELvER30TJwGl3FUsG4Lx2UOkX0koHs7U+20QpA7+KMOBNk4HOdSJJupU0K2mp3sSOdeINmJvZkAdbMuBVJw6Ai3GwJQMJ2Jta3Q9JZrafB1oMdK0T3833P0+hbSIMeBMGvAkD3oQBb8KAN2HAmzDgzZ808JJ9D4X27UbS4uup+1nSWaF9hQ56Ns5XfZ+NO/HEhAFvdhvGfJA9bPXYyBnv40BLBu4nENLK3TjQcgrNgAeWb5U9eQVOzCyvU/UZMLMnYA5cA2kabRtJwBUF8UEQwCf8imT2e17+WQAAAABJRU5ErkJggg==);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    width: 40px;
 }
