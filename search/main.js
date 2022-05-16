@@ -19,8 +19,6 @@ let surfiSearch = (element) =>{
   </div>
   `
 }
-// let categoriesv1 = ['Herramienta','Social','Entretenimiento','Periodismo','Investigacion','Empresas','Tienda'];
-// let categoriesv2 = ['Investigacion','Periodismo','Entretenimiento','Tienda','Herramienta','Social','Empresas'];
 class surfiAddon
 {
   constructor(category,rating,author,date,veracity)
@@ -29,6 +27,14 @@ class surfiAddon
     if (category == "NOT RATED")
     {
       this.category = 'Not rated';
+    }
+    else if (category == "SOCIAL")
+    {
+      this.category = 'Social';
+    }
+    else if (category == "ENTERTAINMENT")
+    {
+      this.category = 'Entertainment';
     }
     else if (category == "BUSINESS/ORG")
     {
@@ -42,9 +48,9 @@ class surfiAddon
     {
       this.category = 'News';
     }
-    else if(category ="SOCIAL")
+    else if(category == "PRODUCTIVITY")
     {
-      this.category = 'Social';
+      this.category = 'Productivity';
     }
     else
     {
