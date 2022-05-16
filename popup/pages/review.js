@@ -60,6 +60,7 @@ async function reviewFunction(e, latestUrl) {
 
     //let[tab] = await chrome.tabs.query({active:true, currentWindow: true})  
     //let u = tab.url
+    //latestUrl = await getFormattedUrl(u)
     const response = await fetch(url+'users/reviews/add/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -105,7 +106,6 @@ function updatetrustLevel(){
 function updateRating(star){
     let starElement = document.getElementById('RateValue')
 
-    console.log(starElement.textContent,star.value, starElement.textContent == star.value)
     if(starElement.textContent == star.value){
         star.checked = false
         starElement.textContent = '0'
