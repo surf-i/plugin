@@ -5,7 +5,6 @@ function HomeTemplate(object) {
         /*html*/`
         <div class="SurfiComponent page-container">   
             <h2 class="title">Home</h2>
-            <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="homeComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
@@ -31,11 +30,5 @@ function HomeTemplate(object) {
         `
     )
 }
-
-function mount() {
-
-}
-
-
 
 export { HomeTemplate }

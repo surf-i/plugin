@@ -11,9 +11,7 @@ function CitateTemplate(object) {
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
                 >
-
                 <div class="SurfiDropdown_container">
                 <select name="optionMenu" class="SurfiDropdown" id="citationFormatOpt">
                     <option value="none" selected disabled hidden>Select format:</option>

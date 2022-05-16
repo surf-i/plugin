@@ -12,9 +12,6 @@ function PageInfoTemplate(object) {
         /*html*/`
         <div class="SurfiComponent page-container">
         <link rel="stylesheet" href="../main/popup.css">
-        <button id="backButton">
-            <span class="material-icons">arrow_back_ios</span>
-        </button>
         <p id="website-title"></p>
         ${Rating()}
         <div class="pie-container" id="trustLevelPie">
@@ -41,29 +38,23 @@ function PageInfoTemplate(object) {
 let tabTitle;
 let p;
 async function loadPageInfo() {
-    let pageInfo = await getWebsiteData()
-    if ("error" in pageInfo){
-       try 
-       {
-            let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
-            tabTitle = titleResponse.title;
-            tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
-            document.getElementById("website-title").innerHTML = tabTitle;
-            
-            let summaryResponse = await chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" });
-            p = summaryResponse;
-            p = (p.includes(undefined)) ? "No summary available" : p;
-            p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p);
-            document.getElementsByClassName("summary_text")[0].innerHTML = p;
-            await postWebsiteData(tabTitle,p)
-        }
-        catch(error)
-        {
-            
-        }
+    try 
+    {
+        let pageInfo = await getWebsiteData()
+        let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
+        tabTitle = titleResponse.title;
+        tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
+        document.getElementById("website-title").innerHTML = tabTitle;
+        
+        let summaryResponse = await chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" });
+        p = summaryResponse;
+        p = (p.includes(undefined)) ? "No summary available" : p;
+        p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p);
+        document.getElementsByClassName("summary_text")[0].innerHTML = p;
+        await postWebsiteData(tabTitle,p)
     }
-   else
-   {
+    catch(error)
+    {
         tabTitle = pageInfo.nombre;
         document.getElementById("website-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
@@ -77,8 +68,7 @@ async function loadPageInfo() {
             document.getElementById(`Star${starNumber}`).className = "selected"
         } 
         return pageInfo.url
-   }
-    
+    }
 }
 
 

@@ -1,4 +1,3 @@
-import UserInput from "../components/UserInput.js"
 import Menu from "../components/Menu.js"
 
 function AccountTemplate(object) {
@@ -13,7 +12,6 @@ function AccountTemplate(object) {
             <div class="SignInComponent_container" id="Form">
                 <form
                 class="SignInComponent_form"
-                onSubmit={handleSubmit}
                 >
                 <button
                     class="sign_in_btn"

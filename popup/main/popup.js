@@ -47,7 +47,6 @@ let latestUrl;
 setPage(state)
 
 // var page = document.getElementById()
-var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('home') });
 
 function setPage(page) {
     deleteElement(body.children[0])
@@ -86,27 +85,20 @@ function setPage(page) {
       var eventLog = document.getElementById("LogInToStartButton").addEventListener("click", function (event) {logIn(event) });   
       var eventLog = document.getElementById("LogInToSignUpButton").addEventListener("click", function (event) {setPage('signup') });  
       var eventClose = document.getElementsByClassName("closebtn")[0].addEventListener("click",function(){closeMessage()});
-      /*
-        try{
-            logIn("surfitest@yopmail.com","","testpass123")
-        }catch{
-            //  
-        }
-        */
     }
     if(state === 'login' || state === 'signup'){
-      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
+      let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage("start") });
     }
     if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite' ) {
-      var backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
+      let backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
 
     }
     if(state === 'authorCite') {
-      var backButton = document.getElementById("citateButton").addEventListener("click", function (event) { citationAuth(event) });
+      let citateButton = document.getElementById("citateButton").addEventListener("click", function (event) { citationAuth(event) });
 
     }
     if (state === 'review' || state === 'pageinfo') {
-      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
+      let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
     }
 
     if (state === 'review') {
@@ -124,32 +116,32 @@ function setPage(page) {
       let star4Event = star4.addEventListener('click', function (){updateRating(star4)})
       let star5Event = star5.addEventListener('click', function (){updateRating(star5)})
 
-      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
+      let eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
-      var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
-      var menuAccountButton = document.getElementById("menuAccountButton").addEventListener("click", function () { setPage('account') });
-      var menuSetttingsButton = document.getElementById("menuSetttingsButton").addEventListener("click", function () { setPage('settings') });
+      let menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
+      let menuAccountButton = document.getElementById("menuAccountButton").addEventListener("click", function () { setPage('account') });
+      let menuSetttingsButton = document.getElementById("menuSetttingsButton").addEventListener("click", function () { setPage('settings') });
       
     }
     if (state === 'home'){
-      var eventHomeCite = document.getElementById("HomeToCitateButton").addEventListener("click", function () { setPage('cite') });
-      var eventHomePageInfo = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo')});
+      let eventHomeCite = document.getElementById("HomeToCitateButton").addEventListener("click", function () { setPage('cite') });
+      let eventHomePageInfo = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo')});
       
     }
     if (state === 'cite'){
       let selectFormat = document.getElementById("citationFormatOpt")
       let FormatEvent = selectFormat.addEventListener('change', function (){validateChoice(selectFormat)})
 
-      var eventHomePageInfo = document.getElementById("CitateToFormat").addEventListener("click", function () { citation()});
-      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
+      let eventHomePageInfo = document.getElementById("CitateToFormat").addEventListener("click", function () { citation()});
+      let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
     }
     if(state === 'settings'){
-      var LogOut = document.getElementById("logOutButton").addEventListener("click", function () { setPage('start') });
+      let LogOut = document.getElementById("logOutButton").addEventListener("click", function () { setPage('start') });
     }
     if(state == 'pageinfo'){
       
-      var eventPageinfoReview = document.getElementById("PageinfoToReview").addEventListener("click", function () { setPage('review') });
+      let eventPageinfoReview = document.getElementById("PageinfoToReview").addEventListener("click", function () { setPage('review') });
       loadInfo()
     }
 
