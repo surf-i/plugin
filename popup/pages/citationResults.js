@@ -1,3 +1,5 @@
+
+
 function CitationResultsTemplate(object) {
     return (
         /*html*/`
@@ -6,17 +8,26 @@ function CitationResultsTemplate(object) {
             <span class="material-icons">arrow_back_ios</span>
         </button>
         <div class="summary">
-            <h3 class="summary_title">APA</h3>
+            <div class = "citation">
+                <h3 class="summary_title">APA</h3>
+                <button id = "APAButton">Copy text</button>
+            </div>
             <p class="summary_text" id="apaCitation"></p>
         </div>
 
         <div class="summary">
-            <h3 class="summary_title">IEEE</h3>
+            <div class = "citation">
+                <h3 class="summary_title">IEEE</h3>
+                <button id = "IEEEButton">Copy text</button>
+            </div>
             <p class="summary_text" id="ieeeCitation"></p>
         </div>
 
         <div class="summary">
-            <h3 class="summary_title">Chicago</h3>
+            <div class = "citation">
+                <h3 class="summary_title">Chicago</h3>
+                <button id = "chicagoButton">Copy text</button>
+            </div>
             <p class="summary_text" id="chicagoCitation"></p>
         </div>
 
@@ -25,11 +36,23 @@ function CitationResultsTemplate(object) {
     )
 }
 
-function applyCitations(apa, ieee, chicago)
-{
+function applyCitations(apa, ieee, chicago) {
     document.getElementById("apaCitation").innerHTML = apa;
     document.getElementById("ieeeCitation").innerHTML = ieee;
     document.getElementById("chicagoCitation").innerHTML = chicago;
 }
 
-export{CitationResultsTemplate, applyCitations }
+function copyCitation(citationType) {
+    console.log("Hola")
+    var copyText = document.getElementById(citationType).innerHTML;
+    copyText = copyText.replace("<i>","")
+    copyText = copyText.replace("</i>","")
+    var textArea = document.createElement('textarea');
+    textArea.style.opacity = 0;
+    document.body.appendChild(textArea);
+    textArea.value = copyText;
+    textArea.select();
+    document.execCommand('copy');
+}
+
+export { CitationResultsTemplate, applyCitations, copyCitation }

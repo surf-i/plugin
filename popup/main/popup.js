@@ -15,7 +15,7 @@ import {CitateTemplate, citate, validateChoice} from '../pages/citation.js'
 import { AuthorCitationTemplate, citeAuthor, validateCitationA } from '../pages/authorCitation.js'
 import { UnknownCitationTemplate,  citeUnknown, validateCitationU} from '../pages/unknownCitation.js'
 import { OrgCitationTemplate, citeOrg, validateCitationO} from '../pages/orgCitation.js'
-import {CitationResultsTemplate, applyCitations} from '../pages/citationResults.js'
+import {CitationResultsTemplate, applyCitations, copyCitation} from '../pages/citationResults.js'
 
 
 const body = document.body
@@ -131,6 +131,9 @@ function setPage(page) {
     }
     if(state === 'citeResults' ) {
       var backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
+      let apaButton = document.getElementById("APAButton").addEventListener("click", function () { copyCitation('apaCitation')});
+      let ieeeButton = document.getElementById("IEEEButton").addEventListener("click", function () { copyCitation('ieeeCitation')});
+      let chicagoButton = document.getElementById("chicagoButton").addEventListener("click", function () { copyCitation('chicagoCitation')});
     }
     if (state === 'review' || state === 'pageinfo') {
       let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });

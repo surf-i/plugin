@@ -7,6 +7,7 @@
 @import url("../pages/styles/Account.css");
 @import url("../pages/styles/Settings.css");
 @import url("../pages/styles/review.css");
+@import url("../pages/styles/citation.css");
 /* from specific global components that tends to be in almost all pages*/
 @import url("../components/styles/SettingsInput.css");
 @import url("../components/styles/menu.css");
