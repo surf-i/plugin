@@ -10,7 +10,7 @@ function SignUpTemplate(object) {
             </button>
             <h2 class="title">SignUp</h2>
             <div class="SignInComponent_container">
-                <form class="ContentBox"  id="SignUpForm">
+                <form class="SignInComponent_form"  id="SignUpForm">
                 ${UserInput({ id: 'firstNameComp',title: 'First Name', type: "text", name:'firstname' })}
                 ${UserInput({ id: 'lastNameComp',title: 'Last Name', type: "text", name:'lastname' })}
                 ${UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}

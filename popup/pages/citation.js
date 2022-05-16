@@ -10,7 +10,7 @@ function CitateTemplate(object) {
             <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container" id="Form">
                 <form
-                class="ContentBox"
+                class="SignInComponent_form"
                 >
                 <div class="SurfiDropdown_container">
                 <select name="optionMenu" class="SurfiDropdown" id="citationFormatOpt">

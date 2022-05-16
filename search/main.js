@@ -24,15 +24,10 @@ class surfiAddon
   constructor(category,rating,author,date,veracity)
   {
     this.category = category.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
-    console.log('[CATEGORY]',this.category)
     this.rating = rating? rating: 'NA'
     this.author = author != null? author: 'NA'
-    this.date = date != null ? date.replace("-","/") :'NA'
+    this.date = date.replace("-","/")
     this.veracity = veracity? veracity: 'NA' 
-
-    if(this.category == 'Business/org'){
-      this.category = 'Business'
-    }
   }
 }
 

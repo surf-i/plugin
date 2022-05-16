@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.ContentBox {
+.SignInComponent_form {
     overflow: auto;
     display: flex;
     flex-direction: column;

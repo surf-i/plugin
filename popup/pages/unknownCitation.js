@@ -13,7 +13,7 @@ function UnknownCitationTemplate(object) {
         <div class="SignInComponent_container" id="citationFormUnknown">
             
             <form
-            class="ContentBox"
+            class="SignInComponent_form"
             >
             ${UserInput({ id: 'websiteNameComp',title: 'Website Name', type: "text", name:'websiteName' })}
             ${UserInput({ id: 'webpageNameComp',title: 'Current Page Name', type: "text", name:'webpagename' })}
