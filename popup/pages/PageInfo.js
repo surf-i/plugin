@@ -11,7 +11,6 @@ function PageInfoTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container">
-        <link rel="stylesheet" href="../main/popup.css">
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
@@ -43,24 +42,17 @@ let p;
 async function loadPageInfo() {
     let pageInfo = await getWebsiteData()
     if ("error" in pageInfo){
-       try 
-       {
-            let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
-            tabTitle = titleResponse.title;
-            tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
-            document.getElementById("website-title").innerHTML = tabTitle;
-            
-            let summaryResponse = await chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" });
-            p = summaryResponse;
-            p = (p.includes(undefined)) ? "No summary available" : p;
-            p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p);
-            document.getElementsByClassName("summary_text")[0].innerHTML = p;
-            await postWebsiteData(tabTitle,p)
-        }
-        catch(error)
-        {
-            
-        }
+        let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
+        tabTitle = titleResponse.title;
+        tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
+        document.getElementById("website-title").innerHTML = tabTitle;
+        
+        let summaryResponse = await chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" });
+        p = summaryResponse;
+        p = (p.includes(undefined)) ? "No summary available" : p;
+        p = ((p.length > maxSummaryLength) ? p.substring(0, maxSummaryLength) + "..." : p);
+        document.getElementsByClassName("summary_text")[0].innerHTML = p;
+        await postWebsiteData(tabTitle,p)
     }
    else
    {
@@ -119,4 +111,4 @@ async function postWebsiteData(tabTitle, summaryFormattedText) {
         return res
 }
 
-export { PageInfoTemplate, loadPageInfo };
+export { PageInfoTemplate, loadPageInfo }

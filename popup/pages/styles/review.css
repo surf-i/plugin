@@ -1,5 +1,3 @@
-
-
 #Review_form{
     display: flex;
     flex-direction: column;
@@ -34,7 +32,6 @@
 	outline: none;
 }
 .SurfiDropdown  option{
-    text-align: center;
     background-color: var(--color-B);
     color: var(--color-E3);
 }

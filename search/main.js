@@ -23,77 +23,16 @@ class surfiAddon
 {
   constructor(category,rating,author,date,veracity)
   {
-    //Category
-    if (category == "NOT RATED")
-    {
-      this.category = 'Not rated';
-    }
-    else if (category == "SOCIAL")
-    {
-      this.category = 'Social';
-    }
-    else if (category == "ENTERTAINMENT")
-    {
-      this.category = 'Entertainment';
-    }
-    else if (category == "BUSINESS/ORG")
-    {
+    this.category = category.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
+    console.log('[CATEGORY]',this.category)
+    this.rating = rating? rating: 'NA'
+    this.author = author != null? author: 'NA'
+    this.date = date != null ? date.replace("-","/") :'NA'
+    this.veracity = veracity? veracity: 'NA' 
+
+    if(this.category == 'Business/org'){
       this.category = 'Business'
     }
-    else if(category == "RESEARCH")
-    {
-      this.category = 'Research';
-    }
-    else if(category == "NEWS")
-    {
-      this.category = 'News';
-    }
-    else if(category == "PRODUCTIVITY")
-    {
-      this.category = 'Productivity';
-    }
-    else
-    {
-      this.category = category;
-    }
-    //Rating
-    if (rating != null)
-    {
-      this.rating = rating
-    }
-    else
-    {
-      this.rating = 'NA';
-    }
-    //Author
-    if (author != null)
-    {
-      this.author = author;
-    }
-    else
-    {
-      this.author = 'NA';
-    
-    }
-    //Date
-    if (date != null)
-    {
-      this.date = date.replace("-","/");
-    }
-    else
-    {
-      this.date = "NA";
-    }
-    //Veracity
-    if (veracity != null)
-    {
-      this.veracity = veracity;
-    }
-    else
-    {
-      this.veracity = "NA";
-    } 
-    
   }
 }
 
@@ -104,9 +43,9 @@ async function isBlacklisted(url) {
 
 async function getFormattedUrl(url)
 {
-  let documento = document.createElement('a')
-  documento.href = url
-  let host =  "https://"+documento.hostname
+  let element = document.createElement('a')
+  element.href = url
+  let host =  "https://"+element.hostname
   if (await isBlacklisted(host))
   {
       return decodeURI(host)
@@ -157,13 +96,13 @@ async function main(){
       }
       else
       {
-        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('NOT RATED','NA','NA','NA','NA')));
       }
     }
   }
   catch(err)
   {
-    console.log("Error: "+err)
+    throw new Error("Error: "+err)
   }
 }
 main()
@@ -196,5 +135,6 @@ async function getMultipleWebsites(links){
       console.log("URL: "+element.url+"  Categoria "+element.categoria)
       surfiRequest.set(element.url,new surfiAddon(element.categoria,Math.round(element.calificacionPromedio*10)/10,element.autor,element.fecha,Math.round(element.gradoVeracidadPromedio)));
      }
+     console.log('HELLO')
      return surfiRequest;
 }

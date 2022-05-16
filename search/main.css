@@ -1,4 +1,4 @@
-@import url("root.css");
+@import url("../styles/root.css");
 
 .Dashboard-ball{
     background-color: var(--color-D);
@@ -59,7 +59,7 @@
 .searchCategory{
     display: flex;
     justify-content: center;
-    border-radius: 1rem;  
+    border-radius: 0.5rem;  
 }
 
 
@@ -67,7 +67,10 @@
     font-size: 0.8rem;
     color: var(--color-E3);
     margin: 0;
+    margin-left:0.2rem;
+    margin-right:0.2rem;
     padding: 1% 3%;
+    white-space: nowrap;
 }
 .searchParagraph{
     font-size: 0.8rem;

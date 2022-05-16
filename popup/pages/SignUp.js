@@ -9,10 +9,8 @@ function SignUpTemplate(object) {
                 <span class="material-icons">arrow_back_ios</span>
             </button>
             <h2 class="title">SignUp</h2>
-            <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="SignInComponent_container">
-                <form class="SignInComponent_form"  id="SignUpForm"
-                >
+                <form class="ContentBox"  id="SignUpForm">
                 ${UserInput({ id: 'firstNameComp',title: 'First Name', type: "text", name:'firstname' })}
                 ${UserInput({ id: 'lastNameComp',title: 'Last Name', type: "text", name:'lastname' })}
                 ${UserInput({ id: 'emailComp',title: 'Email', type: "email", name:'email' })}

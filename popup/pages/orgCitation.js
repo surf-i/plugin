@@ -13,7 +13,7 @@ function OrgCitationTemplate(object) {
         <div class="SignInComponent_container" id="citationFormOrg">
             
             <form
-            class="SignInComponent_form"
+            class="ContentBox"
             >
             ${UserInput({ id: 'authorNameComp',title: 'Organization Name', type: "text", name:'orgName' })}
             ${UserInput({ id: 'websiteNameComp',title: 'Website Name', type: "text", name:'websiteName' })}

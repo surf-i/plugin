@@ -16,7 +16,7 @@ function LoginTemplate(object) {
                 </div>
             <div class="homeComponent_container" id="LogInForm">
                 <form
-                class="SignInComponent_form"
+                class="ContentBox"
                 >
                 
                 ${UserInput({ id: 'userInputEmail',title: 'Username or Email', type: "text", name:"username" })}

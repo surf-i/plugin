@@ -3,16 +3,11 @@ import Menu from "../components/Menu.js"
 function HomeTemplate(object) {
     return (
         /*html*/`
-        <div class="SurfiComponent page-container"> 
-            <button id="backButton">
-                <span class="material-icons">arrow_back_ios</span>
-            </button>   
+        <div class="SurfiComponent page-container">   
             <h2 class="title">Home</h2>
-            <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
             <div class="homeComponent_container" id="Form">
-                <form
-                class="SignInComponent_form"
-                onSubmit={handleSubmit}
+                <div
+                class="ContentBox"
                 >
                 <button
                     class="sign_in_btn"
@@ -27,18 +22,12 @@ function HomeTemplate(object) {
                     >
                     Create Citation
                 </button>
-                </form>
+                </div>
             </div>
             ${Menu()}
         </div>
         `
     )
 }
-
-function mount() {
-
-}
-
-
 
 export { HomeTemplate }
