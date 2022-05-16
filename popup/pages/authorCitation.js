@@ -21,7 +21,7 @@ function AuthorCitationTemplate(object) {
             ${UserInput({ id: 'authorNameComp',title: 'Author Name', type: "text", name:'authorName' })}
             ${UserInput({ id: 'authorLastNameComp',title: 'Author Last Name', type: "text", name:'authorLastName' })}
             ${UserInput({ id: 'websiteNameComp',title: 'Website Name', type: "text", name:'websiteName' })}
-            ${UserInput({ id: 'webpageNameComp',title: 'Current Page Name', type: "text", name:'webpagename' })}
+            ${UserInput({ id: 'webpageNameComp',title: 'Current Page Name', type: "text", name:'webpageName' })}
             ${UserInput({ id: 'dateOfPublicationComp',title: 'Date of Publication', type: "date", name:'dateOfPublication' })}    
             </form>
             <button 
@@ -41,9 +41,12 @@ function AuthorCitationTemplate(object) {
 async function citeAuthor(e)
 {
     e.preventDefault()
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+
     let date = dateOfPublication.value.split('-')
     let year = date[2]
-    let month = date[1]
+    let month = monthNames[date[1]-1]
     let day = date[0]
 
     let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
@@ -51,16 +54,25 @@ async function citeAuthor(e)
 
     let today = new Date()
     var dayCurrent = String(today.getDate()).padStart(2, '0')
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
     var monthCurrent = monthNames[today.getMonth()]
     var yearCurrent = today.getFullYear()
 
-    let apaCitation = citeAPA(authorName, authorLastName, websiteName, webpageName, year, month, day, url)
-    let ieeecitation = citeIEEE(authorName, authorLastName, websiteName, webpageName, yearCurrent, monthCurrent, dayCurrent, url)
+    let apaCitation = citeAPA(authorName.value, authorLastName.value, websiteName.value, webpageName.value, year, month, day, url)
+    let ieeecitation = citeIEEE(authorName.value, authorLastName.value, websiteName.value, webpageName.value, yearCurrent, monthCurrent, dayCurrent, url)
     //Get current year
-    let chicagoCitation = citeChicago(authorName, authorLastName, websiteName, webpageName, year, month, day, url)
+    let chicagoCitation = citeChicago(authorName.value, authorLastName.value, websiteName.value, webpageName.value, year, month, day, url)
     //Redirect to citation result page
+    return [apaCitation, ieeecitation, chicagoCitation]
 }
 
-export {AuthorCitationTemplate, citeAuthor}
+function validateCitationA(date, authName, authorLastName, webpage, website){
+    let a = (authName.value.length >0 &&
+            authorLastName.value.length >0 &&
+            webpage.value.length >0 &&
+            website.value.length >0 &&
+            date.value.split('-').length>1
+            )
+    document.getElementById('citateButton').disabled = !a;
+}
+
+export {AuthorCitationTemplate, citeAuthor, validateCitationA}

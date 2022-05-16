@@ -1,4 +1,4 @@
-function citationResultsTemplate(object) {
+function CitationResultsTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container">
@@ -10,15 +10,17 @@ function citationResultsTemplate(object) {
             <h3 class="summary_title">APA</h3>
             <p class="summary_text" id="apaCitation"></p>
         </div>
-        <div class="summary">
-        <h3 class="summary_title">IEEE</h3>
-        <p class="summary_text" id="ieeeCitation"></p>
 
         <div class="summary">
-        <h3 class="summary_title">Chicago</h3>
-        <p class="summary_text" id="chicagoCitation"></p>
-    </div>
-    </div>
+            <h3 class="summary_title">IEEE</h3>
+            <p class="summary_text" id="ieeeCitation"></p>
+        </div>
+
+        <div class="summary">
+            <h3 class="summary_title">Chicago</h3>
+            <p class="summary_text" id="chicagoCitation"></p>
+        </div>
+
     </div>
     `
     )
@@ -30,3 +32,5 @@ function applyCitations(apa, ieee, chicago)
     document.getElementById("ieeeCitation").innerHTML = ieee;
     document.getElementById("chicagoCitation").innerHTML = chicago;
 }
+
+export{CitationResultsTemplate, applyCitations }
