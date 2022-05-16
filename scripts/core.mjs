@@ -37,12 +37,16 @@ async function getHTML(url) {
     return text
 }
   
-function isBlacklisted(url) {
-    const blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
+async function isBlacklisted(url) {
+    //let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
+    let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", 
+                "https://www.youtube.com", "https://www.instagram.com", "https://www.amazon.com", "https://www.netflix.com", "https://www.reddit.com",
+                "https://www.linkedin.com", "https://www.pinterest.com", "https://www.quora.com", "https://www.canva.com", "https://www.flickr.com",
+                "https://www.tumblr.com", "https://discord.com", "https://www.twitch.tv"]
     return blacklist.includes(url)
 }
 
-function getFormattedUrl(url)
+async function getFormattedUrl(url)
 {
     let documento = document.createElement('a')
     if (url.charAt(url.length - 1)=='/')
@@ -51,7 +55,7 @@ function getFormattedUrl(url)
     }
     documento.href = url
     let host =  "https://"+documento.hostname
-    if (isBlacklisted(host))
+    if (await isBlacklisted(host))
     {
         return decodeURI(host)
     }
