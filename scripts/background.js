@@ -6,7 +6,10 @@ chrome.runtime.onInstalled?.addListener(function (details) {
     }
 });
 
-let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", "https://outlook.live.com", "https://mail.google.com", "chrome://newtab/", "https://www.amazon.com", "https://www.youtube.com"];
+let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", 
+                "https://www.youtube.com", "https://www.instagram.com", "https://www.amazon.com", "https://www.netflix.com", "https://www.reddit.com",
+                "https://www.linkedin.com", "https://www.pinterest.com", "https://www.quora.com", "https://www.canva.com", "https://www.flickr.com",
+                "https://www.tumblr.com", "https://discord.com", "https://www.twitch.tv"]
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
