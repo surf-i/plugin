@@ -82,10 +82,12 @@
 }
 
 .summary_title {
+  font-size: 1.1rem;
   text-align: left;
 }
 
 .summary_text {
+  margin: 0.1rem 0 0 0;
   text-align: center;
   font-size: 0.85rem;
 }
@@ -93,4 +95,14 @@
 .summary {
   max-width:90%;
   word-wrap: break-word;
+}
+
+#pageinfo-title {
+  margin: 0.2rem 0 0 1rem;
+  /* color:  var(--color-B); */
+  font-family: var(--font-family);
+  font-size: 1.2rem;
+  text-align: center;
+  animation: animate 4s ease-in-out infinite;
+  margin-bottom: 2vh;
 }

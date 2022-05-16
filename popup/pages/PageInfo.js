@@ -14,7 +14,7 @@ function PageInfoTemplate(object) {
         <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <p id="website-title"></p>
+        <h2 id="pageinfo-title"></h2>
         ${Rating()}
         <div class="pie-container" id="trustLevelPie">
             <div id="rawPie" class="pie animate" style="--p:0;--c: var(--color-E3);">0%</div>
@@ -45,8 +45,7 @@ async function loadPageInfo() {
         let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
         tabTitle = titleResponse.title;
         tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
-        document.getElementById("website-title").innerHTML = tabTitle;
-        
+        document.getElementById("pageinfo-title").innerHTML = tabTitle;
         let summaryResponse = await chrome.runtime.sendMessage({ msg: "getWebsiteFirstParagraph" });
         p = summaryResponse;
         p = (p.includes(undefined)) ? "No summary available" : p;
@@ -57,7 +56,7 @@ async function loadPageInfo() {
    else
    {
         tabTitle = pageInfo.nombre;
-        document.getElementById("website-title").innerHTML = tabTitle;
+        document.getElementById("pageinfo-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
         let rating = Math.round(pageInfo.gradoVeracidadPromedio);
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
