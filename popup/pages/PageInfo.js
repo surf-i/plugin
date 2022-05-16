@@ -11,7 +11,9 @@ function PageInfoTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container">
-        <link rel="stylesheet" href="../main/popup.css">
+        <button id="backButton">
+                <span class="material-icons">arrow_back_ios</span>
+        </button>
         <p id="website-title"></p>
         ${Rating()}
         <div class="pie-container" id="trustLevelPie">

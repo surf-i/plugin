@@ -84,7 +84,7 @@ function setPage(page) {
       var eventClose = document.getElementsByClassName("closebtn")[0].addEventListener("click",function(){closeMessage()});
     }
     if(state === 'login' || state === 'signup'){
-      let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage("start") });
+      let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
     }
     if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite' ) {
       let backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });

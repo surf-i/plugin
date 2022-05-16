@@ -3,10 +3,7 @@ import Menu from "../components/Menu.js"
 function AccountTemplate(object) {
     return (
         /*html*/`
-        <div class="SurfiComponent page-container"> 
-            <button id="backButton">
-                <span class="material-icons">arrow_back_ios</span>
-            </button>   
+        <div class="SurfiComponent page-container">  
             <h2 class="title">Account</h2>
             <span class="material-icons accountLogo">account_circle</span>
             <div class="SignInComponent_container" id="Form">
@@ -15,8 +12,7 @@ function AccountTemplate(object) {
                 >
                 <button
                     class="sign_in_btn"
-                    id="LogInToStartButton"
-                >
+                    id="LogInToStartButton">
                     Juan Carlitos easterEgg
                 </button>
                 </form>
