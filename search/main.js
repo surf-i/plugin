@@ -31,6 +31,10 @@ class surfiAddon
       console.log("aca")
       this.category = 'Not rated';
     }
+    else if (category == "BUSINESS/ORG")
+    {
+      this.category = 'Business'
+    }
     else if(category == "RESEARCH")
     {
       this.category = 'Research';
@@ -79,6 +83,7 @@ class surfiAddon
     
   }
 }
+
 async function isBlacklisted(url) {
   let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
   return blacklist.includes(url)
@@ -100,21 +105,16 @@ async function getFormattedUrl(url)
 }
 
 var linksElements = new Map();
-async function main()
+let webSearchs = document.querySelectorAll("html div #search .g");
+for(element of webSearchs)
 {
-  console.log("1");
-  console.log("2");
-  let webSearchs = document.querySelectorAll("html div #search .g");
-  console.log(webSearchs);
-  for(element of webSearchs)
-  {
-      let link = element.querySelector('a')
-      let url = await getFormattedUrl(link)
-      console.log("Link: "+url)
-      linksElements.set(link,element);
-  };
-}
-main()
+    let elementLink = element.querySelector('a')
+    let url = decodeURI(String(elementLink))
+    //let url = await getFormattedUrl(link)
+    console.log("Link: "+url)
+    linksElements.set(url,element);
+};
+
 //Send requests with the array of links
 var surfiRequest = new Map();
 async function getMultipleWebsites(links){
@@ -152,7 +152,9 @@ async function getMultipleWebsites(links){
 
 async function changePage()
 {
+  console.log(linksElements)
   var surfiReq = await getMultipleWebsites(linksElements.keys());
+  console.log(surfiReq)
   let aux =[]
   for (key of surfiReq.keys())
   {
@@ -173,8 +175,10 @@ async function changePage()
     // {
     //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
     // }
+    console.log("aca")
     if (aux.includes(link))
     {
+      console.log("PORFIN")
       console.log("Link3: "+surfiReq.get(link).category);
       element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
     }

@@ -1,3 +1,5 @@
+// this is a ligth vanilla javascript framwork based on components paradigm
+
 //Parse from String to HTML
 function StringHTML(string) {
     const div = document.createElement('div');
@@ -35,17 +37,17 @@ async function getHTML(url) {
     return text
 }
   
-async function isBlacklisted(url) {
-    let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
+function isBlacklisted(url) {
+    const blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
     return blacklist.includes(url)
 }
 
-async function getFormattedUrl(url)
+function getFormattedUrl(url)
 {
     let documento = document.createElement('a')
     documento.href = url
     let host =  "https://"+documento.hostname
-    if (await isBlacklisted(host))
+    if (isBlacklisted(host))
     {
         return decodeURI(host)
     }
