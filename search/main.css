@@ -104,7 +104,7 @@
         width: 1.3rem;
     }
 }
-/* @media screen and (max-width: 768px){
+@media screen and (max-width: 768px){
     .FCIUXc{
         max-width: 45vw;
     }
@@ -113,11 +113,10 @@
 
 @media screen and (max-width: 1440px){
     .FCIUXc{
-        /*  max-width: 35vw;
+         max-width: 35vw;
     }
-} */
+}
 
-/* .FCIUXc{
-    background-color: aqua;
+.FCIUXc{
     max-width: 32vw;
-} */
+}
