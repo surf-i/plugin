@@ -12,7 +12,7 @@ function PageInfoTemplate(object) {
         /*html*/`
         <div class="SurfiComponent page-container">
         <button id="backButton">
-                <span class="material-icons">arrow_back_ios</span>
+            <span class="material-icons">arrow_back_ios</span>
         </button>
         <p id="website-title"></p>
         ${Rating()}
@@ -40,9 +40,8 @@ function PageInfoTemplate(object) {
 let tabTitle;
 let p;
 async function loadPageInfo() {
-    try 
-    {
-        let pageInfo = await getWebsiteData()
+    let pageInfo = await getWebsiteData()
+    if ("error" in pageInfo){
         let titleResponse =  await chrome.runtime.sendMessage({ msg: "getCurrentTab" });
         tabTitle = titleResponse.title;
         tabTitle = ((tabTitle.length > maxTitleLength) ? tabTitle.substring(0, maxTitleLength) + "..." : tabTitle);
@@ -55,9 +54,8 @@ async function loadPageInfo() {
         document.getElementsByClassName("summary_text")[0].innerHTML = p;
         await postWebsiteData(tabTitle,p)
     }
-    catch(error)
-    {
-        console.log(error)
+   else
+   {
         tabTitle = pageInfo.nombre;
         document.getElementById("website-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
@@ -71,7 +69,8 @@ async function loadPageInfo() {
             document.getElementById(`Star${starNumber}`).className = "selected"
         } 
         return pageInfo.url
-    }
+   }
+    
 }
 
 
