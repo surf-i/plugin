@@ -14,10 +14,11 @@ function AccountTemplate(object) {
                 class="SignInComponent_form"
                 >
                 <button
+                    disabled
                     class="sign_in_btn"
                     id="LogInToStartButton"
                 >
-                    Juan Carlitos easterEgg
+                    Account features coming soon!
                 </button>
                 </form>
             </div>
