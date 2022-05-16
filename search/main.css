@@ -1,4 +1,4 @@
-@import url("root.css");
+@import url("../styles/root.css");
 
 .Dashboard-ball{
     background-color: var(--color-D);

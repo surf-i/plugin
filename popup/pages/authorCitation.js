@@ -13,7 +13,7 @@ function AuthorCitationTemplate(object) {
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormAuthor">
             <form
-            class="SignInComponent_form"
+            class="ContentBox"
             >
             <p></p>
             <p></p>

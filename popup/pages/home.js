@@ -6,9 +6,8 @@ function HomeTemplate(object) {
         <div class="SurfiComponent page-container">   
             <h2 class="title">Home</h2>
             <div class="homeComponent_container" id="Form">
-                <form
-                class="SignInComponent_form"
-                onSubmit={handleSubmit}
+                <div
+                class="ContentBox"
                 >
                 <button
                     class="sign_in_btn"
@@ -23,7 +22,7 @@ function HomeTemplate(object) {
                     >
                     Create Citation
                 </button>
-                </form>
+                </div>
             </div>
             ${Menu()}
         </div>

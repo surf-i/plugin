@@ -11,7 +11,7 @@ function SettingsTemplate(object) {
             </button>   
             <h2 class="title">Settings</h2>
             <div class="SignInComponent_container" id="Form">
-                <form class="SignInComponent_form">
+                <form class="ContentBox">
                 ${configs.map(e => SettingsInput({title: e})).join('')}
                 </form>
             </div>
