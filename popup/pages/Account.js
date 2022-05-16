@@ -8,7 +8,7 @@ function AccountTemplate(object) {
             <span class="material-icons accountLogo">account_circle</span>
             <div class="SignInComponent_container" id="Form">
                 <form
-                class="SignInComponent_form"
+                class="ContentBox"
                 >
                 <button
                     disabled
