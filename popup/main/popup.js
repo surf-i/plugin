@@ -59,9 +59,6 @@ function setPage(page) {
     if (state === 'start') {
         var event = document.getElementById("StartToLogInButton").addEventListener("click", function () { setPage('login') });
         var SignUpButton = document.getElementById("LogInToSignUpButton").addEventListener("click", function () { setPage('signup') });
-        // fetch(url+'websites/?url=www.gooogle.com')
-        // .then(response => response.json())
-        // .then(data => console.log(data));
     }
     if(state === 'signup'){
       let email = document.getElementById('email')
@@ -116,7 +113,7 @@ function setPage(page) {
       let star4Event = star4.addEventListener('click', function (){updateRating(star4)})
       let star5Event = star5.addEventListener('click', function (){updateRating(star5)})
 
-      let eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
+      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event, latestUrl) });
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
       let menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -179,8 +176,9 @@ async function review(event, url) {
   let logInToken = Cookies.get('token')
 
   if (logInToken != null) {
-    reviewFunction(event, url)
+    await reviewFunction(event, url)
     setPage('pageinfo')
+    await loadPageInfo()
   } else {
     console.error("error need login")
     setPage('login')

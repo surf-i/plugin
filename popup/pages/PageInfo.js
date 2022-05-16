@@ -55,6 +55,7 @@ async function loadPageInfo() {
     }
     catch(error)
     {
+        console.log(error)
         tabTitle = pageInfo.nombre;
         document.getElementById("website-title").innerHTML = tabTitle;
         p = pageInfo.resumen;
