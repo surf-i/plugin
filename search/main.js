@@ -24,10 +24,10 @@ class surfiAddon
   constructor(category,rating,author,date,veracity)
   {
     this.category = category.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
-    this.rating = rating != null? rating: 'NA'
+    this.rating = rating? rating: 'NA'
     this.author = author != null? author: 'NA'
     this.date = date.replace("-","/")
-    this.veracity = veracity != null? veracity: 'NA' 
+    this.veracity = veracity? veracity: 'NA' 
   }
 }
 
@@ -38,9 +38,9 @@ async function isBlacklisted(url) {
 
 async function getFormattedUrl(url)
 {
-  let documento = document.createElement('a')
-  documento.href = url
-  let host =  "https://"+documento.hostname
+  let element = document.createElement('a')
+  element.href = url
+  let host =  "https://"+element.hostname
   if (await isBlacklisted(host))
   {
       return decodeURI(host)
@@ -97,7 +97,7 @@ async function main(){
   }
   catch(err)
   {
-    console.log("Error: "+err)
+    throw new Error("Error: "+err)
   }
 }
 main()
@@ -130,5 +130,6 @@ async function getMultipleWebsites(links){
       console.log("URL: "+element.url+"  Categoria "+element.categoria)
       surfiRequest.set(element.url,new surfiAddon(element.categoria,Math.round(element.calificacionPromedio*10)/10,element.autor,element.fecha,Math.round(element.gradoVeracidadPromedio)));
      }
+     console.log('HELLO')
      return surfiRequest;
 }
