@@ -11,6 +11,10 @@ import { AccountTemplate } from '../pages/Account.js'
 import { PageInfoTemplate } from '../pages/PageInfo.js'
 import { SettingsTemplate } from '../pages/Settings.js'
 import { loadPageInfo } from '../pages/PageInfo.js'
+import {CitateTemplate, citate, validateChoice} from '../pages/citation.js'
+import { AuthorCitationTemplate } from '../pages/authorCitation.js'
+import { UnknownCitationTemplate } from '../pages/unknownCitation.js'
+import { OrgCitationTemplate } from '../pages/orgCitation.js'
 
 
 const body = document.body
@@ -24,7 +28,11 @@ const routes = {
   "home": HomeTemplate,
   "account": AccountTemplate,
   "pageinfo": PageInfoTemplate,
-  "settings": SettingsTemplate
+  "settings": SettingsTemplate,
+  "cite": CitateTemplate,
+  "authorCite": AuthorCitationTemplate,
+  "unknownCite": UnknownCitationTemplate,
+  "orgCite": OrgCitationTemplate
 }
 
 //sets the sate of the app
@@ -34,11 +42,12 @@ if (Cookies.get('state') == undefined) {
 }
 var [state, before] = [Cookies.get('state'), Cookies.set('before')]
 var token = Cookies.get('token')
+
 let latestUrl;
 setPage(state)
 
 // var page = document.getElementById()
-var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('start') });
+var backButton = document.getElementById("backButton")?.addEventListener("click", function () { setPage('home') });
 
 function setPage(page) {
     deleteElement(body.children[0])
@@ -85,9 +94,21 @@ function setPage(page) {
         }
         */
     }
-    if(state === 'login' || state === 'signup' || state === 'review' || state == 'pageinfo' ){
+    if(state === 'login' || state === 'signup'){
       var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage(before) });
     }
+    if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite' ) {
+      var backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
+
+    }
+    if(state === 'authorCite') {
+      var backButton = document.getElementById("citateButton").addEventListener("click", function (event) { citationAuth(event) });
+
+    }
+    if (state === 'review' || state === 'pageinfo') {
+      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
+    }
+
     if (state === 'review') {
       let category = document.getElementById('optionMenu')
       let star1 = document.getElementById('star1')
@@ -98,12 +119,12 @@ function setPage(page) {
 
       let categoryEvent = category.addEventListener('change', function (){validateCategory(category)})
       let star1Event = star1.addEventListener('click', function (){updateRating(star1)})
-      let star2Event = star2.addEventListener('click', function (){updateRatingreview(star2)})
+      let star2Event = star2.addEventListener('click', function (){updateRating(star2)})
       let star3Event = star3.addEventListener('click', function (){updateRating(star3)})
       let star4Event = star4.addEventListener('click', function (){updateRating(star4)})
       let star5Event = star5.addEventListener('click', function (){updateRating(star5)})
 
-      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event, latestUrl) });
+      var eventReview = document.getElementById("ReviewToStartButton").addEventListener("click", function (event) { review(event) });
     }
     if(state === 'account' || state === 'home' || state === 'settings'){
       var menuHomeButton = document.getElementById("menuHomeButton").addEventListener("click", function () { setPage('home') });
@@ -112,14 +133,22 @@ function setPage(page) {
       
     }
     if (state === 'home'){
-      var eventHomeReview = document.getElementById("HomeToCitateButton").addEventListener("click", function () { setPage('home') });
-      var eventHomeReview = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo')});
+      var eventHomeCite = document.getElementById("HomeToCitateButton").addEventListener("click", function () { setPage('cite') });
+      var eventHomePageInfo = document.getElementById("HomeToPageInfoButton").addEventListener("click", function () { setPage('pageinfo')});
       
+    }
+    if (state === 'cite'){
+      let selectFormat = document.getElementById("citationFormatOpt")
+      let FormatEvent = selectFormat.addEventListener('change', function (){validateChoice(selectFormat)})
+
+      var eventHomePageInfo = document.getElementById("CitateToFormat").addEventListener("click", function () { citation()});
+      var backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
     }
     if(state === 'settings'){
       var LogOut = document.getElementById("logOutButton").addEventListener("click", function () { setPage('start') });
     }
     if(state == 'pageinfo'){
+      
       var eventPageinfoReview = document.getElementById("PageinfoToReview").addEventListener("click", function () { setPage('review') });
       loadInfo()
     }
@@ -127,8 +156,8 @@ function setPage(page) {
 
 }
 
-
 async function loadInfo(){
+  await loadPageInfo()
   latestUrl = await loadPageInfo()
 }
 
@@ -166,6 +195,21 @@ async function review(event, url) {
   }
 }
 
+async function citation(event) {
+    let format= citate(event)
+    if (format==="AUTHOR"){
+      setPage('authorCite')
+    }
+    else if (format === "ORG"){
+      setPage('orgCite')
+    }
+    else {
+      setPage('unknownCite')
+    }
+}
+
+
 
 
 // TODO: Rendering, eventos, claseSurfi
+

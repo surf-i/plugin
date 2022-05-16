@@ -19,8 +19,6 @@ let surfiSearch = (element) =>{
   </div>
   `
 }
-// let categoriesv1 = ['Herramienta','Social','Entretenimiento','Periodismo','Investigacion','Empresas','Tienda'];
-// let categoriesv2 = ['Investigacion','Periodismo','Entretenimiento','Tienda','Herramienta','Social','Empresas'];
 class surfiAddon
 {
   constructor(category,rating,author,date,veracity)
