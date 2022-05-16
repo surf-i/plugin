@@ -14,7 +14,7 @@ function LoginTemplate(object) {
                     <span class="closebtn">&times;</span>  
                     <strong>Login Failed</strong> Please check your credentials and try again!
                 </div>
-            <div class="SignInComponent_container" id="LogInForm">
+            <div class="homeComponent_container" id="LogInForm">
                 <form
                 class="SignInComponent_form"
                 >

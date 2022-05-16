@@ -27,7 +27,7 @@ function ReviewTemplate(object) {
                     <option class="Comercio" value="SHOPPING">Shopping</option>
                     <option class="Herramienta" value="PRODUCTIVITY">Productivity</option>
                     <option class="Social" value="SOCIAL">Social</option>
-                    <option class="Organizacion" value="BUSINESS_ORG">Business/Org</option>
+                    <option class="Organizacion" value="BUSINESS/ORG">Business/Org</option>
                     <option class="Academico" value="ACADEMIC">Academic</option>
                 </select>
             </div>
@@ -92,7 +92,14 @@ function validateCategory(category){
 
 function updatetrustLevel(){
     let slider = document.getElementById('myRange')
-    return (slider.value)
+    if (slider.value == 100)
+    {
+        return 99
+    }
+    else
+    {
+        return (slider.value)
+    }  
 }
 
 function updateRating(star){

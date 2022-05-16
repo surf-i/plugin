@@ -31,9 +31,21 @@ class surfiAddon
       console.log("aca")
       this.category = 'Not rated';
     }
+    else if (category == "BUSINESS/ORG")
+    {
+      this.category = 'Business'
+    }
     else if(category == "RESEARCH")
     {
       this.category = 'Research';
+    }
+    else if(category == "NEWS")
+    {
+      this.category = 'News';
+    }
+    else if(category ="SOCIAL")
+    {
+      this.category = 'Social';
     }
     else
     {
@@ -79,6 +91,7 @@ class surfiAddon
     
   }
 }
+
 async function isBlacklisted(url) {
   let blacklist = await chrome.runtime.sendMessage({ msg: "getBlacklist" });
   return blacklist.includes(url)
@@ -98,21 +111,68 @@ async function getFormattedUrl(url)
       return decodeURI(url)
   }
 }
-
 var linksElements = new Map();
-async function main()
-{
-  console.log("1");
-  console.log("2");
+async function main(){
   let webSearchs = document.querySelectorAll("html div #search .g");
-  console.log(webSearchs);
   for(element of webSearchs)
   {
-      let link = element.querySelector('a')
+      let elementLink = element.querySelector('a')
+      let link = decodeURI(String(elementLink))
+      if (link.charAt(link.length - 1)=='/')
+      {
+        link = link.substring(0,link.length-1)
+      }
+      try
+      {
       let url = await getFormattedUrl(link)
       console.log("Link: "+url)
-      linksElements.set(link,element);
+      linksElements.set(url,element);
+      }
+      catch(err)
+      {
+        console.log("Error: "+err)
+      }
   };
+  try
+  {
+    console.log(linksElements)
+    var surfiReq = await getMultipleWebsites(linksElements.keys());
+    console.log(surfiReq)
+    let aux =[]
+    for (key of surfiReq.keys())
+    {
+      aux.push(key);
+      console.log("LLLLLL>"+key)
+    } 
+    for(let link of linksElements.keys())
+    { 
+      //console.log("probando surfiReq"+surfiReq.get(link).category);
+      console.log("Link2: "+link);
+      let element = linksElements.get(link);
+      // try
+      // {
+      //   console.log("Link3: "+surfiReq.get(link).category);
+      //   element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+      // }
+      // catch(err)
+      // {
+      //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+      // }
+      if (aux.includes(link))
+      {
+        console.log("Link3: "+surfiReq.get(link).category);
+        element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+      }
+      else
+      {
+        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+      }
+    }
+  }
+  catch(err)
+  {
+    console.log("Error: "+err)
+  }
 }
 main()
 //Send requests with the array of links
@@ -135,6 +195,7 @@ async function getMultipleWebsites(links){
      }
      const response = await fetch(url+'/websites/multiple/'+string);
      let res = await response.json()
+     console.log(res)
      if (res ==null)
      {
        return surfiRequest;
@@ -152,7 +213,9 @@ async function getMultipleWebsites(links){
 
 async function changePage()
 {
+  console.log(linksElements)
   var surfiReq = await getMultipleWebsites(linksElements.keys());
+  console.log(surfiReq)
   let aux =[]
   for (key of surfiReq.keys())
   {
@@ -175,6 +238,7 @@ async function changePage()
     // }
     if (aux.includes(link))
     {
+      console.log("PORFIN")
       console.log("Link3: "+surfiReq.get(link).category);
       element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
     }
@@ -185,7 +249,7 @@ async function changePage()
   }
 }
 
-changePage()
+
 
 
 // Busquedas compuestas

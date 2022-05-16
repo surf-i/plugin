@@ -44,6 +44,13 @@
     overflow:scroll;
 }
 
+.homeComponent_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .SignInComponent_form {
     overflow: auto;
     display: flex;
