@@ -12,9 +12,10 @@ import { PageInfoTemplate } from '../pages/PageInfo.js'
 import { SettingsTemplate } from '../pages/Settings.js'
 import { loadPageInfo } from '../pages/PageInfo.js'
 import {CitateTemplate, citate, validateChoice} from '../pages/citation.js'
-import { AuthorCitationTemplate } from '../pages/authorCitation.js'
-import { UnknownCitationTemplate } from '../pages/unknownCitation.js'
-import { OrgCitationTemplate } from '../pages/orgCitation.js'
+import { AuthorCitationTemplate, citeAuthor, validateCitationA } from '../pages/authorCitation.js'
+import { UnknownCitationTemplate,  citeUnknown, validateCitationU} from '../pages/unknownCitation.js'
+import { OrgCitationTemplate, citeOrg, validateCitationO} from '../pages/orgCitation.js'
+import {CitationResultsTemplate, applyCitations} from '../pages/citationResults.js'
 
 
 const body = document.body
@@ -32,7 +33,8 @@ const routes = {
   "cite": CitateTemplate,
   "authorCite": AuthorCitationTemplate,
   "unknownCite": UnknownCitationTemplate,
-  "orgCite": OrgCitationTemplate
+  "orgCite": OrgCitationTemplate,
+  "citeResults": CitationResultsTemplate
 }
 
 //sets the sate of the app
@@ -44,6 +46,7 @@ var [state, before] = [Cookies.get('state'), Cookies.set('before')]
 var token = Cookies.get('token')
 
 let latestUrl;
+let citationResults;
 setPage(state)
 
 // var page = document.getElementById()
@@ -86,13 +89,48 @@ function setPage(page) {
     if(state === 'login' || state === 'signup'){
       let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('start') });
     }
-    if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite' ) {
-      let backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
 
+    if(state === 'authorCite' || state === 'unknownCite'  || state === 'orgCite') {
+      var backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
+      var backButton = document.getElementById("citateButton").addEventListener("click", function (event) { resultsCitation(event, state) });
     }
-    if(state === 'authorCite') {
-      let citateButton = document.getElementById("citateButton").addEventListener("click", function (event) { citationAuth(event) });
+    if(state === 'authorCite'){
+      let authName = document.getElementById('authorName')
+      let authorLastName = document.getElementById('authorLastName')
+      let website = document.getElementById('websiteName')
+      let webpage = document.getElementById('webpageName')
+      let date = document.getElementById('dateOfPublication')
 
+      let authorNameEvent = authName.addEventListener('input', function (){validateCitationA(date, authName, authorLastName, webpage, website)})
+      let authorLastNameEvent = authorLastName.addEventListener('input', function (){validateCitationA(date, authName, authorLastName, webpage, website)})
+      let websiteEvent = website.addEventListener('input', function (){validateCitationA(date, authName, authorLastName, webpage, website)})
+      let webpageEvent = webpage.addEventListener('input', function (){validateCitationA(date, authName, authorLastName, webpage, website)})
+      let dateEvent = date.addEventListener('change', function (){validateCitationA(date, authName, authorLastName, webpage, website)})
+    }
+    if(state === 'unknownCite'){
+      let website = document.getElementById('websiteName')
+      let webpage = document.getElementById('webpageName')
+      let date = document.getElementById('dateOfPublication')
+
+
+      let websiteEvent = website.addEventListener('input', function (){validateCitationU(date, webpage, website)})
+      let webpageEvent = webpage.addEventListener('input', function (){validateCitationU(date, webpage, website)})
+      let dateEvent = date.addEventListener('change', function (){validateCitationU(date, webpage, website)})
+    }
+
+    if(state === 'orgCite'){
+      let orgName = document.getElementById('orgName')
+      let website = document.getElementById('websiteName')
+      let webpage = document.getElementById('webpageName')
+      let date = document.getElementById('dateOfPublication')
+
+      let organizationEvent = orgName.addEventListener('input', function (){validateCitationO(date, orgName, webpage, website)})
+      let websiteEvent = website.addEventListener('input', function (){validateCitationO(date, orgName, webpage, website)})
+      let webpageEvent = webpage.addEventListener('input', function (){validateCitationO(date, orgName, webpage, website)})
+      let dateEvent = date.addEventListener('change', function (){validateCitationO(date, orgName, webpage, website)})
+    }
+    if(state === 'citeResults' ) {
+      var backButton = document.getElementById("backButton").addEventListener("click", function (event) { setPage('cite') });
     }
     if (state === 'review' || state === 'pageinfo') {
       let backButton = document.getElementById("backButton").addEventListener("click", function () { setPage('home') });
@@ -197,6 +235,19 @@ async function citation(event) {
     }
 }
 
+async function resultsCitation (event, state){
+  if (state=="authorCite"){
+    citationResults = await citeAuthor(event)
+  }
+  else if (state == "orgCite"){
+    citationResults = await citeOrg(event)
+  }
+  else{
+    citationResults = await citeUnknown(event)
+  }
+  setPage('citeResults')
+  applyCitations(citationResults[0], citationResults[1], citationResults[2])
+}
 
 
 
