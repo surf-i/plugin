@@ -1,15 +1,21 @@
 import UserInput from "../components/UserInput.js"
+import {citeAPAUnknown, citeIEEEUnknown,  citeChicagoUnknown} from "../../scripts/logic/citing.js"
 
-function citateAuthor(object) {
+function UnknownCitationTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <h2 class="title">SignUp</h2>
+        <h2 class="title">Unknown Author Citation</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormUnknown">
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
             <form
             class="SignInComponent_form"
             >
@@ -30,3 +36,31 @@ function citateAuthor(object) {
     `
     )
 }
+
+function citeUnknown(e)
+{
+    e.preventDefault()
+    let date = dateOfPublication.value.split('-')
+    let year = date[2]
+    let month = date[1]
+    let day = date[0]
+
+    let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
+    let url = tab.url
+
+    let today = new Date()
+    var dayCurrent = String(today.getDate()).padStart(2, '0')
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ];
+    var monthCurrent = monthNames[today.getMonth()]
+    var yearCurrent = today.getFullYear()
+
+    let apaCitation = citeAPAUnknown(webpageName, websiteName,  year, month, day, url)
+    let ieeecitation = citeIEEEUnknown(webpageName,  yearCurrent, monthCurrent, dayCurrent, url)
+    //Get current year
+    let chicagoCitation = citeChicagoUnknown(webpageName, websiteName, year, month, day, url)
+    //Redirect to citation result page
+}
+
+export {UnknownCitationTemplate, citeUnknown}

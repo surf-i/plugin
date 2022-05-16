@@ -2,7 +2,7 @@ import Menu from "../components/Menu.js"
 
 function HomeTemplate(object) {
     return (
-        `
+        /*html*/`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
                 <span class="material-icons">arrow_back_ios</span>
@@ -20,6 +20,7 @@ function HomeTemplate(object) {
                     >
                     Page Information
                 </button>
+
                 <button
                     class="sign_in_btn"
                     id="HomeToCitateButton"

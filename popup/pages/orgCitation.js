@@ -1,15 +1,21 @@
 import UserInput from "../components/UserInput.js"
+import {citeAPAOrganization, citeIEEEOrganization,  citeChicagoOrganization} from "../../scripts/logic/citing.js"
 
-function citateAuthor(object) {
+function OrgCitationTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <h2 class="title">SignUp</h2>
+        <h2 class="title">Organization Citation</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormOrg">
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
             <form
             class="SignInComponent_form"
             >
@@ -31,3 +37,31 @@ function citateAuthor(object) {
     `
     )
 }
+
+function citeOrg(e)
+{
+    e.preventDefault()
+    let date = dateOfPublication.value.split('-')
+    let year = date[2]
+    let month = date[1]
+    let day = date[0]
+
+    let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
+    let url = tab.url
+
+    let today = new Date()
+    var dayCurrent = String(today.getDate()).padStart(2, '0')
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+    ];
+    var monthCurrent = monthNames[today.getMonth()]
+    var yearCurrent = today.getFullYear()
+
+    let apaCitation = citeAPAOrganization(orgName, year, month, day, webpageName, url)
+    let ieeecitation = citeIEEEOrganization(orgName, websiteName, webpageName, yearCurrent, monthCurrent, dayCurrent, url)
+    //Get current year
+    let chicagoCitation = citeChicagoOrganization( orgName, websiteName, webpageName, year, month, day, url)
+    //Redirect to citation result page
+}
+
+export{OrgCitationTemplate, citeOrg}

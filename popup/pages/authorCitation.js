@@ -1,19 +1,22 @@
 import UserInput from "../components/UserInput.js"
-import citeAPA from "../../scripts/citeAPA.js"
-import citeIEEE from "../../scripts/citeIEEE.js"
-import citeChicago from "../../scripts/citeChicago.js"
+import {citeAPA, citeIEEE,  citeChicago} from "../../scripts/logic/citing.js"
 
 
-function citateAuthor(object) {
+function AuthorCitationTemplate(object) {
     return (
         /*html*/`
         <div class="SurfiComponent page-container"> 
             <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <h2 class="title">SignUp</h2>
+        <h2 class="title">Author Citation</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormAuthor">
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <p> </p>
             <form
             class="SignInComponent_form"
             >
@@ -37,16 +40,29 @@ function citateAuthor(object) {
     )
 }
 
-function citeAuthor(e)
+async function citeAuthor(e)
 {
     e.preventDefault()
     let date = dateOfPublication.value.split('-')
     let year = date[2]
     let month = date[1]
     let day = date[0]
-    let apaCitation = citeAPA(authorName, authorLastName, websiteName, webpageName, year, month, day)
-    let ieeecitation = citeIEEE(authorName, authorLastName, websiteName, webpageName, year, month, day)
+
+    let[tab] = await chrome.tabs.query({active:true, currentWindow: true})
+    let url = tab.url
+
+    let today = new Date()
+    var dayCurrent = String(today.getDate()).padStart(2, '0')
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+    var monthCurrent = monthNames[today.getMonth()]
+    var yearCurrent = today.getFullYear()
+
+    let apaCitation = citeAPA(authorName, authorLastName, websiteName, webpageName, year, month, day, url)
+    let ieeecitation = citeIEEE(authorName, authorLastName, websiteName, webpageName, yearCurrent, monthCurrent, dayCurrent, url)
     //Get current year
-    let chicagoCitation = citeChicago(authorName, authorLastName, websiteName, webpageName, year, month, day)
+    let chicagoCitation = citeChicago(authorName, authorLastName, websiteName, webpageName, year, month, day, url)
     //Redirect to citation result page
 }
+
+export {AuthorCitationTemplate, citeAuthor}
