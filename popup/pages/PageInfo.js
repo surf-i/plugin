@@ -111,4 +111,4 @@ async function postWebsiteData(tabTitle, summaryFormattedText) {
         return res
 }
 
-export { PageInfoTemplate, loadPageInfo };
+export { PageInfoTemplate, loadPageInfo }
