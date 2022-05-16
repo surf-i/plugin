@@ -8,14 +8,10 @@ function OrgCitationTemplate(object) {
             <button id="backButton">
             <span class="material-icons">arrow_back_ios</span>
         </button>
-        <h2 class="title">Organization Citation</h2>
+        <h2 class="title">Organization</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormOrg">
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
+            
             <form
             class="SignInComponent_form"
             >

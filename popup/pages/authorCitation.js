@@ -12,14 +12,12 @@ function AuthorCitationTemplate(object) {
         <h2 class="title">Author Citation</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormAuthor">
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
             <form
             class="SignInComponent_form"
             >
+            <p></p>
+            <p></p>
+            <p></p>
             ${UserInput({ id: 'authorNameComp',title: 'Author Name', type: "text", name:'authorName' })}
             ${UserInput({ id: 'authorLastNameComp',title: 'Author Last Name', type: "text", name:'authorLastName' })}
             ${UserInput({ id: 'websiteNameComp',title: 'Website Name', type: "text", name:'websiteName' })}

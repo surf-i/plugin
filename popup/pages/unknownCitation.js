@@ -11,11 +11,7 @@ function UnknownCitationTemplate(object) {
         <h2 class="title">Unknown Author Citation</h2>
         <!-- <img src="../../assets/logo/round_logo.png" class="logo" alt="Surfi Logo"> -->
         <div class="SignInComponent_container" id="citationFormUnknown">
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
-                <p> </p>
+            
             <form
             class="SignInComponent_form"
             >
