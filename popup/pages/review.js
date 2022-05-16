@@ -21,14 +21,13 @@ function ReviewTemplate(object) {
             <div class="SurfiDropdown_container">
                 <select name="optionMenu" class="SurfiDropdown" id="optionMenu">
                     <option value="none" selected disabled hidden>Select category:</option>
-                    <option class="Investigacion" value="RESEARCH">Research</option>
-                    <option class="Periodismo" value="NEWS">News</option>
-                    <option class="Entretenimiento" value="ENTERTAINMENT">Entertainment</option>
-                    <option class="Comercio" value="SHOPPING">Shopping</option>
-                    <option class="Herramienta" value="PRODUCTIVITY">Productivity</option>
+                    <option class="Research" value="RESEARCH">Research</option>
+                    <option class="News" value="NEWS">News</option>
+                    <option class="Entertainment" value="ENTERTAINMENT">Entertainment</option>
+                    <option class="Shopping" value="SHOPPING">Shopping</option>
+                    <option class="Productivity" value="PRODUCTIVITY">Productivity</option>
                     <option class="Social" value="SOCIAL">Social</option>
-                    <option class="Organizacion" value="BUSINESS/ORG">Business/Org</option>
-                    <option class="Academico" value="ACADEMIC">Academic</option>
+                    <option class="Business" value="BUSINESS/ORG">Business/Org</option>
                 </select>
             </div>
             <button
