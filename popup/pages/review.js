@@ -92,7 +92,14 @@ function validateCategory(category){
 
 function updatetrustLevel(){
     let slider = document.getElementById('myRange')
-    return (slider.value)
+    if (slider.value == 100)
+    {
+        return 99
+    }
+    else
+    {
+        return (slider.value)
+    }  
 }
 
 function updateRating(star){

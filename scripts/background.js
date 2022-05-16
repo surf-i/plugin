@@ -6,7 +6,7 @@ chrome.runtime.onInstalled?.addListener(function (details) {
     }
 });
 
-let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co"]
+let blacklist = ["https://www.google.com", "https://twitter.com", "https://facebook.com", "https://bloqueneon.uniandes.edu.co", "https://outlook.live.com", "https://mail.google.com", "chrome://newtab/", "https://www.amazon.com", "https://www.youtube.com"];
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
