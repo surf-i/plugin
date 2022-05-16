@@ -10,7 +10,7 @@ function CitationResultsTemplate(object) {
         <div class="summary">
             <div class = "citation">
                 <h3 class="summary_title">APA</h3>
-                <button id = "APAButton">Copy text</button>
+                <button id="APAButton"></button>
             </div>
             <p class="summary_text" id="apaCitation"></p>
         </div>
@@ -18,7 +18,7 @@ function CitationResultsTemplate(object) {
         <div class="summary">
             <div class = "citation">
                 <h3 class="summary_title">IEEE</h3>
-                <button id = "IEEEButton">Copy text</button>
+                <button id="IEEEButton"></button>
             </div>
             <p class="summary_text" id="ieeeCitation"></p>
         </div>
@@ -26,7 +26,7 @@ function CitationResultsTemplate(object) {
         <div class="summary">
             <div class = "citation">
                 <h3 class="summary_title">Chicago</h3>
-                <button id = "chicagoButton">Copy text</button>
+                <button id="chicagoButton"></button>
             </div>
             <p class="summary_text" id="chicagoCitation"></p>
         </div>
@@ -43,16 +43,17 @@ function applyCitations(apa, ieee, chicago) {
 }
 
 function copyCitation(citationType) {
-    console.log("Hola")
-    var copyText = document.getElementById(citationType).innerHTML;
-    copyText = copyText.replace("<i>","")
-    copyText = copyText.replace("</i>","")
-    var textArea = document.createElement('textarea');
+    let copyText = document.getElementById(citationType).innerHTML;
+    copyText = copyText.replace("<i>", "").replace("</i>", "");
+    let textArea = document.createElement('textarea');
     textArea.style.opacity = 0;
+    textArea.style.height = 0;
+    textArea.style.fontSize = 0.01;
     document.body.appendChild(textArea);
     textArea.value = copyText;
     textArea.select();
     document.execCommand('copy');
+    document.body.removeChild(textArea);
 }
 
 export { CitationResultsTemplate, applyCitations, copyCitation }
