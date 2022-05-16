@@ -157,7 +157,7 @@ async function main(){
       }
       else
       {
-        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('NOT RATED','NA','NA','NA','NA')));
       }
     }
   }
