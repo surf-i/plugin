@@ -58,9 +58,12 @@ async function reviewFunction(e, latestUrl) {
     var yyyy = today.getFullYear()
     today = yyyy+'-'+mm+'-'+dd
 
-    //let[tab] = await chrome.tabs.query({active:true, currentWindow: true})  
-    //let u = tab.url
-    //latestUrl = await getFormattedUrl(u)
+    if (!latestUrl)
+    {
+        let[tab] = await chrome.tabs.query({active:true, currentWindow: true})  
+        let u = tab.url
+        latestUrl = await getFormattedUrl(u)
+    }   
     const response = await fetch(url+'users/reviews/add/', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         headers: {
