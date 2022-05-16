@@ -37,7 +37,7 @@ function UnknownCitationTemplate(object) {
     )
 }
 
-function citeUnknown(e)
+async function citeUnknown(e)
 {
     e.preventDefault()
     let date = dateOfPublication.value.split('-')

@@ -38,7 +38,7 @@ function OrgCitationTemplate(object) {
     )
 }
 
-function citeOrg(e)
+async function citeOrg(e)
 {
     e.preventDefault()
     let date = dateOfPublication.value.split('-')
