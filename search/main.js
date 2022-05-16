@@ -39,6 +39,14 @@ class surfiAddon
     {
       this.category = 'Research';
     }
+    else if(category == "NEWS")
+    {
+      this.category = 'News';
+    }
+    else if(category ="SOCIAL")
+    {
+      this.category = 'Social';
+    }
     else
     {
       this.category = category;
@@ -103,18 +111,70 @@ async function getFormattedUrl(url)
       return decodeURI(url)
   }
 }
-
 var linksElements = new Map();
-let webSearchs = document.querySelectorAll("html div #search .g");
-for(element of webSearchs)
-{
-    let elementLink = element.querySelector('a')
-    let url = decodeURI(String(elementLink))
-    //let url = await getFormattedUrl(link)
-    console.log("Link: "+url)
-    linksElements.set(url,element);
-};
-
+async function main(){
+  let webSearchs = document.querySelectorAll("html div #search .g");
+  for(element of webSearchs)
+  {
+      let elementLink = element.querySelector('a')
+      let link = decodeURI(String(elementLink))
+      if (link.charAt(link.length - 1)=='/')
+      {
+        link = link.substring(0,link.length-1)
+      }
+      try
+      {
+      let url = await getFormattedUrl(link)
+      console.log("Link: "+url)
+      linksElements.set(url,element);
+      }
+      catch(err)
+      {
+        console.log("Error: "+err)
+      }
+  };
+  try
+  {
+    console.log(linksElements)
+    var surfiReq = await getMultipleWebsites(linksElements.keys());
+    console.log(surfiReq)
+    let aux =[]
+    for (key of surfiReq.keys())
+    {
+      aux.push(key);
+      console.log("LLLLLL>"+key)
+    } 
+    for(let link of linksElements.keys())
+    { 
+      //console.log("probando surfiReq"+surfiReq.get(link).category);
+      console.log("Link2: "+link);
+      let element = linksElements.get(link);
+      // try
+      // {
+      //   console.log("Link3: "+surfiReq.get(link).category);
+      //   element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+      // }
+      // catch(err)
+      // {
+      //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+      // }
+      if (aux.includes(link))
+      {
+        console.log("Link3: "+surfiReq.get(link).category);
+        element.insertAdjacentHTML("afterbegin",surfiSearch(surfiReq.get(link)));
+      }
+      else
+      {
+        element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
+      }
+    }
+  }
+  catch(err)
+  {
+    console.log("Error: "+err)
+  }
+}
+main()
 //Send requests with the array of links
 var surfiRequest = new Map();
 async function getMultipleWebsites(links){
@@ -135,6 +195,7 @@ async function getMultipleWebsites(links){
      }
      const response = await fetch(url+'/websites/multiple/'+string);
      let res = await response.json()
+     console.log(res)
      if (res ==null)
      {
        return surfiRequest;
@@ -175,7 +236,6 @@ async function changePage()
     // {
     //   element.insertAdjacentHTML("afterbegin",surfiSearch(new surfiAddon('Not rated','NA','NA','NA','NA')));
     // }
-    console.log("aca")
     if (aux.includes(link))
     {
       console.log("PORFIN")
@@ -189,7 +249,7 @@ async function changePage()
   }
 }
 
-changePage()
+
 
 
 // Busquedas compuestas
