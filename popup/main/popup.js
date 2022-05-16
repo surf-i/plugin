@@ -146,7 +146,6 @@ function setPage(page) {
 }
 
 async function loadInfo(){
-  await loadPageInfo()
   latestUrl = await loadPageInfo()
 }
 
