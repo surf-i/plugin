@@ -3,19 +3,26 @@
   "name": "Surfi",
   "description": "A plugin that shows you website reliability and formats google search.",
   "version": "0.1.0",
-  "icons": { "16": "assets/logo/SurfiSurfi.png", "48": "assets/logo/SurfiSurfi.png", "128": "assets/logo/SurfiSurfi.png" },
-  "permissions": [ "tabs", "activeTab", "scripting", "storage" ],
+  "icons": {
+    "16": "assets/logo/SurfiSurfi.png",
+    "48": "assets/logo/SurfiSurfi.png",
+    "128": "assets/logo/SurfiSurfi.png"
+  },
+  "permissions": ["tabs", "activeTab"],
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/search*", "https://www.google.com.co/search*"],
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.com.co/search*"
+      ],
       "css": ["search/main.css", "styles/root.css"],
       "js": ["search/main.js", "scripts/background.js"],
       "run_at": "document_end"
     }
   ],
-  "action":{
+  "action": {
     "default_title": "Surfi",
-    "default_icon":"assets/logo/SurfiSurfi.png",
+    "default_icon": "assets/logo/SurfiSurfi.png",
     "default_popup": "popup/main/popup.html"
   },
   "background": {
