@@ -2,11 +2,12 @@
   "manifest_version": 3,
   "name": "Surfi",
   "description": "A plugin that shows you website reliability and formats google search.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icons": {
-    "16": "assets/logo/SurfiSurfi.png",
-    "48": "assets/logo/SurfiSurfi.png",
-    "128": "assets/logo/SurfiSurfi.png"
+    "16": "./assets/favicon/favicon-16x16.png",
+    "32": "./assets/favicon/favicon-32x32.png",
+    "48": "./assets/favicon/favicon-48x48.png",
+    "128": "./assets/favicon/favicon-128x128.png"
   },
   "permissions": ["tabs", "activeTab"],
   "content_scripts": [
